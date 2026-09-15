@@ -1,0 +1,5 @@
+source-reference.html
+reference-assets/
+dist/assets/*.webp
+.sites-runtime/
+*.tar.gz
