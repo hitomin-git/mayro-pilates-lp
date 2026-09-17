@@ -1,48 +1,42 @@
-# Mayro LP design gallery
+# Mayro LP
 
-カード一覧から各LPを開ける、静的な比較サイトです。Google Sitesではありません。
+公開用: https://hitomin-git.github.io/mayro-pilates-lp/final.html
+制作案一覧: https://hitomin-git.github.io/mayro-pilates-lp/
 
-公開先: https://hitomin-git.github.io/mayro-pilates-lp/
-リポジトリ: https://github.com/hitomin-git/mayro-pilates-lp
+## 編集元
 
-## 保存しているページ
+- `dist/versions/change4.html` : 現在の原稿・構成
+- `dist/versions/change4.css` : 見た目
+- `dist/versions/change4.js` : 固定予約ボタンの表示判定
+- `dist/assets/` : 公開用画像。新規画像は必ずGitに追加する
+- `dist/final.*` : 自動生成する完成版。直接編集しない
+- `dist/index.html` : 制作案一覧。完成版へのカードを含む
 
-| ページ | 内容 |
-| --- | --- |
-| dist/index.html | カード形式のLP一覧・ブラウザー内のお気に入り |
-| dist/versions/old.html | 古い版。2004862時点の短いストーリーLP |
-| dist/versions/change1.html | 変更1。2026-09-17の最初の参考画像ベース試作 |
-| dist/versions/change2.html | 変更2。写真カード・図解・横並び構成を参考画像へ近づけた版 |
-| dist/versions/review2.html | 参考画像との同幅比較・自己評価の内訳 |
+完成版は制作案の下部リンクを除去し、その分の高さを調整する。
+過去の版と共有画像は上書きしない。今回の整理で履歴の書き換えやファイル削除はしていない。
 
-## 過去の版を上書きしない
+## 更新手順
 
-- 古い版・変更1のHTML/CSS/JSは凍結。version-baselines.jsonのハッシュで変更がないことを検証します。
-- 次はchange3.html / change3.css / change3.jsを新規作成し、一覧にカードを追加します。
-- 写真も新しい名前で追加。既存バージョンの共有素材を置き換えないでください。
-- お気に入りはブラウザー内に保存されます。端末間・ローカル版と公開版の間では共有されません。
+1. 変更4を編集する。
+2. `node build-mayro-final.cjs` で完成版を更新する。CSS/JSのキャッシュ識別子も更新される。
+3. `node serve.mjs` でプレビューする。PC・スマホの画像、改行、予約ボタン、Q&Aを確認する。
+4. 今回変更したファイルと新しい画像をファイル名指定で `git add` する。別案件が同居しているため `git add .` は使わない。
+5. `node check-mayro-release.cjs` を実行する。完成版の同期、リンク、過去版の保存状態、画像のGit登録漏れを検査する。
+6. コミットし、`git push origin master` を実行する。
+7. `git subtree push --prefix dist origin gh-pages` で公開する。
+8. GitHub Actionsの該当コミットのPages処理成功を確認する。
 
-## 確認と公開
+公開先は `gh-pages` 直下。作業フォルダ全体を公開しない。
+画像を `.gitignore` で拡張子ごとに除外しない。試作画像は個別に除外する。
 
-1. node serve.mjs で http://127.0.0.1:4173/ を表示。
-2. node check-mayro-versions.cjs でページ・素材参照・アンカー・保存版の不変性を検証。
-3. 今回のサイト関連ファイルだけをコミットしてmasterにpush。
-4. git subtree push --prefix dist origin gh-pages で公開内容を更新。
-5. GitHub Pagesの最新ビルド成功を確認。
+## 過去の制作スクリプト
 
-公開元は既存設定のgh-pagesブランチ直下です。distに含まれる公開用ファイルだけを配置し、作業用フォルダーは公開しません。
-旧来の.openai/hosting.jsonは既存履歴として保持。今回はユーザー指定どおりGitHub Pagesを利用します。
+`build-mayro-change2.cjs`、`build-mayro-change3.cjs`、`update-mayro-hub.cjs` は以前の試作用。
+現在の原稿・一覧を古い内容に戻す可能性があるため、通常の更新には使わない。
+`sync-mayro-navigation.cjs` は制作案用。完成版には制作ナビを追加しない。
 
-## デザインの評価と素材
+## 次のメンテナンス候補
 
-変更2の自己評価は90/100。構成・配置など10項目を目視で評価した目安で、画像の一致率ではありません。
-人物写真、公式情報に合わせたスタッフ2名の構成、控えめな背景装飾に差が残ります。
-詳細はdist/versions/review2.html、素材の出典と生成プロンプトはDESIGN-ASSETS.mdを参照。
-
-## 変更3
-実写写真・生成り・深い茶色・淡いグリーンを使った新しいLP。dist/versions/change3.html、独立した料金ページ change3-price.html。料金は2026-09-17に公式ページで確認。過去のLPは変更なし。
-
-
-## 共通の下部ナビ
-全7ページで dist/design-navigation.css の見た目を共有。ページを生成し直した場合は node sync-mayro-navigation.cjs を実行して共通ナビを反映。node check-mayro-navigation.cjs でナビの統一とLP本文が変更されていないことを検証。2026-09-17、ユーザーの依頼により旧版HTMLのナビ部分のみ更新し、保存ハッシュを更新。
-
+CSSには試行錯誤による上書きルールが残る。見た目を比較しながらセクションごとに整理する。
+別案件を専用フォルダ・リポジトリに移す作業は、移動先を決めてから行う。
+完成版は現状、検索エンジンに載せない `noindex,nofollow` を維持。正式ドメイン運用時に掲載方針を確認する。

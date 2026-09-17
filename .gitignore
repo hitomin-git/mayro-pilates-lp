@@ -1,6 +1,6 @@
 source-reference.html
 reference-assets/
-dist/assets/*.webp
+
 .sites-runtime/
 *.tar.gz
 
@@ -9,3 +9,17 @@ dist/assets/mayro-v2-*.png
 mayro-reference.html
 mayro-sections.html
 mayro-*-preview.zip
+
+# Other projects and local experiments (kept on disk).
+/drive-audit/
+/nakamura-*/
+/nakamura-*.zip
+/nakamura-reference.html
+/*nakamura*.py
+/edit-concern-illustrations.py
+/restore-concern-layout.py
+/make-mayro-versions.cjs
+/hero-guide-edit.md
+/dist/assets/change4-hero-pair.webp
+/dist/assets/change4-hero-black-crop.png
+/dist/assets/change4-hero-guide.png
