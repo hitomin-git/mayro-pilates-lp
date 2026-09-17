@@ -42,3 +42,7 @@
 ## 変更3
 実写写真・生成り・深い茶色・淡いグリーンを使った新しいLP。dist/versions/change3.html、独立した料金ページ change3-price.html。料金は2026-09-17に公式ページで確認。過去のLPは変更なし。
 
+
+## 共通の下部ナビ
+全7ページで dist/design-navigation.css の見た目を共有。ページを生成し直した場合は node sync-mayro-navigation.cjs を実行して共通ナビを反映。node check-mayro-navigation.cjs でナビの統一とLP本文が変更されていないことを検証。2026-09-17、ユーザーの依頼により旧版HTMLのナビ部分のみ更新し、保存ハッシュを更新。
+

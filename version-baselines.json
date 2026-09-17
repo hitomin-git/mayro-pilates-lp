@@ -1,7 +1,7 @@
 [
   {
     "path": "dist/versions/old.html",
-    "sha256": "8d2c2057aba49a7f41187145742b7237093b3762dc80dfd8848f6af5eab99aec"
+    "sha256": "65d87555f527d1db3cfe374e8ab6a3aa2916343f091cc8fc499a5bbf1a192ac3"
   },
   {
     "path": "dist/versions/old.css",
@@ -9,7 +9,7 @@
   },
   {
     "path": "dist/versions/change1.html",
-    "sha256": "8f5650594dcf780c003c31484afd7e8564982418589297ebc7ddbc0acf512ca3"
+    "sha256": "2b4225b53210e8442043de67c11df049927ec75431fc74c9c8d00e128186e0e3"
   },
   {
     "path": "dist/versions/change1.css",
