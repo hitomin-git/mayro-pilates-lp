@@ -1,7 +1,20 @@
-const menuButton=document.querySelector('.menu-toggle');
-const mobileNav=document.querySelector('#mobile-nav');
-function closeMenu(){menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','メニューを開く');mobileNav.hidden=true;}
-menuButton.addEventListener('click',()=>{const isOpen=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!isOpen));menuButton.setAttribute('aria-label',isOpen?'メニューを開く':'メニューを閉じる');mobileNav.hidden=isOpen;});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!mobileNav.hidden){closeMenu();menuButton.focus();}});
-matchMedia('(min-width: 1001px)').addEventListener('change',e=>{if(e.matches)closeMenu();});
+const booking = document.querySelector('.mobile-booking');
+const about = document.querySelector('#about');
+const versionNavigation = document.querySelector('.design-navigation');
+const mobile = matchMedia('(max-width: 640px)');
+let scheduled = false;
+function updateBooking() {
+  scheduled = false;
+  const bottom = versionNavigation.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--version-bar-height', `${bottom}px`);
+  booking.hidden = !(mobile.matches && about.getBoundingClientRect().top < innerHeight - bottom - 24);
+}
+function scheduleBooking() {
+  if (!scheduled) { scheduled = true; requestAnimationFrame(updateBooking); }
+}
+addEventListener('scroll', scheduleBooking, { passive: true });
+addEventListener('resize', scheduleBooking);
+addEventListener('pageshow', scheduleBooking);
+mobile.addEventListener('change', scheduleBooking);
+new ResizeObserver(scheduleBooking).observe(versionNavigation);
+updateBooking();
