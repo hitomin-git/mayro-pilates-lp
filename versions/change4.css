@@ -23,3 +23,4 @@
 @media(max-width:640px){.hero{padding-top:340px;min-height:0}.hero-photo{height:410px;object-fit:cover;object-position:50% 0%}.hero:after{background:linear-gradient(to bottom,transparent 300px,#fffdf5 405px)}.hero-content>p.hero-location{width:100%;font-size:11px;margin-top:10px}}
 .hero-content>p.hero-location{white-space:nowrap;font-size:11px;letter-spacing:0}@media(max-width:360px){.hero-content>p.hero-location{font-size:10px}}
 .about{background:#eae8e1}
+.lesson-real-photo{display:block;width:100%;aspect-ratio:1.5;object-fit:cover;object-position:center 35%}
