@@ -59,3 +59,21 @@
 .closing-team-photo{height:470px;overflow:hidden}.closing-team-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
 .closing-team-copy{padding:15px 0 15px 10%}.closing-eyebrow{font:11px/1.6 var(--sans);letter-spacing:.17em;color:#847c70;margin-bottom:19px}.closing-team h2{font-size:clamp(26px,2.7vw,38px);line-height:1.75;letter-spacing:.04em}.closing-message{font-size:15px;line-height:2;margin-top:20px;color:var(--muted)}.closing-booking{margin-top:25px;padding-top:22px;border-top:1px solid #c7c1b8}.closing-booking h3{font-size:22px;margin-bottom:7px}.closing-booking>p{font-size:13px;color:var(--muted)}.closing-booking .cta{width:100%;margin-top:17px;justify-content:space-between;padding:16px 26px;font-size:17px}.closing-booking .closing-location{font:10px/1.8 var(--sans);text-align:center;margin-top:11px}
 @media(max-width:640px){.closing-team{grid-template-columns:1fr;padding:28px 20px 32px;gap:27px}.closing-team-photo{height:280px}.closing-team-photo img{object-position:50% 30%}.closing-team-copy{padding:0}.closing-team h2{font-size:27px}.closing-message{font-size:13px;margin-top:15px}.closing-eyebrow{font-size:10px;margin-bottom:13px}.closing-booking{margin-top:21px;padding-top:18px}.closing-booking h3{font-size:21px}.closing-booking .cta{font-size:16px}.closing-booking .closing-location{font-size:9px}}
+/* Shared vertical rhythm: space around each story, without forced equal heights. */
+:root{--section-space:72px;--heading-space:32px}
+.about.section,.lesson.section,.staff.section,.trial.section,.pricing.section{padding-top:var(--section-space);padding-bottom:var(--section-space)}
+.section-title{margin-bottom:var(--heading-space)}
+.about .about-heading{margin-bottom:32px}
+.about .about-heading>div:first-child{padding-top:0;padding-bottom:28px}
+.about .foundation-grid{margin-top:0}
+.editorial-lesson h2{margin-bottom:16px}
+.editorial-lesson .intro{margin-bottom:var(--heading-space)}
+.reasons{padding-top:var(--section-space);padding-bottom:var(--section-space)}
+.reason-copy{padding-top:0;padding-bottom:0}
+.reason-copy h2{margin-bottom:14px}
+.reason-copy>p{margin-bottom:28px}
+.reason-image{margin-right:12%}
+.pricing .plan-grid{margin-top:0}
+.closing-team{padding-top:var(--section-space);padding-bottom:var(--section-space)}
+@media(max-width:1000px){:root{--section-space:56px;--heading-space:28px}}
+@media(max-width:640px){:root{--section-space:42px;--heading-space:24px}.about .about-heading{margin-bottom:24px}.about .about-heading>div:first-child{padding-top:0;padding-bottom:30px}.about .foundation-grid{margin-top:0}.reason-copy{padding-top:0;padding-bottom:0}.reason-image{margin:28px 20px 0}.editorial-lesson .intro{margin-bottom:var(--heading-space)}.closing-team{gap:28px}}
