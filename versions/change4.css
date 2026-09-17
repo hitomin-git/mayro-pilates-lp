@@ -40,3 +40,13 @@
 .editorial-lesson .step-grid p{font-size:clamp(8px,1.15cqw,15px);line-height:1.8;margin:0;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:640px){.editorial-lesson{padding:32px 5% 35px}.editorial-lesson .intro{margin-bottom:23px}.editorial-lesson .step-grid{gap:2.5cqw}.editorial-lesson .step-grid p br{display:initial}.editorial-lesson .step-grid h3{letter-spacing:-.04em}}
 .reasons,.trial{background:#eae8e1}
+/* Minimal numbered foundations and an actual machine detail photograph. */
+.about .foundation-grid{gap:0;margin-top:24px;border-top:1px solid #c8c2b9}
+.about .foundation-grid article{background:transparent;padding:23px 16px 22px;text-align:left;border-right:1px solid #c8c2b9}
+.about .foundation-grid article:last-child{border-right:0}
+.foundation-number{display:block;font:18px/1.5 Georgia,serif;color:#8b8175;letter-spacing:.08em;margin-bottom:13px}
+.about .foundation-grid h3{white-space:normal}
+.about .about-image img{transform:none;object-position:50% 55%}
+.about .about-image:after{background:linear-gradient(90deg,transparent,#0003)}
+.about .about-image>p{background:transparent;color:#fff;text-shadow:0 1px 6px #0009}
+@media(max-width:640px){.about .foundation-grid{margin-top:6px}.about .foundation-grid article{padding:18px 12px}.about .foundation-grid article:nth-child(2){border-right:0}.about .foundation-grid article:nth-child(n+3){border-top:1px solid #c8c2b9}.foundation-number{font-size:16px;margin-bottom:9px}}
