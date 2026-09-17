@@ -131,3 +131,29 @@ html{scroll-padding-top:90px}
 .combined-about .pilates-title h2{font-size:32px;line-height:1.5;margin:0}.combined-about .pilates-title{margin-bottom:var(--heading-space)}
 @media(max-width:640px){.combined-about .pilates-title h2{font-size:25px}.pilates-title .desktop-break{display:none}}
 
+
+/* One content section per available screen, with room to breathe. */
+:root{--screen-section:calc(100svh - 134px);--section-space:clamp(24px,5svh,56px);--heading-space:clamp(20px,3svh,32px)}
+html{scroll-padding-top:74px}
+.hero,.combined-about,.reasons,.pricing,.trial,.closing-team{min-height:var(--screen-section)}
+.hero{height:var(--screen-section);display:flex;align-items:center}.hero-content{padding-top:24px;padding-bottom:24px}
+.combined-about,.pricing,.trial{display:flex;flex-direction:column;justify-content:center}
+.combined-about .step-grid{width:100%}.combined-about .lesson-real-photo{height:clamp(150px,28svh,310px);aspect-ratio:auto}.combined-about .step-grid li:nth-child(2){padding-top:2svh}.combined-about .step-grid li:nth-child(3){padding-top:4svh}.combined-about .step-grid li:nth-child(4){padding-top:6svh}
+.reasons{align-items:center}.reason-image{height:clamp(230px,45svh,430px)}
+.closing-team-photo{height:clamp(260px,49svh,470px)}
+@media(max-width:1000px) and (min-width:641px){.pilates-title{flex-wrap:wrap}.pilates-title>p{width:100%;margin-left:0}.combined-about .lesson-real-photo{height:24svh}}
+@media(max-width:640px){
+:root{--screen-section:calc(100svh - 126px);--section-space:clamp(16px,3svh,28px);--heading-space:18px}
+html{scroll-padding-top:66px}
+.hero{height:auto;min-height:var(--screen-section);padding-top:0;flex-direction:column;justify-content:center;overflow:visible}.hero-posture{position:relative;inset:auto;height:clamp(130px,29svh,260px);flex:none}.hero-posture .hero-photo{height:100%;width:100%}.hero-content{padding:16px 23px 18px}.hero .handwriting{font-size:15px;margin-bottom:7px}.hero h1{font-size:24px;line-height:1.5;margin-bottom:8px}.hero h2{font-size:15px;line-height:1.6;margin-bottom:5px}.hero-content>p:not(.handwriting){font-size:13px;line-height:1.7}.hero .tags{margin:10px 0 13px;gap:5px}.hero .tags li{font-size:10px;padding:3px 7px}.hero .cta{min-height:48px;font-size:16px}.hero .hero-location{margin-top:8px}
+.combined-about .pilates-title h2{font-size:24px}.pilates-title .handwriting{font-size:19px}.pilates-title>p{font-size:13px;line-height:1.8}.combined-about .step-grid{gap:16px 16px}.combined-about .step-grid li:nth-child(n){padding-top:0}.combined-about .lesson-real-photo{height:clamp(65px,11svh,116px);object-position:50% 40%}.combined-about .step-grid h3{font-size:15px;line-height:1.55;margin:8px 0 4px}.combined-about .step-grid .number{display:none}.combined-about .step-grid p{font-size:12px;line-height:1.7}
+.reasons{display:flex;flex-direction:column;justify-content:center;gap:20px}.reason-copy{width:100%;padding:0 20px}.reason-copy h2{font-size:25px}.reason-copy>p{margin-bottom:18px}.reason-grid{gap:14px 8px}.reason-icon{width:60px;height:64px}.reason-image{width:calc(100% - 40px);height:clamp(105px,20svh,180px);margin:0;flex:none}
+.pricing .plan-grid article{padding:16px 4px}.pricing .section-title>p{font-size:13px}.pricing .price-note{font-size:11px}
+.trial .section-title>p{font-size:13px}.trial-grid{gap:19px 16px}.trial-real-photo{height:clamp(65px,12svh,120px);aspect-ratio:auto}.trial-grid h3,.trial-grid li:last-child h3{font-size:14px;line-height:1.5;margin-top:8px}.trial-grid p{font-size:12px;line-height:1.7}
+.closing-team{justify-content:center;gap:18px}.closing-team-photo{height:clamp(95px,21svh,195px);aspect-ratio:auto}.closing-team h2{font-size:23px;line-height:1.6}.closing-eyebrow{margin-bottom:8px}.closing-message{font-size:13px;line-height:1.8;margin-top:10px}.closing-booking{margin-top:15px;padding-top:15px}.closing-booking h3{font-size:20px}.closing-booking .cta{margin-top:12px;min-height:48px}.closing-booking .closing-location{margin-top:8px}
+}
+
+
+@media(max-width:640px){.core-label{display:block;white-space:nowrap}}
+@media(max-width:640px) and (max-height:740px){:root{--section-space:16px;--heading-space:14px}.hero-posture{height:26svh}.hero-content{padding-top:12px;padding-bottom:12px}.reasons{gap:14px}.reason-icon{width:52px;height:55px}.reason-copy>p{margin-bottom:12px}.reason-grid{gap:10px 8px}.pricing .plan-grid article{padding:11px 4px}.pricing .price-note{margin-top:10px}.closing-team{gap:12px}.closing-team-photo{height:17svh}.closing-message{margin-top:8px}.closing-booking{margin-top:10px;padding-top:10px}.combined-about .lesson-real-photo{height:10svh}.combined-about .step-grid{gap:12px 16px}}
+
