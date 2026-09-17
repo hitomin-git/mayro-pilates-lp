@@ -198,3 +198,6 @@ body{padding-bottom:140px!important}.closing-booking .cta{display:none}.closing-
 @keyframes booking-breathe{0%,100%{background-color:#b6dcb6;box-shadow:0 3px 13px #46644224}50%{background-color:#d1ebc7;box-shadow:0 3px 19px #46644240}}
 @media(max-width:640px){.hero .hero-location{font-size:clamp(10px,3.15vw,13px)!important;letter-spacing:0!important;white-space:nowrap;text-align:center}.closing-booking .closing-location{font-size:12px}.mobile-booking .cta{font-size:17px;border:1px solid #a4c6a0}}
 @media(prefers-reduced-motion:reduce){.mobile-booking .cta{animation:none}}
+/* Lift the mobile hero copy without changing the photo crop. */
+@media(max-width:640px){.hero .hero-content{transform:translateY(-48px)}}
+@media(max-width:640px) and (max-height:740px){.hero .hero-content{transform:translateY(-14px)}}
