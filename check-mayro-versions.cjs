@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const root=path.resolve('dist');
-const pages=['index.html','versions/old.html','versions/change1.html','versions/change2.html','versions/review2.html','versions/change3.html','versions/change3-price.html'];
+const pages=['versions/change4.html','index.html','versions/old.html','versions/change1.html','versions/change2.html','versions/review2.html','versions/change3.html','versions/change3-price.html'];
 const failures=[];
 function checkRef(file,ref){if(/^(?:https?:|data:|#|mailto:|tel:)/.test(ref))return;const target=path.resolve(path.dirname(file),ref.split(/[?#]/)[0]);if(!fs.existsSync(target))failures.push(path.relative(root,file)+': '+ref);}
 for(const page of pages){const file=path.join(root,page);const html=fs.readFileSync(file,'utf8');for(const [,ref]of html.matchAll(/(?:src|href)="([^"]+)"/g))checkRef(file,ref);if(!html.includes('lang="ja"'))failures.push(page+': missing Japanese language');const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));for(const [,id]of html.matchAll(/href="#([^"]+)"/g)){if(!ids.has(id))failures.push(page+': missing #'+id);}}

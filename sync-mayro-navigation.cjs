@@ -1,6 +1,6 @@
 const fs=require('fs'),crypto=require('crypto');
-const pages=['index.html','versions/old.html','versions/change1.html','versions/change2.html','versions/review2.html','versions/change3.html','versions/change3-price.html'];
-const items=[['index','一覧','index.html'],['old','古い版','versions/old.html'],['change1','変更1','versions/change1.html'],['change2','変更2','versions/change2.html'],['change3','変更3','versions/change3.html']];
+const pages=['versions/change4.html','index.html','versions/old.html','versions/change1.html','versions/change2.html','versions/review2.html','versions/change3.html','versions/change3-price.html'];
+const items=[['index','一覧','index.html'],['old','古い版','versions/old.html'],['change1','変更1','versions/change1.html'],['change2','変更2','versions/change2.html'],['change3','変更3','versions/change3.html'],['change4','変更4','versions/change4.html']];
 for(const file of pages){
  const path='dist/'+file;let html=fs.readFileSync(path,'utf8');
  html=html.replace(/<(nav|aside)\b[^>]*class="(?:version-switcher|review-nav|version-nav|design-navigation)"[^>]*>[\s\S]*?<\/\1>/g,'');
