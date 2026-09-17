@@ -3,3 +3,9 @@ reference-assets/
 dist/assets/*.webp
 .sites-runtime/
 *.tar.gz
+
+# Generated working PNGs; optimized JPEGs are the published assets.
+dist/assets/mayro-v2-*.png
+mayro-reference.html
+mayro-sections.html
+mayro-*-preview.zip
