@@ -77,3 +77,7 @@
 .closing-team{padding-top:var(--section-space);padding-bottom:var(--section-space)}
 @media(max-width:1000px){:root{--section-space:56px;--heading-space:28px}}
 @media(max-width:640px){:root{--section-space:42px;--heading-space:24px}.about .about-heading{margin-bottom:24px}.about .about-heading>div:first-child{padding-top:0;padding-bottom:30px}.about .foundation-grid{margin-top:0}.reason-copy{padding-top:0;padding-bottom:0}.reason-image{margin:28px 20px 0}.editorial-lesson .intro{margin-bottom:var(--heading-space)}.closing-team{gap:28px}}
+/* Keep the logo header visible while scrolling. */
+.lp>header{position:sticky;top:0;z-index:50;background:#fffefb}
+html{scroll-padding-top:90px}
+@media(max-width:640px){html{scroll-padding-top:82px}}
