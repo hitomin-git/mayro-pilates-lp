@@ -39,3 +39,4 @@
 .editorial-lesson .number{display:block;border-radius:0;background:none;width:auto;height:auto;color:#8b8479;font:clamp(8px,.95cqw,12px)/1.7 Georgia;margin-bottom:.5cqw;letter-spacing:.12em}
 .editorial-lesson .step-grid p{font-size:clamp(8px,1.15cqw,15px);line-height:1.8;margin:0;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:640px){.editorial-lesson{padding:32px 5% 35px}.editorial-lesson .intro{margin-bottom:23px}.editorial-lesson .step-grid{gap:2.5cqw}.editorial-lesson .step-grid p br{display:initial}.editorial-lesson .step-grid h3{letter-spacing:-.04em}}
+.reasons,.trial{background:#eae8e1}
