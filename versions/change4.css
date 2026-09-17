@@ -9,3 +9,12 @@
 @media(max-width:640px){.closing-image>p{font-size:18px;left:54%;top:35%}.concern-grid article:last-child h3{font-size:18px}.reason-grid article:nth-child(3) p{font-size:12px}.about-image>p{padding:6px 8px}.review-nav{font-size:11px;gap:10px}}
 .closing-image:after{left:43%;right:0;background:linear-gradient(90deg,transparent,#f0eee6 42%,#f0eee6)}
 
+/* Change4: supplied portrait and studio information, hero only. */
+.hero{background:var(--paper)}
+.hero-photo{left:45%;width:55%;object-position:50% 25%}
+.hero:after{background:linear-gradient(90deg,#fffef6 35%,#fffef6ed 46%,#fffef680 56%,transparent 69%)}
+.hero-content{padding-top:25px}
+.hero-content>p.hero-location{font:12px/1.8 var(--sans);letter-spacing:.06em;margin-bottom:12px;color:#615d52}
+.hero-side{color:#fff;text-shadow:0 1px 5px #0008}
+@media(max-width:1000px) and (min-width:641px){.hero-content{padding-top:20px}.hero-content>p.hero-location{font-size:11px}}
+@media(max-width:640px){.hero-photo{left:0;width:100%;object-position:50% 24%}.hero:after{background:linear-gradient(to bottom,transparent 230px,#fffdf5 345px)}.hero-content{padding-top:22px}.hero-content>p.hero-location{font-size:12px;margin-bottom:15px}}
