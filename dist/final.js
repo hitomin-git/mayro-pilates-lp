@@ -1,5 +1,5 @@
 const booking = document.querySelector('.mobile-booking');
-const about = document.querySelector('#about');
+const heroBooking = document.querySelector('.hero .cta');
 const closing = document.querySelector('.closing-booking .cta');
 const versionNavigation = document.querySelector('.design-navigation');
 const mobile = matchMedia('(max-width: 640px)');
@@ -9,8 +9,8 @@ function updateBooking() {
   const bottom = versionNavigation?.getBoundingClientRect().height || 0;
   document.documentElement.style.setProperty('--version-bar-height', `${bottom}px`);
   const rect = closing.getBoundingClientRect();
-  const closingVisible = rect.top >= 66 && rect.bottom <= innerHeight - bottom - 64;
-  booking.hidden = !(mobile.matches && about.getBoundingClientRect().top < innerHeight - bottom - 24 && !closingVisible);
+  const closingVisible = rect.bottom > 66 && rect.top < innerHeight - bottom - 64;
+  booking.hidden = !(mobile.matches && heroBooking.getBoundingClientRect().bottom <= 66 && !closingVisible);
 }
 function scheduleBooking() {
   if (!scheduled) { scheduled = true; requestAnimationFrame(updateBooking); }
