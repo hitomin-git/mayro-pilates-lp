@@ -10,9 +10,7 @@ const publicRules = `/* Public edition has no design switcher. */
 const marker = '/* Calm emphasis and text-independent arrow rendering. */';
 if (!css.includes(marker)) throw new Error('Public style insertion point missing; review cascade before building.');
 css = css.replace(marker, publicRules + marker) + '\n@media(max-width:640px){.hero{min-height:calc(100svh - 66px)}}\n';
-const js = read('dist/versions/change4.js')
-  .replace('versionNavigation.getBoundingClientRect().height', 'versionNavigation?.getBoundingClientRect().height || 0')
-  .replace('new ResizeObserver(scheduleBooking).observe(versionNavigation);', 'if (versionNavigation) new ResizeObserver(scheduleBooking).observe(versionNavigation);');
+const js = read('dist/versions/change4.js');
 const hash = value => crypto.createHash('sha256').update(value).digest('hex').slice(0, 12);
 const html = read('dist/versions/change4.html')
   .replace(/<title>.*?<\/title>/, '<title>Mayro Pilates Studio｜溜池山王のプライベートピラティス</title>')
@@ -21,7 +19,13 @@ const html = read('dist/versions/change4.html')
   .replace(/change4\.js\?v=[^" ]+/, `final.js?v=${hash(js)}`)
   .replace('<link rel="stylesheet" href="../design-navigation.css">', '')
   .replace(/<nav class="design-navigation".*?<\/nav>/, '');
-for (const [file, value] of Object.entries({'dist/final.html': html, 'dist/final.css': css, 'dist/final.js': js})) {
+const trial = html.replaceAll('src="assets/', 'src="../assets/')
+  .replaceAll('srcset="assets/', 'srcset="../assets/')
+  .replaceAll('href="assets/', 'href="../assets/')
+  .replace('href="final.css?', 'href="../final.css?')
+  .replace('src="final.js?', 'src="../final.js?');
+if (!check) fs.mkdirSync('dist/trial', {recursive:true});
+for (const [file, value] of Object.entries({'dist/final.html': html, 'dist/final.css': css, 'dist/final.js': js, 'dist/trial/index.html':trial})) {
   if (check) { if (read(file) !== value) throw new Error(`${file} is stale: run node build-mayro-final.cjs`); }
   else fs.writeFileSync(file, value);
 }

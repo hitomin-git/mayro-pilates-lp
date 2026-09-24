@@ -207,4 +207,27 @@ body{padding-bottom:140px!important}.closing-booking .cta{display:none}.closing-
 /* Keep photographs legible independently of a phone viewport height. */
 @media(max-width:640px){.combined-about .lesson-real-photo{height:auto;aspect-ratio:4/3;min-height:120px}.trial-real-photo{height:auto;aspect-ratio:4/3;min-height:120px}.reasons-four .reason-image{height:170px;min-height:170px}.restored-staff .staff-grid article>img{height:190px;min-height:190px}.closing-team-photo{height:230px;min-height:230px}.hero{height:auto;min-height:calc(100svh - 126px);overflow:visible;display:flex;flex-direction:column;justify-content:flex-start}.hero-portrait{position:relative;inset:auto;flex:none;width:100%;height:320px;min-height:320px}.hero .hero-content{transform:none;padding-top:22px;padding-bottom:28px;margin:0}.hero-portrait .hero-photo{object-fit:cover;object-position:50% 27%}}
 
+/* September review: portrait photography, clear duration and accessible CTAs. */
+.hero-portrait picture{display:block;width:100%;height:100%}.hero-photo-label{display:none!important}
+.trial-kicker{font-family:var(--sans);font-size:13px!important;color:#37583a;letter-spacing:.02em;margin-bottom:14px!important}.trial-kicker strong{display:inline-block;margin-left:.3em}
+.cta,.hero .cta,.closing-booking .cta,.mobile-booking .cta{background:#285640;color:#fff;border:1px solid #285640;font-family:var(--sans);font-weight:700;letter-spacing:.025em;min-height:56px;box-shadow:0 6px 16px #183d2929;animation:none}
+.cta:hover,.hero .cta:hover,.closing-booking .cta:hover,.mobile-booking .cta:hover{background:#1a402f;border-color:#1a402f;color:#fff}
+.cta:focus-visible{outline:3px solid #c39245;outline-offset:4px}.booking-note{font:600 11px/1.5 var(--sans);text-align:center;color:#285640;margin:0 0 5px}
+@media(max-width:640px){
+  .hero{height:auto!important;min-height:0!important;padding:0!important;overflow:visible;display:flex;flex-direction:column;justify-content:flex-start}
+  .hero-portrait{position:relative;inset:auto;transform:none;flex:none;width:100%;height:auto!important;min-height:0!important;aspect-ratio:4/5;padding:0;overflow:hidden}
+  .hero-portrait picture{height:100%;position:absolute;inset:0}.hero-portrait .hero-photo{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+  .hero-portrait .hero-photo-label{display:block!important;inset:20px auto auto 18px;z-index:2;font:12px/1.8 var(--sans);letter-spacing:.04em;color:#fff;text-align:left;background:#163123b8;border-radius:2px;padding:9px 12px;pointer-events:none}.hero-photo-label strong{font-size:17px;font-weight:600}
+  .hero .hero-content{position:relative;transform:none;width:100%;padding:22px 20px 26px;background:#f5f3ec;margin:0}
+  .hero .trial-kicker{font-size:12px!important;line-height:1.7!important;margin-bottom:10px!important;color:#285640}
+  .hero h1{font-size:24px;line-height:1.5}.hero-concern-line{font-size:21px}.hero h2{font-size:15px;line-height:1.75;margin-top:10px}
+  .hero .tags{flex-wrap:wrap;gap:5px;margin:14px 0 16px}.hero .tags li{font-size:10px;padding:3px 7px}
+  .hero .cta{min-height:58px;font-size:16px;width:100%;gap:12px;padding:14px 12px}.hero .hero-location{white-space:normal!important;font-size:11px!important}
+  .mobile-booking{height:auto!important;min-height:92px;padding:7px 16px calc(8px + env(safe-area-inset-bottom))!important;background:#fffef7f5;border-top:1px solid #d9dfd4;backdrop-filter:blur(8px);box-shadow:0 -3px 20px #1a352112}
+  .mobile-booking .cta{width:100%;min-height:54px;font-size:16px;gap:16px;padding:11px 16px}
+  .closing-booking .cta{width:100%;font-size:17px;min-height:58px}.closing-booking>p{line-height:1.8}
+  body{padding-bottom:calc(96px + env(safe-area-inset-bottom))!important}
+}
+@media(max-width:360px){.hero h1{font-size:22px}.hero-concern-line{font-size:19px}.hero .cta{font-size:14px}.hero .hero-content{padding-inline:16px}}
+
 @media(max-width:640px){.hero{min-height:calc(100svh - 66px)}}

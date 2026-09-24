@@ -1,0 +1,684 @@
+{
+  "data": {
+    "dynamicData": null
+  },
+  "state": {},
+  "_errors": {
+    "dynamicData": null
+  },
+  "serverRendered": true,
+  "path": "/",
+  "pinia": {
+    "cmsContentStore": {},
+    "projectStore": {
+      "project": {
+        "id": "bXqzDnk1WD",
+        "name": "リコントキャリア様ピラティス事業",
+        "customDomain": "",
+        "iconImage": "",
+        "coverImage": "https://storage.googleapis.com/production-os-assets/assets/a5464af0-332f-43b8-867c-d0c388aaf6a1",
+        "displayBadge": false,
+        "integrations": [
+          {
+            "integration_name": "custom-code",
+            "code": "true"
+          },
+          {
+            "integration_name": "google-tag-manager",
+            "code": "GTM-MV96LBV4"
+          },
+          {
+            "integration_name": "search-console",
+            "code": "NiyJCH58DoWL67bP5HGHirj5eTyg3ARTSZa1S4Zx_O0"
+          }
+        ],
+        "snapshot_path": "https://storage.googleapis.com/studio-publish/projects/bXqzDnk1WD/xqgg5y8gq1/",
+        "snapshot_id": "xqgg5y8gq1",
+        "recaptchaSiteKey": null,
+        "conversionEvents": null
+      }
+    },
+    "productStore": {
+      "product": {
+        "breakPoints": [
+          {
+            "maxWidth": 540,
+            "name": "mobile"
+          },
+          {
+            "maxWidth": 950,
+            "name": "tablet"
+          },
+          {
+            "maxWidth": 1140,
+            "name": "small"
+          },
+          {
+            "maxWidth": 360,
+            "name": "mini"
+          }
+        ],
+        "colors": [],
+        "fonts": [
+          {
+            "family": "Lato",
+            "subsets": [
+              "latin",
+              "latin-ext"
+            ],
+            "variants": [
+              "100",
+              "100italic",
+              "300",
+              "300italic",
+              "regular",
+              "italic",
+              "700",
+              "700italic",
+              "900",
+              "900italic"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "Noto Sans JP",
+            "subsets": [
+              "japanese",
+              "latin"
+            ],
+            "variants": [
+              "100",
+              "300",
+              "regular",
+              "500",
+              "700",
+              "900"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "Playfair Display",
+            "subsets": [
+              "cyrillic",
+              "latin",
+              "latin-ext",
+              "vietnamese"
+            ],
+            "variants": [
+              "regular",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900",
+              "italic",
+              "500italic",
+              "600italic",
+              "700italic",
+              "800italic",
+              "900italic"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "Noto Sans",
+            "subsets": [
+              "cyrillic",
+              "cyrillic-ext",
+              "devanagari",
+              "greek",
+              "greek-ext",
+              "latin",
+              "latin-ext",
+              "vietnamese"
+            ],
+            "variants": [
+              "100",
+              "100italic",
+              "200",
+              "200italic",
+              "300",
+              "300italic",
+              "regular",
+              "italic",
+              "500",
+              "500italic",
+              "600",
+              "600italic",
+              "700",
+              "700italic",
+              "800",
+              "800italic",
+              "900",
+              "900italic"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "Cinzel",
+            "subsets": [
+              "latin",
+              "latin-ext"
+            ],
+            "variants": [
+              "regular",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "Noto Serif JP",
+            "subsets": [
+              "japanese",
+              "latin"
+            ],
+            "variants": [
+              "200",
+              "300",
+              "regular",
+              "500",
+              "600",
+              "700",
+              "900"
+            ],
+            "vendor": "google"
+          },
+          {
+            "family": "YuMincho, 'Yu Mincho', '游明朝体'",
+            "variants": [
+              "300",
+              "400",
+              "500",
+              "600",
+              "700"
+            ],
+            "vendor": "system-font"
+          },
+          {
+            "family": "'ＭＳ 明朝', 'MS Mincho'",
+            "variants": [
+              "400",
+              "700"
+            ],
+            "vendor": "system-font"
+          }
+        ],
+        "head": {
+          "customCode": {
+            "headEnd": [
+              {
+                "memo": "",
+                "src": "<!-- Begin Mieruca Embed Code -->\n<script type=\"text/javascript\" id=\"mierucajs\">\nwindow.__fid = window.__fid || [];__fid.push([514775015]);\n(function() {\nfunction mieruca(){if(typeof window.__fjsld != \"undefined\") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = \"fjssync\"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };\nsetTimeout(mieruca, 500); document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent(\"onload\", mieruca) : window.addEventListener(\"load\", mieruca, false)) : mieruca();\n})();\n</script>\n<!-- End Mieruca Embed Code -->",
+                "tags": [
+                  {
+                    "attrs": {
+                      "id": "mierucajs",
+                      "type": "text/javascript"
+                    },
+                    "children": "window.__fid = window.__fid || [];__fid.push([514775015]);\n(function() {\nfunction mieruca(){if(typeof window.__fjsld != \"undefined\") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = \"fjssync\"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };\nsetTimeout(mieruca, 500); document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent(\"onload\", mieruca) : window.addEventListener(\"load\", mieruca, false)) : mieruca();\n})();",
+                    "tagName": "script"
+                  }
+                ],
+                "uuid": "017b2316-4d2c-427a-926a-239dcea3c3d2"
+              }
+            ]
+          },
+          "favicon": "https://storage.googleapis.com/production-os-assets/assets/97833b7b-32b4-4df2-a8cf-79fc140704dd",
+          "lang": "ja",
+          "meta": {
+            "description": "Mayro Pilates Studioは、彩（いろ）ある豊かな人生をテーマにした女性専用ピラティススタジオです。少人数制レッスンで、呼吸を深めながら姿勢改善・体幹強化・ボディラインの整えをサポート。初心者の方も安心して通えます。東京・溜池山王駅から徒歩1分。",
+            "og:image": "https://storage.googleapis.com/production-os-assets/assets/062e2409-4084-4247-bc1b-a111c2712815"
+          },
+          "title": "Mayro Pilates Studio｜東京・溜池山王駅の女性専用ピラティススタジオ"
+        },
+        "info": {
+          "baseWidth": 1280,
+          "collabWriteOrigin": {
+            "tabSessionId": "57f01764-bfd6-4254-b9a2-d65a6a7d7626",
+            "writeId": "0a169edc-ff9c-489c-b5fa-6bc1a44996d6"
+          },
+          "created_at": 1518591100346,
+          "screen": {
+            "baseWidth": 1280,
+            "height": 600,
+            "isAutoHeight": false,
+            "width": 1280,
+            "workingState": false
+          },
+          "type": "web",
+          "updated_at": 1518792996878,
+          "version": "4.2.0"
+        },
+        "pages": [
+          {
+            "head": {
+              "meta": {
+                "description": "",
+                "og:image": ""
+              },
+              "title": ""
+            },
+            "id": "news",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "type": "page",
+            "uuid": "1f097b74-aea7-432b-98bd-7f63512483d2",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "description": "",
+                "og:image": "https://storage.googleapis.com/production-os-assets/assets/4115956b-7770-4902-89ba-87e7613d32ae"
+              },
+              "title": ""
+            },
+            "id": "/",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "type": "page",
+            "uuid": "68812285-827e-4342-a030-ee2f74abe0c1",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "description": "Mayro Pilates Studioのレッスンメニューとよくある質問を紹介しています。彩（いろ）ある豊かな人生をテーマにした女性専用ピラティススタジオで、少人数制レッスンで、呼吸を深めながら姿勢改善・体幹強化・ボディラインの整えをサポート。初心者の方も安心して通えます。東京・溜池山王駅から徒歩1分。"
+              },
+              "title": "メニュー・よくある質問｜Mayro Pilates Studio｜東京・溜池山王駅の女性専用ピラティススタジオ"
+            },
+            "id": "menu",
+            "type": "page",
+            "uuid": "aaaec9b3-2dab-48de-8e91-1d99289cf315",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "description": "Mayro Pilates Studioのインストラクターを紹介しています。彩（いろ）ある豊かな人生をテーマにした女性専用ピラティススタジオで、少人数制レッスンで、呼吸を深めながら姿勢改善・体幹強化・ボディラインの整えをサポート。初心者の方も安心して通えます。東京・溜池山王駅から徒歩1分。"
+              },
+              "title": "スタッフ紹介｜Mayro Pilates Studio｜東京・溜池山王駅の女性専用ピラティススタジオ"
+            },
+            "id": "staff",
+            "type": "page",
+            "uuid": "ab7f4ff3-9bdb-4f62-94d7-e8d44c3df65f",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "robots": "noindex"
+              },
+              "title": ""
+            },
+            "id": "reserve",
+            "type": "page",
+            "uuid": "3f9ee4e5-853a-489d-8a47-795c620be848",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0",
+              "152d94a4-922b-4439-b99f-d787fa09807f"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "robots": "noindex"
+              },
+              "title": ""
+            },
+            "id": "reservethankyou",
+            "type": "page",
+            "uuid": "b51eab08-2ee1-4fba-bfa1-5b3ddd3c5261",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "robots": "noindex"
+              },
+              "title": ""
+            },
+            "id": "contact",
+            "type": "page",
+            "uuid": "160e3b70-2618-4b21-945b-40be8a5cc63b",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0",
+              "152d94a4-922b-4439-b99f-d787fa09807f"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "robots": "noindex"
+              },
+              "title": ""
+            },
+            "id": "contactthankyou",
+            "type": "page",
+            "uuid": "0e8ad30f-a48d-4da7-8b8a-3c72628a960a",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "title": "プライバシーポリシー｜Mayro Pilates Studio｜東京・溜池山王駅の女性専用ピラティススタジオ"
+            },
+            "id": "privacypolicy",
+            "type": "page",
+            "uuid": "42fff9c1-fea6-4467-b574-82ff6a47138e",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0",
+              "152d94a4-922b-4439-b99f-d787fa09807f"
+            ]
+          },
+          {
+            "head": {
+              "title": ""
+            },
+            "id": "404",
+            "type": "page",
+            "uuid": "393c76c7-66f8-4d28-ab06-a8c7a4a4fee6",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "head": {
+              "meta": {
+                "robots": "noindex"
+              },
+              "title": ""
+            },
+            "id": "reserve-1",
+            "type": "page",
+            "uuid": "ef258bc0-cf68-46f7-82cc-b4eaf3ed4a89",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0",
+              "152d94a4-922b-4439-b99f-d787fa09807f"
+            ]
+          },
+          {
+            "id": "test-a/page1",
+            "type": "page",
+            "uuid": "f200904c-232b-4bc5-ab03-532d84fbcd7f",
+            "symbolIds": []
+          },
+          {
+            "id": "mobilemenu",
+            "isCookieModal": false,
+            "responsive": true,
+            "type": "modal",
+            "uuid": "a1d07ac1-9c28-4809-847c-9bc7749bd9c8",
+            "symbolIds": []
+          },
+          {
+            "cmsRequest": {
+              "contentSlug": "{{$route.params.slug}}",
+              "schemaKey": "tags"
+            },
+            "id": "news/category/:slug",
+            "type": "page",
+            "uuid": "8a8fec3a-a17a-4a3e-98a7-99f9094ea837",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          },
+          {
+            "cmsRequest": {
+              "contentSlug": "{{$route.params.slug}}",
+              "schemaKey": "posts"
+            },
+            "id": "news/detail/:slug",
+            "type": "page",
+            "uuid": "66c138c9-3f99-4007-8cf7-151954e9786a",
+            "symbolIds": [
+              "7b18ec93-e084-4f7b-9104-3738eaf86049",
+              "152d94a4-922b-4439-b99f-d787fa09807f",
+              "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+            ]
+          }
+        ],
+        "resources": {
+          "rssList": [],
+          "apiList": [],
+          "cmsProjectId": "88d322c23a89412da7b5"
+        },
+        "symbols": [
+          {
+            "uuid": "5d6ba172-9d9d-4ae3-82b2-f7e09aa897d0"
+          },
+          {
+            "uuid": "7b18ec93-e084-4f7b-9104-3738eaf86049"
+          },
+          {
+            "uuid": "152d94a4-922b-4439-b99f-d787fa09807f"
+          },
+          {
+            "uuid": "06d4661d-2cfb-4ec1-bcec-9f2c7af8f5f3"
+          },
+          {
+            "uuid": "e05a006f-1e33-4361-95a6-7e1d311a5748"
+          }
+        ],
+        "style": {
+          "fontFamily": []
+        },
+        "styleVars": {
+          "color": [
+            {
+              "key": "c1a8122a",
+              "name": "黒",
+              "value": "#333333"
+            },
+            {
+              "key": "0e9ff2e3",
+              "name": "薄いグレー",
+              "value": "#999999"
+            },
+            {
+              "key": "f283613b",
+              "name": "薄いベージュ",
+              "value": "#fffef2"
+            },
+            {
+              "key": "87bf92e0",
+              "name": "白",
+              "value": "#FFFFFF"
+            },
+            {
+              "key": "b487de72",
+              "name": "薄いグレー2",
+              "value": "#b3b3b3"
+            },
+            {
+              "key": "bf931cba",
+              "name": "薄いグレー3",
+              "value": "#EEEEEE"
+            },
+            {
+              "key": "e6a33e85",
+              "name": "赤",
+              "value": "#bd1432"
+            },
+            {
+              "key": "18b6132d",
+              "name": "白グラデ",
+              "value": "linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))"
+            }
+          ],
+          "fontFamily": [
+            {
+              "key": "ad9deb87",
+              "name": "Lato（フローの番号）",
+              "value": "Lato"
+            },
+            {
+              "key": "c6ad36d1",
+              "name": "Noto Sans JP（和文）",
+              "value": "'Noto Sans JP'"
+            },
+            {
+              "key": "968c398e",
+              "name": "Playfair Display（店舗名）",
+              "value": "'Playfair Display'"
+            },
+            {
+              "key": "6c8feba7",
+              "name": "Noto Sans（英文）",
+              "value": "'Noto Sans'"
+            },
+            {
+              "key": "e6a05e29",
+              "name": "",
+              "value": "Cinzel"
+            },
+            {
+              "key": "d98c893b",
+              "name": "",
+              "value": "'Noto Serif JP'"
+            },
+            {
+              "key": "d5b43b22",
+              "name": "",
+              "value": "'Noto Sans JP'"
+            },
+            {
+              "key": "18a4fdad",
+              "name": "",
+              "value": "YuMincho,'Yu Mincho','游明朝体'"
+            },
+            {
+              "key": "b7bc774f",
+              "name": "",
+              "value": "'ＭＳ 明朝','MS Mincho'"
+            }
+          ]
+        },
+        "enablePassword": false,
+        "classes": {
+          "typography": [
+            {
+              "key": "__TEXT_STYLE_TITLE_XL",
+              "name": "Title-XL",
+              "style": {
+                "fontFamily": "var(--s-font-d5b43b22)",
+                "fontSize": "48px",
+                "fontWeight": 700,
+                "letterSpacing": 0,
+                "lineHeight": "1.3"
+              }
+            },
+            {
+              "key": "__TEXT_STYLE_TITLE_L",
+              "name": "Title-L",
+              "style": {
+                "fontFamily": "var(--s-font-d5b43b22)",
+                "fontSize": "32px",
+                "fontWeight": 700,
+                "letterSpacing": 0,
+                "lineHeight": "1.4"
+              }
+            },
+            {
+              "key": "__TEXT_STYLE_TITLE_M",
+              "name": "Title-M",
+              "style": {
+                "fontFamily": "var(--s-font-d5b43b22)",
+                "fontSize": "24px",
+                "fontWeight": 700,
+                "letterSpacing": 0,
+                "lineHeight": "1.4"
+              }
+            },
+            {
+              "key": "__TEXT_STYLE_PARAGRAPH_L",
+              "name": "Paragraph-L",
+              "style": {
+                "fontFamily": "var(--s-font-d5b43b22)",
+                "fontSize": "16px",
+                "fontWeight": 400,
+                "letterSpacing": 0,
+                "lineHeight": "1.5"
+              }
+            },
+            {
+              "key": "__TEXT_STYLE_PARAGRAPH_M",
+              "name": "Paragraph-M",
+              "style": {
+                "fontFamily": "var(--s-font-d5b43b22)",
+                "fontSize": "12px",
+                "fontWeight": 400,
+                "letterSpacing": 0,
+                "lineHeight": "1.4"
+              }
+            }
+          ]
+        },
+        "publishedUid": "20250722015204"
+      },
+      "isLoaded": true,
+      "selectedModalIds": [],
+      "redirectPage": null,
+      "isInitializedRSS": false,
+      "pageViewMap": {}
+    },
+    "pageHeadStore": {
+      "typesquareLoaded": false,
+      "hasCustomFont": false,
+      "materialSymbols": []
+    },
+    "cmsStore": {
+      "schemas": [],
+      "schemaTree": {},
+      "cmsProject": {},
+      "isShowArchiveSchema": false,
+      "isContentsEmpty": false,
+      "contentsLoaded": false,
+      "contentMap": {},
+      "route": {
+        "contentId": "",
+        "schemaId": "",
+        "projectId": ""
+      },
+      "cmsId": "",
+      "dynamicQueries": {},
+      "hasMore": false
+    }
+  }
+}

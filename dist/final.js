@@ -7,10 +7,13 @@ let scheduled = false;
 function updateBooking() {
   scheduled = false;
   const bottom = versionNavigation?.getBoundingClientRect().height || 0;
-  document.documentElement.style.setProperty('--version-bar-height', `${bottom}px`);
-  const rect = closing.getBoundingClientRect();
-  const closingVisible = rect.bottom > 66 && rect.top < innerHeight - bottom - 64;
-  booking.hidden = !(mobile.matches && heroBooking.getBoundingClientRect().bottom <= 66 && !closingVisible);
+  document.documentElement.style.setProperty('--version-bar-height', bottom + 'px');
+  const reserved = 100 + bottom;
+  const viewportHeight = window.visualViewport?.height || innerHeight;
+  const heroRect = heroBooking.getBoundingClientRect();
+  const endRect = closing.getBoundingClientRect();
+  const visible = rect => rect.top >= 66 && rect.bottom <= viewportHeight - reserved;
+  booking.hidden = !(mobile.matches && !visible(heroRect) && !visible(endRect));
 }
 function scheduleBooking() {
   if (!scheduled) { scheduled = true; requestAnimationFrame(updateBooking); }
@@ -18,6 +21,7 @@ function scheduleBooking() {
 addEventListener('scroll', scheduleBooking, { passive: true });
 addEventListener('resize', scheduleBooking);
 addEventListener('pageshow', scheduleBooking);
+window.visualViewport?.addEventListener('resize', scheduleBooking);
 mobile.addEventListener('change', scheduleBooking);
 if (versionNavigation) new ResizeObserver(scheduleBooking).observe(versionNavigation);
 updateBooking();

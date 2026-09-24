@@ -3,6 +3,13 @@
 公開用: https://hitomin-git.github.io/mayro-pilates-lp/final.html
 制作案一覧: https://hitomin-git.github.io/mayro-pilates-lp/
 
+HP確認用: https://hitomin-git.github.io/mayro-pilates-lp/hp/
+
+LPサブディレクトリ版: https://hitomin-git.github.io/mayro-pilates-lp/trial/
+
+`mayro-pilates.com/trial/` への接続は未実施。既存Studioサイトの公開先を変更していない。
+HPとLPは検索除外を維持。URLを知る人がアクセスできる確認用公開であり、アクセス制限ではない。
+
 ## 編集元
 
 - `dist/versions/change4.html` : 現在の原稿・構成
@@ -10,6 +17,8 @@
 - `dist/versions/change4.js` : 固定予約ボタンの表示判定
 - `dist/assets/` : 公開用画像。新規画像は必ずGitに追加する
 - `dist/final.*` : 自動生成する完成版。直接編集しない
+- `dist/trial/index.html` : 完成版から同時生成する `/trial/` 用LP。共通CSS/JS/画像を参照
+- `dist/hp/` : HP再現版。編集元と生成手順は `README-HP.md` を参照
 - `dist/index.html` : 制作案一覧。完成版へのカードを含む
 
 完成版は制作案の下部リンクを除去し、その分の高さを調整する。
@@ -20,6 +29,7 @@
 1. 変更4を編集する。
 2. `node build-mayro-final.cjs` で完成版を更新する。CSS/JSのキャッシュ識別子も更新される。
 3. `node serve.mjs` でプレビューする。PC・スマホの画像、改行、予約ボタン、Q&Aを確認する。
+   `/trial/` と `/hp/` を含めて確認する場合は `node serve-hp.cjs` を使う。
 4. 今回変更したファイルと新しい画像をファイル名指定で `git add` する。別案件が同居しているため `git add .` は使わない。
 5. `node check-mayro-release.cjs` を実行する。完成版の同期、リンク、過去版の保存状態、画像のGit登録漏れを検査する。
 6. コミットし、`git push origin master` を実行する。

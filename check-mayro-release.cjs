@@ -8,7 +8,7 @@ const failures = [];
 for (const file of tracked) {
   if (!/\.(html|css)$/.test(file)) continue;
   const content = fs.readFileSync(file, 'utf8');
-  const refs = file.endsWith('.html') ? [...content.matchAll(/(?:src|href)="([^"]+)"/g)] : [...content.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)];
+  const refs = file.endsWith('.html') ? [...content.matchAll(/(?:src|srcset|href)="([^"]+)"/g)] : [...content.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)];
   for (const [,ref] of refs) {
     if (/^(?:[a-z]+:|\/\/|#)/i.test(ref)) continue;
     const target = path.posix.normalize(path.posix.join(path.posix.dirname(file), ref.split(/[?#]/)[0]));
