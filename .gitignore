@@ -4,3 +4,10 @@ Thumbs.db
 .env
 .env.*
 source/hp/page-inventory.json
+
+# Unrelated local projects in the original working directory.
+/drive-audit/
+/nakamura-*/
+/nakamura-*.zip
+/nakamura-reference.html
+/*nakamura*.py
