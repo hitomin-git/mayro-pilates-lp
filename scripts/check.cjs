@@ -5,7 +5,7 @@ const files=walk(root).filter(f=>/\.(html|css)$/.test(f));let refs=0;
 for(const file of files){
   const text=fs.readFileSync(file,'utf8');
   if(file.endsWith('.html')&&!text.includes('noindex,nofollow'))errors.push(`${file}: noindex missing`);
-  const urls=[...text.matchAll(/(?:href|src)="([^"]+)"|url\(\s*['"]?([^)'"\s]+)|@import\s+['"]([^'"]+)/g)].map(m=>m[1]||m[2]||m[3]);
+  const urls=[...text.matchAll(/(?:href|src|data-image)="([^"]+)"|url\(\s*['"]?([^)'"\s]+)|@import\s+['"]([^'"]+)/g)].map(m=>m[1]||m[2]||m[3]);
   for(const url of urls){
     if(/^(?:[a-z]+:|\/\/)/i.test(url))continue;
     refs++;const [pathname,hash]=url.split('#');let target=path.resolve(path.dirname(file),pathname.split('?')[0]||path.basename(file));
