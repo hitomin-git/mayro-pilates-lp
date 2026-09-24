@@ -1,15 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const root = __dirname;
-const dataDir = path.join(root, 'hp-source');
+const root = path.resolve(__dirname, '..');
+const dataDir = path.join(root, 'source/hp');
 const out = path.join(root, 'dist/hp');
 fs.mkdirSync(dataDir, {recursive:true});
 fs.mkdirSync(out, {recursive:true});
-if (fs.existsSync(path.join(__dirname,'site-data.json'))) {
-  fs.copyFileSync(path.join(__dirname,'site-data.json'),path.join(dataDir,'site-data.json'));
-  fs.cpSync(path.join(__dirname,'source'),path.join(dataDir,'views'),{recursive:true});
-}
+
 const site = JSON.parse(fs.readFileSync(path.join(dataDir,'site-data.json')));
 const product = site.pinia.productStore.product;
 const views = Object.fromEntries(fs.readdirSync(path.join(dataDir,'views')).map(f=>[f.replace('.json',''),JSON.parse(fs.readFileSync(path.join(dataDir,'views',f)))]));

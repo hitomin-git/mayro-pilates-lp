@@ -1,52 +1,47 @@
-# Mayro LP
+# Mayro website
 
-公開用: https://hitomin-git.github.io/mayro-pilates-lp/final.html
-制作案一覧: https://hitomin-git.github.io/mayro-pilates-lp/
+HPと無料体験LPを管理するリポジトリです。過去の制作案・比較ページ・試作スクリプト・未使用画像は削除済みです。以前の内容はGit履歴から確認できます。
 
-HP確認用: https://hitomin-git.github.io/mayro-pilates-lp/hp/
+- HP: https://hitomin-git.github.io/mayro-pilates-lp/hp/
+- LP: https://hitomin-git.github.io/mayro-pilates-lp/trial/
+- ルートURLはHPへ、従来の `final.html` はLPへ転送します。
 
-LPサブディレクトリ版: https://hitomin-git.github.io/mayro-pilates-lp/trial/
+## ファイル構成
 
-`mayro-pilates.com/trial/` への接続は未実施。既存Studioサイトの公開先を変更していない。
-HPとLPは検索除外を維持。URLを知る人がアクセスできる確認用公開であり、アクセス制限ではない。
+| フォルダ | 用途 |
+| --- | --- |
+| `dist/hp/` | HPの15ページ・共通CSS/JS・画像・フォント |
+| `dist/trial/` | LPのHTML・CSS・JS・使用画像。ここを直接編集 |
+| `source/hp/` | HPを生成するページ定義・画像対応表 |
+| `scripts/` | HP生成、プレビュー、参照チェック |
 
-## 編集元
+LPは `dist/trial/index.html`・`style.css`・`site.js` を編集します。PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください。
 
-- `dist/versions/change4.html` : 現在の原稿・構成
-- `dist/versions/change4.css` : 見た目
-- `dist/versions/change4.js` : 固定予約ボタンの表示判定
-- `dist/assets/` : 公開用画像。新規画像は必ずGitに追加する
-- `dist/final.*` : 自動生成する完成版。直接編集しない
-- `dist/trial/index.html` : 完成版から同時生成する `/trial/` 用LP。共通CSS/JS/画像を参照
-- `dist/hp/` : HP再現版。編集元と生成手順は `README-HP.md` を参照
-- `dist/index.html` : 制作案一覧。完成版へのカードを含む
+HPの文章・構成は `source/hp/views/` にあります。ページ名とUUIDの対応は `source/hp/site-data.json` の `pinia.productStore.product.pages` を参照します。共通スタイルと動作は `dist/hp/base.css`・`site.js`、ニュース本文は `scripts/build-hp.cjs` の `article` です。
 
-完成版は制作案の下部リンクを除去し、その分の高さを調整する。
-過去の版と共有画像は上書きしない。今回の整理で履歴の書き換えやファイル削除はしていない。
+## 確認・更新
 
-## 更新手順
+Node.jsを使用します。追加ライブラリのインストールは不要です。
 
-1. 変更4を編集する。
-2. `node build-mayro-final.cjs` で完成版を更新する。CSS/JSのキャッシュ識別子も更新される。
-3. `node serve.mjs` でプレビューする。PC・スマホの画像、改行、予約ボタン、Q&Aを確認する。
-   `/trial/` と `/hp/` を含めて確認する場合は `node serve-hp.cjs` を使う。
-4. 今回変更したファイルと新しい画像をファイル名指定で `git add` する。別案件が同居しているため `git add .` は使わない。
-5. `node check-mayro-release.cjs` を実行する。完成版の同期、リンク、過去版の保存状態、画像のGit登録漏れを検査する。
-6. コミットし、`git push origin master` を実行する。
-7. `git subtree push --prefix dist origin gh-pages` で公開する。
-8. GitHub Actionsの該当コミットのPages処理成功を確認する。
+```sh
+npm run build:hp
+npm run check
+npm run preview
+```
 
-公開先は `gh-pages` 直下。作業フォルダ全体を公開しない。
-画像を `.gitignore` で拡張子ごとに除外しない。試作画像は個別に除外する。
+HP生成は構成変更時のみ必要です。プレビューは http://127.0.0.1:4186/ 。`PORT` 環境変数で変更できます。HP生成ではHTMLを上書きします。既存画像はローカルを使用し、新しい画像URLを追加した場合は取得します。
 
-## 過去の制作スクリプト
+```sh
+git add dist source scripts README.md package.json .gitignore
+git commit -m "Update Mayro website"
+git push origin master
+git subtree push --prefix dist origin gh-pages
+```
 
-`build-mayro-change2.cjs`、`build-mayro-change3.cjs`、`update-mayro-hub.cjs` は以前の試作用。
-現在の原稿・一覧を古い内容に戻す可能性があるため、通常の更新には使わない。
-`sync-mayro-navigation.cjs` は制作案用。完成版には制作ナビを追加しない。
+GitHub Pagesは `gh-pages` のルートを公開します。公開処理の成功後に実際のHPとLPを確認してください。
 
-## 次のメンテナンス候補
+## 現在の公開範囲
 
-CSSには試行錯誤による上書きルールが残る。見た目を比較しながらセクションごとに整理する。
-別案件を専用フォルダ・リポジトリに移す作業は、移動先を決めてから行う。
-完成版は現状、検索エンジンに載せない `noindex,nofollow` を維持。正式ドメイン運用時に掲載方針を確認する。
+全ページは検索除外 `noindex,nofollow` の確認用公開です。パスワード保護ではありません。既存の `mayro-pilates.com` はStudioのままで、独自ドメインへの接続は未実施です。
+
+HPは元サイトの構成を保存した静的再現版です。ニュースのCMS連携や計測タグは未接続です。旧予約・問い合わせフォームは表示確認用で送信されません。現行の予約・LINEリンクは引き継いでいます。正式運用前に窓口・フォーム・SEO設定を確認してください。

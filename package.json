@@ -1,0 +1,9 @@
+{
+  "name": "mayro-website",
+  "private": true,
+  "scripts": {
+    "preview": "node scripts/preview.cjs",
+    "build:hp": "node scripts/build-hp.cjs",
+    "check": "node scripts/check.cjs"
+  }
+}
