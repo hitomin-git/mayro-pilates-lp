@@ -1,13 +1,43 @@
-document.querySelectorAll('details summary').forEach(summary=>summary.setAttribute('aria-label',summary.textContent.trim()));
+document.querySelectorAll('details summary').forEach(summary=>summary.setAttribute('aria-label',(summary.querySelector('.question-copy')||summary).textContent.trim()));
 const dialog=document.querySelector('#mobile-nav');
-let menuTimer;
-function closeMenu(){if(!dialog.open||dialog.classList.contains('is-closing'))return;dialog.classList.add('is-closing');menuTimer=setTimeout(()=>{dialog.close();dialog.classList.remove('is-closing')},matchMedia('(prefers-reduced-motion:reduce)').matches?0:220)}
+let menuTimer,menuClosing;
+function closeMenu(){if(!dialog.open)return Promise.resolve();if(menuClosing)return menuClosing;dialog.classList.add('is-closing');menuClosing=new Promise(resolve=>{menuTimer=setTimeout(()=>{dialog.close();dialog.classList.remove('is-closing');menuClosing=null;resolve()},matchMedia('(prefers-reduced-motion:reduce)').matches?0:220)});return menuClosing;}
 document.querySelectorAll('[data-menu="open"],button[aria-label="menu"]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();clearTimeout(menuTimer);dialog.classList.remove('is-closing');dialog.showModal();dialog.querySelector('.sac6c83141aa245929403adcfac0b7d1b').scrollTop=0}));
 document.querySelector('[data-menu="close"]').addEventListener('click',closeMenu);
 dialog.addEventListener('cancel',e=>{e.preventDefault();closeMenu()});
 dialog.addEventListener('click',e=>{if(e.target===dialog)closeMenu()});
-dialog.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 const reduceMotion=matchMedia('(prefers-reduced-motion:reduce)');
+
+// Web fonts can change section heights after the browser's initial fragment jump.
+// Correct the initial landing once layout is ready, unless the visitor has moved.
+if(location.hash){
+  const initialHash=location.hash;let interacted=false;
+  const markInteracted=()=>{interacted=true};
+  ['pointerdown','wheel','touchstart','keydown'].forEach(type=>window.addEventListener(type,markInteracted,{once:true,passive:true}));
+  const loaded=document.readyState==='complete'?Promise.resolve():new Promise(resolve=>window.addEventListener('load',resolve,{once:true}));
+  Promise.all([loaded,document.fonts?.ready]).then(()=>{
+    if(interacted||location.hash!==initialHash)return;
+    document.getElementById(decodeURIComponent(initialHash.slice(1)))?.scrollIntoView({behavior:'auto',block:'start'});
+  });
+}
+
+// Close the menu before moving the underlying page. Treat / and /index.html alike.
+const pagePath=path=>path.replace(/\/index\.html$/,'/').replace(/\/$/,'');
+document.addEventListener('click',async event=>{
+  const link=event.target.closest('a[href]');
+  if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.hasAttribute('download'))return;
+  const url=new URL(link.href,location.href),inMenu=dialog.contains(link);
+  if(link.target==='_blank'||url.origin!==location.origin){if(inMenu)closeMenu();return;}
+  const samePage=pagePath(url.pathname)===pagePath(location.pathname)&&url.search===location.search;
+  if(!samePage){if(inMenu){event.preventDefault();await closeMenu();location.assign(url.href)}return;}
+  const target=url.hash?document.getElementById(decodeURIComponent(url.hash.slice(1))):null;
+  if(url.hash&&!target)return;
+  event.preventDefault();
+  if(inMenu)await closeMenu();
+  if(location.href!==url.href)history.pushState(null,'',url.href);
+  if(target)target.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+  else window.scrollTo({top:0,behavior:reduceMotion.matches?'auto':'smooth'});
+});
 
 // Only hide offscreen content after the observer is available; no-JS stays readable.
 if(!reduceMotion.matches&&'IntersectionObserver' in window){
