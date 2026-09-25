@@ -40,3 +40,19 @@ body [data-carousel=review]{touch-action:pan-y;cursor:grab;user-select:none}body
 body .s66885af1b50240e2bc27fedf39c296f2{padding-top:0}
 body [data-carousel=review]{flex-direction:column;height:auto}
 
+/* Original Studio full-screen menu layout, with its gentle entrance. */
+body #mobile-nav{inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:#fffef2;overflow:hidden}
+#mobile-nav[open]{animation:menu-open .3s ease both}
+#mobile-nav.is-closing{animation:menu-close .22s ease both}
+#mobile-nav [data-menu=close]{display:flex;align-items:center;justify-content:center;width:40px;height:40px;cursor:pointer}
+#mobile-nav .sd27ce076256e41629279fb9d369bed11{animation:menu-open .8s .2s both}
+#mobile-nav .s138d5d35067c4f4a92b7121e8ce146c0>a>*{animation:menu-item .4s .2s both}
+#mobile-nav a:hover{color:inherit}
+@keyframes menu-open{from{opacity:0}to{opacity:1}}
+@keyframes menu-close{from{opacity:1}to{opacity:0}}
+@keyframes menu-item{from{opacity:0;translate:24px 0}to{opacity:1;translate:0 0}}
+@media(max-width:767px){
+  [data-carousel=review] [data-slide]{display:none!important}
+  [data-carousel=review]>.slide-track{padding-top:12px}
+}
+

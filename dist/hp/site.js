@@ -1,9 +1,12 @@
 document.querySelectorAll('details summary').forEach(summary=>summary.setAttribute('aria-label',summary.textContent.trim()));
 const dialog=document.querySelector('#mobile-nav');
-document.querySelectorAll('[data-menu="open"],button[aria-label="menu"]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();dialog.showModal()}));
-document.querySelector('[data-menu="close"]').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-dialog.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>dialog.close()));
+let menuTimer;
+function closeMenu(){if(!dialog.open||dialog.classList.contains('is-closing'))return;dialog.classList.add('is-closing');menuTimer=setTimeout(()=>{dialog.close();dialog.classList.remove('is-closing')},matchMedia('(prefers-reduced-motion:reduce)').matches?0:220)}
+document.querySelectorAll('[data-menu="open"],button[aria-label="menu"]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();clearTimeout(menuTimer);dialog.classList.remove('is-closing');dialog.showModal();dialog.querySelector('.sac6c83141aa245929403adcfac0b7d1b').scrollTop=0}));
+document.querySelector('[data-menu="close"]').addEventListener('click',closeMenu);
+dialog.addEventListener('cancel',e=>{e.preventDefault();closeMenu()});
+dialog.addEventListener('click',e=>{if(e.target===dialog)closeMenu()});
+dialog.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 const reduceMotion=matchMedia('(prefers-reduced-motion:reduce)');
 
 // Only hide offscreen content after the observer is available; no-JS stays readable.
