@@ -55,6 +55,7 @@ function render(n,ctx={}) {
   if(n.renderIf==='list.hasMore'||(n.renderIf==='list.noContent'&&!ctx.empty))return '';
   if(n.name==='Animation'||n.name==='Hoveraction ')return '';
   const cls='s'+n.uuid.replaceAll('-','');
+  if(['sad441dadb8dc4d4b913d7f4277c053bf','s7f4a3736f6ac4ab9916ba3dc1348e6c1','s8f4f0eedadad4e169dbe2351e22eec1a','s48d6bbb95a9240d6a57d899901af2b67'].includes(cls))return `<div class="course-photo"><img src="${esc(asset(value(n.content.src,ctx)))}" alt="${esc(n.attrs?.alt||'Mayro Pilates Studio')}" loading="lazy" width="1200" height="900"></div>`;
   rules('.'+cls,n.style);
   let type=n.content?.type, tag=n.tagName||'div',attrs='',inner='';
   let children=n.children||[];
