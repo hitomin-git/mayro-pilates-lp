@@ -51,6 +51,29 @@ body #mobile-nav{inset:0;width:100%;max-width:none;height:100dvh;max-height:none
 @keyframes menu-open{from{opacity:0}to{opacity:1}}
 @keyframes menu-close{from{opacity:1}to{opacity:0}}
 @keyframes menu-item{from{opacity:0;translate:24px 0}to{opacity:1;translate:0 0}}
+.menu-booking-row{width:100%;padding:20px;border-bottom:1px solid #333}
+.back-to-top{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:14px Georgia,serif;white-space:nowrap}
+.staff-booking{width:min(358px,100%);margin:16px auto}.staff-booking .booking-button{width:100%;font-size:18px}
+body details.node{width:100%;max-width:100%}
+body details>summary{gap:16px;align-items:center;width:100%}
+body summary .question-group{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:16px;flex:1;min-width:0}
+body summary .question-mark{display:grid;place-items:center;margin:0;width:40px;height:40px;max-width:none;line-height:1;letter-spacing:0}
+body summary .question-copy{margin:0;line-height:1.8;width:100%}
+body summary>.icon{width:24px;height:24px;margin:0;flex:none;transform:rotate(180deg);transition:transform .2s ease}
+body details[open]>summary>.icon{transform:rotate(0)}
+@media(max-width:767px){
+ .s3984b2a5fb5b4ce9b97654413c9d0496.node{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow:visible;width:100%;max-width:100%;padding:0}
+ .s3984b2a5fb5b4ce9b97654413c9d0496.node>a{display:flex;align-items:center;justify-content:center;min-height:48px;width:100%;max-width:100%;margin:0;padding:10px 6px;border:1px solid #cad3c5;border-radius:6px;background:#f8faf5;color:#3f5740;font-size:14px;line-height:1.5;text-align:center}
+ body details>summary{gap:12px;padding:20px 8px}
+ body summary .question-group{grid-template-columns:32px minmax(0,1fr);gap:12px}
+ body summary .question-mark{width:32px;height:32px;font-size:15px}
+ body summary>.icon{width:20px;font-size:24px}
+}
+.menu-booking-row .booking-button{max-width:430px;margin:auto}
+#mobile-nav .menu-booking-row .booking-button:hover{color:#fff}
+html{scroll-behavior:auto;scroll-padding-top:104px}
+@media(max-width:1000px){html{scroll-padding-top:100px}}
+@media(max-width:767px){html{scroll-padding-top:80px}.s3984b2a5fb5b4ce9b97654413c9d0496.node{justify-content:flex-start;padding-left:0;padding-right:0}}
 @media(max-width:767px){
   [data-carousel=review] [data-slide]{display:none!important}
   [data-carousel=review]>.slide-track{padding-top:12px}

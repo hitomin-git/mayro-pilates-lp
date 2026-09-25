@@ -17,7 +17,7 @@ const kebab=s=>s.replace(/[A-Z]/g,c=>'-'+c.toLowerCase());
 let prefix='', css=new Map(), currentPage='';
 function value(s,ctx={}) {return String(s??'').replace(/\{\{(.*?)\}\}/g,(_,q)=>{q=q.trim().replace(/\.value\b/g,'');if(q.includes('$fn.formatDate'))return '2025/7/22';if(q.includes('nBMr9hGx'))return 'information';if(q.includes('$fn.trimString'))return article.title.slice(0,16)+'...';if(q.includes('slug'))return ctx._meta?.slug||'news1';let v=q.split('.').reduce((o,k)=>o?.[k],ctx);if(v===undefined&&q==='title')v=article.title;return typeof v==='string'?v:'';});}
 function asset(u){return u.startsWith('assets/')?prefix+u:assets[u]?prefix+'assets/'+assets[u]:u;}
-function href(u){u=value(u,article).trim();if(u==='#month')return '#once-a-month';if(u.startsWith('studio-modal:'))return '#mobile-nav';if(u.startsWith('https://mayro-pilates.com'))u=u.replace('https://mayro-pilates.com','');if(u.startsWith('#'))return u;if(u.startsWith('/')){const [p,h]=u.split('#');return prefix+(p==='/'?'index.html':p.slice(1)+'/index.html')+(h?'#'+h:'');}return u;}
+function href(u){u=value(u,article).trim();if(u==='#month')return '#once-a-month';if(u.startsWith('studio-modal:'))return '#mobile-nav';if(u.startsWith('https://mayro-pilates.com'))u=u.replace('https://mayro-pilates.com','');if(u.startsWith('#'))return u;if(u.startsWith('/')){const [p,h]=u.split('#');return prefix+(p==='/'?'./':p.slice(1)+'/')+(h?'#'+h:'');}return u;}
 function rules(sel,style,media='') {
   const plain={};
   for(const [k,v] of Object.entries(style||{})) {
@@ -45,6 +45,10 @@ function siteHeader(){return `<header class="site-header"><a class="brand" href=
 function render(n,ctx={}) {
   if(n.type==='ref')return render(views[n.refId],ctx);
   if(n.tagName==='header')return siteHeader();
+  if(n.children?.some(c=>c.content?.data==='Top'))return '<a class="back-to-top" href="#page-top" aria-label="このページの先頭へ戻る"><span aria-hidden="true">↑</span> Top</a>';
+  if(n.uuid==='fb677e64-8fee-4d17-9c96-9f8a095b56cd')return '';
+  if(n.uuid==='e133fd6a-0f0d-4bf9-a5e6-81b4839442fc')return `<div class="staff-booking">${bookingButton()}</div>`;
+  if(n.uuid==='16ad1598-b0a3-4ec9-aa75-1cb8db7479b2')return `<div class="menu-booking-row">${bookingButton()}</div>`;
   // Replace the two floating badges and move the below-photo logo into the hero.
   if(['aec75746-d502-40c7-a5ec-e37d1dc49ed5','8ccb0053-1e33-4bab-bd53-59fe9cc0f267','2667f02f-d972-423f-80b1-d92941839fd8','593b37c0-6572-4d9b-8ab3-db6df499b773','31b671e5-5d52-42df-859f-2cd04a442d6f'].includes(n.uuid))return '';
   if(n.renderIf==='list.hasMore'||(n.renderIf==='list.noContent'&&!ctx.empty))return '';
@@ -65,8 +69,9 @@ function render(n,ctx={}) {
   if(type==='select'){tag='select';inner=(n.content.options||[]).map(o=>`<option value="${esc(o.value??o.label??o)}">${esc(o.label||o)}</option>`).join('');}
   if(type==='button')tag='button';
   if(type==='richText'){inner=article.body;tag='article';}
-  if(n.uuid==='21431f77-67fa-4b10-9be0-04fbdfcd3896'){tag='button';attrs=' type="button" data-menu="close" aria-label="メニューを閉じる"';}
-  if(n.id)attrs+=` id="${esc(n.id)}"`;
+  if(n.uuid==='21431f77-67fa-4b10-9be0-04fbdfcd3896'){tag='button';attrs=' type="button" data-menu="close" autofocus aria-label="メニューを閉じる"';}
+  if(n.id&&n.id!=='faq')attrs+=` id="${esc(n.id)}"`;
+  if(n.uuid==='a6cd2e8d-f2f1-45fc-b642-55f14718fe47')attrs+=' id="faq"';
   for(const [k,v]of Object.entries(n.attrs||{}))if(!['style','class','src','alt','data-type'].includes(k)&&!k.startsWith('on'))attrs+=v===true?` ${k}`:v===false?'':` ${k}="${esc(value(v,ctx))}"`;
   if(n.on?.click==='next'||n.on?.click==='prev')attrs+=` data-slide="${n.on.click}" aria-label="${n.on.click==='next'?'次のお客様の声':'前のお客様の声'}"`;
   if(n.link?.path?.includes('mobilemenu')){attrs=attrs.replace(/ aria-label="[^"]*"/g,'');attrs+=' data-menu="open" role="button" aria-label="メニューを開く"';}
@@ -87,7 +92,8 @@ function render(n,ctx={}) {
   inner+=children.map(c=>render(c,ctx)).join('');
   if(tag==='form')inner='<p class="preview-note" role="note">再現確認用フォームです。入力内容は送信されません。</p>'+inner;
   if(tag==='a'&&!inner&&!type)attrs+=' aria-label="Mayro ホーム"';
-  return `<${tag} class="node ${cls}${type==='text'&&!['list','carousel'].includes(n.type)?' text':''}${type==='icon'?' icon':''}"${attrs}>${['img','input','br','hr'].includes(tag)?'':inner+`</${tag}>`}`;
+  const semantic=n.name==='Qマーク'?' question-mark':n.name==='質問'?' question-copy':n.children?.some(c=>c.name==='Qマーク')?' question-group':'';
+  return `<${tag} class="node ${cls}${semantic}${type==='text'&&!['list','carousel'].includes(n.type)?' text':''}${type==='icon'?' icon':''}"${attrs}>${['img','input','br','hr'].includes(tag)?'':inner+`</${tag}>`}`;
 }
 async function main(){
   const version=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(out,file))).digest('hex').slice(0,12);
@@ -105,7 +111,7 @@ async function main(){
     const pageDir=path.join(out,dir);fs.mkdirSync(pageDir,{recursive:true});
     fs.writeFileSync(path.join(pageDir,'index.html'),`<!doctype html><html lang="ja"><head><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MV96LBV4');</script>
-<!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${esc(p.head?.title||product.head.title)}</title><link rel="icon" href="${asset(product.head.favicon)}"><link rel="stylesheet" href="${prefix}base.css?v=${cssVersion}"><style>${vars}\n${[...css.values()].join('\n')}</style><script defer src="${prefix}site.js?v=${jsVersion}"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV96LBV4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>${html}<aside class="mobile-booking" aria-label="無料体験のご予約"><p>はじめての方も安心｜60分の無料体験</p>${bookingButton()}</aside><dialog id="mobile-nav" aria-label="メインメニュー">${modal}</dialog></body></html>`);
+<!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${esc(p.head?.title||product.head.title)}</title><link rel="icon" href="${asset(product.head.favicon)}"><link rel="stylesheet" href="${prefix}base.css?v=${cssVersion}"><style>${vars}\n${[...css.values()].join('\n')}</style><script defer src="${prefix}site.js?v=${jsVersion}"></script></head><body id="page-top"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV96LBV4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>${html}<aside class="mobile-booking" aria-label="無料体験のご予約"><p>はじめての方も安心｜60分の無料体験</p>${bookingButton()}</aside><dialog id="mobile-nav" aria-label="メインメニュー">${modal}</dialog></body></html>`);
     const texts=[];function textWalk(n){if(n.content?.data)texts.push(n.content.data);for(const c of n.children||[])textWalk(c);}textWalk(views[p.uuid]);inventory.push({path:p.id,url:'https://mayro-pilates.com'+(p.id==='/'?'':'/'+p.id),file:'dist/hp/'+(dir?dir+'/':'')+'index.html',text:texts});
   }
   fs.writeFileSync(path.join(dataDir,'page-inventory.json'),JSON.stringify(inventory,null,2));
