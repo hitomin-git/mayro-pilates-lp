@@ -81,6 +81,8 @@ html{scroll-behavior:auto;scroll-padding-top:104px}
 
 /* Navigation must fit its container at every width, including between breakpoints. */
 /* Course order and type scale stay consistent as the viewport narrows. */
+.course-photo{position:relative;aspect-ratio:4/3;overflow:hidden}
+.course-photo>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 body .s8871781013e44e0f87becd78821e19c7{width:100%;max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,3vw,40px);gap:0}
 body .s8871781013e44e0f87becd78821e19c7>[id]{width:100%;max-width:100%;margin:0;padding:clamp(44px,5vw,72px) 0 0;gap:16px}
 body .s8871781013e44e0f87becd78821e19c7>[id]>:first-child{margin:0;padding:0;width:100%;max-width:100%}
