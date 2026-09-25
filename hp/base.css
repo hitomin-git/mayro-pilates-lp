@@ -81,6 +81,12 @@ html{scroll-behavior:auto;scroll-padding-top:104px}
 
 /* Navigation must fit its container at every width, including between breakpoints. */
 /* Course order and type scale stay consistent as the viewport narrows. */
+body .se75adb9b75584edbadf061095de6b7a5{height:auto;min-height:61px;padding:20px clamp(20px,3vw,40px)}
+body .sc65becdda65e4f60af7fe05d3bd4ce82{height:auto;line-height:1.6;padding:0}
+@media(max-width:767px){
+ body [data-carousel=hero]{height:calc(100svh - 64px);min-height:0;max-height:none}
+ body [data-carousel=hero] .sc5660e8f2fc547c39d7ed953fc73d8c7{background:linear-gradient(180deg,#17322408,#17322424)}
+}
 .course-photo{position:relative;aspect-ratio:4/3;overflow:hidden}
 .course-photo>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 body .s8871781013e44e0f87becd78821e19c7{width:100%;max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,3vw,40px);gap:0}
