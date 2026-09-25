@@ -38,12 +38,13 @@ function rules(sel,style,media='') {
 }
 const trialURL='https://lin.ee/s3FrAv2';
 const instagramURL='https://www.instagram.com/mayro_pilates_studio/';
-const menuItems=[['Home','ホーム','/'],['News','ニュース','/news'],['Menu/Price','メニュー / 料金','/menu'],['Staff','スタッフ紹介','/staff'],['Reviews','お客様の声','/#review'],['FAQ','よくある質問','/menu#faq'],['Access','アクセス','/#access']];
+const menuItems=[['Home','ホーム','/'],['Menu/Price','メニュー / 料金','/menu'],['Staff','スタッフ紹介','/staff'],['Reviews','お客様の声','/#review'],['FAQ','よくある質問','/menu#faq'],['Access','アクセス','/#access']];
 const instagramIcon='<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>';
 function bookingButton(){return `<a class="booking-button" href="${trialURL}" target="_blank" rel="noopener noreferrer">無料体験を予約する<span aria-hidden="true">→</span></a>`;}
 function siteHeader(){return `<header class="site-header"><a class="brand" href="${href('/')}" aria-label="Mayro ホーム"><img src="${prefix}assets/cbb4c180a8fa7cf1.svg" alt="Mayro Pilates Studio" width="300" height="58"></a><nav class="desktop-nav" aria-label="メインメニュー">${menuItems.map(([en,ja,u])=>`<a href="${href(u)}" aria-label="${ja}">${en}</a>`).join('')}</nav><div class="header-actions"><a href="${instagramURL}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">${instagramIcon}</a>${bookingButton()}<button class="menu-toggle" type="button" data-menu="open" aria-label="メニューを開く" aria-controls="mobile-nav"><span></span><span></span></button></div></header>`;}
 function render(n,ctx={}) {
   if(n.type==='ref')return render(views[n.refId],ctx);
+  if(n.uuid==='efa9aadc-18e4-4331-b87c-7f62286a7a0c'||/^\/(?:news)(?:\/|$)/.test(n.link?.path||''))return '';
   if(n.tagName==='header')return siteHeader();
   if(n.style?.position==='fixed'&&n.link?.path?.includes('instagram.com/'))return '';
   if(n.children?.some(c=>c.content?.data==='Top'))return '<a class="back-to-top" href="#page-top" aria-label="このページの先頭へ戻る"><span aria-hidden="true">↑</span> Top</a>';
@@ -105,8 +106,8 @@ async function main(){
   fs.mkdirSync(path.join(out,'assets'),{recursive:true});
   let failures=[];await Promise.all([...urls].map(async u=>{if(assets[u]&&fs.existsSync(path.join(out,'assets',assets[u])))return;try{const r=await fetch(u);if(!r.ok)throw Error(r.status);const b=Buffer.from(await r.arrayBuffer());const ext=({'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp','image/svg+xml':'.svg','image/gif':'.gif'})[r.headers.get('content-type')?.split(';')[0]]||'.img';const name=crypto.createHash('sha256').update(u).digest('hex').slice(0,16)+ext;fs.writeFileSync(path.join(out,'assets',name),b);assets[u]=name;}catch(e){failures.push([u,String(e)]);}}));
   fs.writeFileSync(path.join(dataDir,'assets.json'),JSON.stringify(assets,null,2));
-  const pages=product.pages.filter(p=>p.type==='page'&&p.id!=='test-a/page1').map(p=>({...p,id:p.id.replace('category/:slug','category/information').replace('detail/:slug','detail/news1')}));
-  const category=pages.find(p=>p.id==='news/category/information');pages.push({...category,id:'news/category/media'},{...category,id:'news/category/blog'});
+  const pages=product.pages.filter(p=>p.type==='page'&&p.id!=='test-a/page1'&&!p.id.startsWith('news')).map(p=>({...p,id:p.id.replace('category/:slug','category/information').replace('detail/:slug','detail/news1')}));
+
   let inventory=[];
   for(const p of pages){currentPage=p.id;const dir=p.id==='/'?'':p.id;prefix='../'.repeat(dir?dir.split('/').length:0);css=new Map();const pageContext=p.id.startsWith('news/category/')?{...article,title:p.id.split('/').pop(),_meta:{slug:p.id.split('/').pop()}}:article;const html=render(views[p.uuid],pageContext);let vars=':root{'+Object.entries(product.styleVars).flatMap(([t,vs])=>vs.map(v=>`--s-${t==='color'?'color':'font'}-${v.key}:${v.value};`)).join('')+'}';
     const modal=render(views['a1d07ac1-9c28-4809-847c-9bc7749bd9c8'],{mobileMenu:true}).replace(/https:\/\/(?:www\.)?instagram\.com\/mayro_pilates\?[^"<>]+/g,instagramURL);
