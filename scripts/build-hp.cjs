@@ -45,6 +45,7 @@ function siteHeader(){return `<header class="site-header"><a class="brand" href=
 function render(n,ctx={}) {
   if(n.type==='ref')return render(views[n.refId],ctx);
   if(n.tagName==='header')return siteHeader();
+  if(n.style?.position==='fixed'&&n.link?.path?.includes('instagram.com/'))return '';
   if(n.children?.some(c=>c.content?.data==='Top'))return '<a class="back-to-top" href="#page-top" aria-label="このページの先頭へ戻る"><span aria-hidden="true">↑</span> Top</a>';
   if(n.uuid==='fb677e64-8fee-4d17-9c96-9f8a095b56cd')return '';
   if(n.uuid==='e133fd6a-0f0d-4bf9-a5e6-81b4839442fc')return `<div class="staff-booking">${bookingButton()}</div>`;
