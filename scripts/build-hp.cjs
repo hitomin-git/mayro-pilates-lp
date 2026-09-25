@@ -118,6 +118,15 @@ async function main(){
     fs.writeFileSync(path.join(pageDir,'index.html'),`<!doctype html><html lang="ja"><head><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MV96LBV4');</script>
 <!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="${['/','menu','staff','privacypolicy'].includes(p.id)?'index,follow':'noindex,nofollow'}"><title>${esc(p.head?.title||product.head.title)}</title><link rel="icon" href="${asset(product.head.favicon)}"><link rel="stylesheet" href="${prefix}base.css?v=${cssVersion}"><style>${vars}\n${[...css.values()].join('\n')}</style><script defer src="${prefix}site.js?v=${jsVersion}"></script></head><body id="page-top"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV96LBV4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>${html}<aside class="mobile-booking" aria-label="無料体験のご予約"><p>はじめての方も安心｜60分の無料体験</p>${bookingButton()}</aside><dialog id="mobile-nav" aria-label="メインメニュー">${modal}</dialog></body></html>`);
+    // Publish at the original domain paths; retain /hp/ as a non-indexed preview.
+    const canonical='https://mayro-pilates.com/'+(dir?dir+'/':'');
+    let publicHTML=fs.readFileSync(path.join(pageDir,'index.html'),'utf8');
+    publicHTML=publicHTML.replace('</head>',`<link rel="canonical" href="${canonical}"></head>`);
+    publicHTML=publicHTML.replaceAll(`${prefix}assets/`,`${prefix}hp/assets/`).replaceAll(`${prefix}base.css`,`${prefix}hp/base.css`).replaceAll(`${prefix}site.js`,`${prefix}hp/site.js`);
+    const publicDir=path.join(root,'dist',dir);fs.mkdirSync(publicDir,{recursive:true});
+    fs.writeFileSync(path.join(publicDir,'index.html'),publicHTML);
+    const previewHTML=fs.readFileSync(path.join(pageDir,'index.html'),'utf8').replace('content="index,follow"','content="noindex,follow"').replace('</head>',`<link rel="canonical" href="${canonical}"></head>`);
+    fs.writeFileSync(path.join(pageDir,'index.html'),previewHTML);
     const texts=[];function textWalk(n){if(n.content?.data)texts.push(n.content.data);for(const c of n.children||[])textWalk(c);}textWalk(views[p.uuid]);inventory.push({path:p.id,url:'https://mayro-pilates.com'+(p.id==='/'?'':'/'+p.id),file:'dist/hp/'+(dir?dir+'/':'')+'index.html',text:texts});
   }
   fs.writeFileSync(path.join(dataDir,'page-inventory.json'),JSON.stringify(inventory,null,2));
