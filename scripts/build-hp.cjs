@@ -36,8 +36,17 @@ function rules(sel,style,media='') {
   }
   for(const [k,w]of [['small',1140],['tablet',950],['mobile',540],['mini',360]])if(style?.['@'+k])rules(sel,style['@'+k],w);
 }
+const trialURL='https://lin.ee/s3FrAv2';
+const instagramURL='https://www.instagram.com/mayro_pilates_studio/';
+const menuItems=[['Home','ホーム','/'],['News','ニュース','/news'],['Menu/Price','メニュー / 料金','/menu'],['Staff','スタッフ紹介','/staff'],['Reviews','お客様の声','/#review'],['FAQ','よくある質問','/menu#faq'],['Access','アクセス','/#access']];
+const instagramIcon='<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>';
+function bookingButton(){return `<a class="booking-button" href="${trialURL}" target="_blank" rel="noopener noreferrer">無料体験を予約する<span aria-hidden="true">→</span></a>`;}
+function siteHeader(){return `<header class="site-header"><a class="brand" href="${href('/')}" aria-label="Mayro ホーム"><img src="${prefix}assets/cbb4c180a8fa7cf1.svg" alt="Mayro Pilates Studio" width="300" height="58"></a><nav class="desktop-nav" aria-label="メインメニュー">${menuItems.map(([en,ja,u])=>`<a href="${href(u)}" aria-label="${ja}">${en}</a>`).join('')}</nav><div class="header-actions"><a href="${instagramURL}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">${instagramIcon}</a>${bookingButton()}<button class="menu-toggle" type="button" data-menu="open" aria-label="メニューを開く" aria-controls="mobile-nav"><span></span><span></span></button></div></header>`;}
 function render(n,ctx={}) {
   if(n.type==='ref')return render(views[n.refId],ctx);
+  if(n.tagName==='header')return siteHeader();
+  // Replace the two floating badges and move the below-photo logo into the hero.
+  if(['aec75746-d502-40c7-a5ec-e37d1dc49ed5','8ccb0053-1e33-4bab-bd53-59fe9cc0f267','2667f02f-d972-423f-80b1-d92941839fd8','593b37c0-6572-4d9b-8ab3-db6df499b773','31b671e5-5d52-42df-859f-2cd04a442d6f'].includes(n.uuid))return '';
   if(n.renderIf==='list.hasMore'||(n.renderIf==='list.noContent'&&!ctx.empty))return '';
   if(n.name==='Animation'||n.name==='Hoveraction ')return '';
   const cls='s'+n.uuid.replaceAll('-','');
@@ -45,7 +54,7 @@ function render(n,ctx={}) {
   let type=n.content?.type, tag=n.tagName||'div',attrs='',inner='';
   let children=n.children||[];
   if(n.action?.type==='link'){tag='a';attrs+=` href="${esc(href('/'+value(n.action.val,ctx)))}"`;}
-  if(n.link?.path){tag='a';attrs+=` href="${esc(href(value(n.link.path,ctx)))}"`;if(n.link.newTab)attrs+=' target="_blank" rel="noopener noreferrer"';}
+  if(n.link?.path){tag='a';const destination=value(n.link.path,ctx);attrs+=` href="${esc(/^(?:https:\/\/mayro-pilates\.com)?\/reserve-1\/?$/.test(destination)?trialURL:href(destination))}"`;if(n.link.newTab)attrs+=' target="_blank" rel="noopener noreferrer"';}
   if(type==='text'){tag=n.link?.path?'a':n.tagName||'p';inner=value(n.content.data,ctx);}
   if(type==='icon'||type==='icon-brands'){tag=n.link?.path?'a':'span';const icons={arrow_forward:'→',arrow_back:'←',launch:'↗',chevron_right:'›',keyboard_arrow_left:'‹',keyboard_arrow_right:'›',keyboard_arrow_down:'⌄',keyboard_arrow_up:'⌃',expand_more:'⌄',add:'＋',remove:'−',menu:'☰',close:'×'};inner=icons[n.content.data]||'<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>';if(!n.link?.path)attrs+=' aria-hidden="true"';else attrs+=' aria-label="Instagram"';}
   if(type==='image'){const src=asset(value(n.content.src,ctx));attrs+=` style="--node-image:url('${esc(src)}')" data-image="${esc(src)}"`;rules('.'+cls+'::before',{content:'""',position:'absolute',inset:'0',backgroundImage:'var(--node-image)',backgroundSize:'cover',backgroundPosition:'center',borderRadius:'inherit',pointerEvents:'none'});rules('.'+cls+'>*',{zIndex:1});}
@@ -67,6 +76,7 @@ function render(n,ctx={}) {
     const items=n.state?.list||[];const template=children.find(c=>!c.slot);const slots=children.filter(c=>c.slot);
     attrs+=` data-carousel="${n.name==='ファーストビュー'?'hero':n.name==='カルーセル画像'?'gallery':'review'}"`;
     inner=slots.map(c=>render(c,ctx)).join('')+'<div class="slide-track">'+items.map((item,i)=>'<div class="slide" data-index="'+i+'">'+render(template,{...ctx,...item})+'</div>').join('')+'</div>';children=[];
+    if(n.name==='ファーストビュー')inner+=`<div class="hero-brand"><img src="${prefix}assets/cbb4c180a8fa7cf1.svg" alt="Mayro Pilates Studio" width="300" height="58"></div>`;
     rules('.'+cls+' .slide > .'+('s'+template.uuid.replaceAll('-','')),{position:'relative',left:'auto',top:'auto',width:'100%',maxWidth:'100%',height:'100%',margin:'0',transform:'none'});
   }else if(n.type==='list'){
     let list=n.state?.list;
@@ -89,11 +99,11 @@ async function main(){
   const category=pages.find(p=>p.id==='news/category/information');pages.push({...category,id:'news/category/media'},{...category,id:'news/category/blog'});
   let inventory=[];
   for(const p of pages){currentPage=p.id;const dir=p.id==='/'?'':p.id;prefix='../'.repeat(dir?dir.split('/').length:0);css=new Map();const pageContext=p.id.startsWith('news/category/')?{...article,title:p.id.split('/').pop(),_meta:{slug:p.id.split('/').pop()}}:article;const html=render(views[p.uuid],pageContext);let vars=':root{'+Object.entries(product.styleVars).flatMap(([t,vs])=>vs.map(v=>`--s-${t==='color'?'color':'font'}-${v.key}:${v.value};`)).join('')+'}';
-    const nav=[['Home','/'],['News','/news'],['Menu/Price','/menu'],['Staff','/staff'],['Reviews','/#review'],['FAQ','/menu#faq'],['Access','/#access']].map(([t,u])=>`<a href="${href(u)}">${t}</a>`).join('');
+    const nav=menuItems.map(([en,ja,u])=>`<a href="${href(u)}"><span>${ja}</span><small>${en}</small></a>`).join('');
     const pageDir=path.join(out,dir);fs.mkdirSync(pageDir,{recursive:true});
     fs.writeFileSync(path.join(pageDir,'index.html'),`<!doctype html><html lang="ja"><head><!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MV96LBV4');</script>
-<!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${esc(p.head?.title||product.head.title)}</title><link rel="icon" href="${asset(product.head.favicon)}"><link rel="stylesheet" href="${prefix}base.css?v=${cssVersion}"><style>${vars}\n${[...css.values()].join('\n')}</style><script defer src="${prefix}site.js?v=${jsVersion}"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV96LBV4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>${html}<dialog id="mobile-nav"><button type="button" data-menu="close" aria-label="メニューを閉じる">×</button><nav>${nav}</nav></dialog></body></html>`);
+<!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${esc(p.head?.title||product.head.title)}</title><link rel="icon" href="${asset(product.head.favicon)}"><link rel="stylesheet" href="${prefix}base.css?v=${cssVersion}"><style>${vars}\n${[...css.values()].join('\n')}</style><script defer src="${prefix}site.js?v=${jsVersion}"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV96LBV4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>${html}<aside class="mobile-booking" aria-label="無料体験のご予約"><p>はじめての方も安心｜60分の無料体験</p>${bookingButton()}</aside><dialog id="mobile-nav" aria-label="メインメニュー"><button type="button" data-menu="close" aria-label="メニューを閉じる">×</button><div class="menu-reserve">${bookingButton()}</div><nav>${nav}</nav><div class="menu-info"><p>〒107-0052<br>東京都港区赤坂2-10-4 下村ビル2F</p><p class="menu-social"><span>Follow us</span><a href="${instagramURL}" target="_blank" rel="noopener noreferrer">Instagram</a><a href="${trialURL}" target="_blank" rel="noopener noreferrer">LINE</a></p></div></dialog></body></html>`);
     const texts=[];function textWalk(n){if(n.content?.data)texts.push(n.content.data);for(const c of n.children||[])textWalk(c);}textWalk(views[p.uuid]);inventory.push({path:p.id,url:'https://mayro-pilates.com'+(p.id==='/'?'':'/'+p.id),file:'dist/hp/'+(dir?dir+'/':'')+'index.html',text:texts});
   }
   fs.writeFileSync(path.join(dataDir,'page-inventory.json'),JSON.stringify(inventory,null,2));
