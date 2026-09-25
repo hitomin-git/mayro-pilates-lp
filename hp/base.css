@@ -143,3 +143,19 @@ body .s3984b2a5fb5b4ce9b97654413c9d0496.node>a:hover{background:#e8eee2;border-c
 .home-pricing{padding-inline:0}.home-price-inner{width:calc(100% - 80px)}
 @media(max-width:950px){.home-price-title{padding-inline:30px}.home-price-title h2{font-size:16px}.home-price-english{font-size:64px}.home-price-inner{width:calc(100% - 60px)}}
 @media(max-width:540px){.home-price-title{padding-inline:20px}.home-price-title h2{font-size:14px}.home-price-english{font-size:36px}.home-price-inner{width:calc(100% - 40px)}}
+
+/* Compact mobile reviews keep the full text and place metadata on one row. */
+@media(max-width:767px){
+ body [data-carousel=review]{padding:20px 0 0}
+ body [data-carousel=review]>.slide-track{padding-top:0}
+ body [data-carousel=review] .s62776557815c4e75a71f82d81a895d8f{padding:0 8px}
+ body [data-carousel=review] .s5eee778636064de9903fb1915e6096f4{display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;align-items:center;justify-items:start;gap:10px 8px;padding:12px;height:auto;min-height:100%}
+ body [data-carousel=review] .sd9362366a244494885bfcbf9a07443a2{font-size:11px;line-height:1.4;padding:3px 7px;margin:0;white-space:nowrap}
+ body [data-carousel=review] .sb0262422c77242589abb185ec407fc68{font-size:10px;line-height:1.5;margin:0;text-align:left}
+ body [data-carousel=review] .s4e13f20259574813a7a304def93314ba{grid-column:1/-1;font-size:12px;line-height:1.7;margin:0;font-weight:500}
+ body [data-carousel=review] .scfd61c92b1b845b8a55f42de3f979f4d{grid-column:1/-1;font-size:11px;line-height:1.85;margin:0}
+ body .review-pagination{margin-top:12px}
+}
+
+.home-price-heading-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 24px}.home-admission-note{font-size:13px;line-height:1.7;color:#6a6e65;white-space:nowrap}
+@media(max-width:540px){.home-price-heading-row{column-gap:12px}.home-admission-note{font-size:10px}}
