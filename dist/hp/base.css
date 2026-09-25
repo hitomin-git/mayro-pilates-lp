@@ -80,6 +80,20 @@ html{scroll-behavior:auto;scroll-padding-top:104px}
 }
 
 /* Navigation must fit its container at every width, including between breakpoints. */
+/* Course order and type scale stay consistent as the viewport narrows. */
+body .s8871781013e44e0f87becd78821e19c7{width:100%;max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,3vw,40px);gap:0}
+body .s8871781013e44e0f87becd78821e19c7>[id]{width:100%;max-width:100%;margin:0;padding:clamp(44px,5vw,72px) 0 0;gap:16px}
+body .s8871781013e44e0f87becd78821e19c7>[id]>:first-child{margin:0;padding:0;width:100%;max-width:100%}
+body .s8871781013e44e0f87becd78821e19c7 h2{font-size:clamp(24px,2.2vw,28px);line-height:1.5}
+body .s8871781013e44e0f87becd78821e19c7>[id]>:nth-child(2){display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px);align-items:start;width:100%}
+body .s8871781013e44e0f87becd78821e19c7>[id]>:nth-child(2)>*{width:100%;max-width:100%;margin:0;padding:0;min-width:0}
+body .s8871781013e44e0f87becd78821e19c7>[id]>:nth-child(2)>img{height:auto;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:700px){body .s8871781013e44e0f87becd78821e19c7>[id]>:nth-child(2){grid-template-columns:1fr;gap:24px}}
+@media(max-width:950px){
+ body :is(.sc0e0a14b5ba845fcbf62d374da5877d4,.sa08992a928444f44a92699de4c2b3b35)>[data-image]{width:auto!important;max-width:100%!important;height:clamp(220px,32svh,280px);aspect-ratio:3/4;justify-self:center}
+ body :is(.sc0e0a14b5ba845fcbf62d374da5877d4,.sa08992a928444f44a92699de4c2b3b35)>[data-image]::before{background-position:center top}
+ body :is(.s87ba58d103434fe0b773b64e6bf55bc8,.s61884625eaef4da8988d01f3f7d4cc20){font-size:40px;line-height:1.3}
+}
 /* Keep the staff introduction aligned with its title at every viewport width. */
 body .s9a03eff3dd4a4aa0a671a439f258d09e{padding-inline:clamp(20px,3vw,40px)}
 body .s0c7ec8adc4434441b703726f0fc8f6e6{width:100%;max-width:1360px;padding-inline:0}
