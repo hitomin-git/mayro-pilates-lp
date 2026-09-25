@@ -61,6 +61,7 @@ function render(n,ctx={}) {
   if(n.action?.type==='link'){tag='a';attrs+=` href="${esc(href('/'+value(n.action.val,ctx)))}"`;}
   if(n.link?.path){tag='a';const destination=value(n.link.path,ctx);attrs+=` href="${esc(/^(?:https:\/\/mayro-pilates\.com)?\/reserve-1\/?$/.test(destination)?trialURL:href(destination))}"`;if(n.link.newTab)attrs+=' target="_blank" rel="noopener noreferrer"';}
   if(type==='text'){tag=n.link?.path?'a':n.tagName||'p';inner=value(n.content.data,ctx);}
+  if(type==='text'&&ctx.mobileMenu){const label=inner.replace(/<br\s*\/?\s*>/g,'').replace(/\s/g,'');const item=menuItems.find(([,ja])=>ja.replace(/\s/g,'')===label);if(item)inner=item[0];}
   if(type==='icon'||type==='icon-brands'){tag=n.link?.path?'a':'span';const icons={arrow_forward:'→',arrow_back:'←',launch:'↗',chevron_right:'›',keyboard_arrow_left:'‹',keyboard_arrow_right:'›',keyboard_arrow_down:'⌄',keyboard_arrow_up:'⌃',expand_more:'⌄',add:'＋',remove:'−',menu:'☰',close:'×'};inner=icons[n.content.data]||'<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>';if(!n.link?.path)attrs+=' aria-hidden="true"';else attrs+=' aria-label="Instagram"';}
   if(type==='image'){const src=asset(value(n.content.src,ctx));attrs+=` style="--node-image:url('${esc(src)}')" data-image="${esc(src)}"`;rules('.'+cls+'::before',{content:'""',position:'absolute',inset:'0',backgroundImage:'var(--node-image)',backgroundSize:'cover',backgroundPosition:'center',borderRadius:'inherit',pointerEvents:'none'});rules('.'+cls+'>*',{zIndex:1});}
   if(type==='icon'&&['arrow_downward','call_made','arrow_drop_up'].includes(n.content.data))inner={arrow_downward:'↓',call_made:'↗',arrow_drop_up:'▴'}[n.content.data];
@@ -107,7 +108,7 @@ async function main(){
   const category=pages.find(p=>p.id==='news/category/information');pages.push({...category,id:'news/category/media'},{...category,id:'news/category/blog'});
   let inventory=[];
   for(const p of pages){currentPage=p.id;const dir=p.id==='/'?'':p.id;prefix='../'.repeat(dir?dir.split('/').length:0);css=new Map();const pageContext=p.id.startsWith('news/category/')?{...article,title:p.id.split('/').pop(),_meta:{slug:p.id.split('/').pop()}}:article;const html=render(views[p.uuid],pageContext);let vars=':root{'+Object.entries(product.styleVars).flatMap(([t,vs])=>vs.map(v=>`--s-${t==='color'?'color':'font'}-${v.key}:${v.value};`)).join('')+'}';
-    const modal=render(views['a1d07ac1-9c28-4809-847c-9bc7749bd9c8']).replace(/https:\/\/(?:www\.)?instagram\.com\/mayro_pilates\?[^"<>]+/g,instagramURL);
+    const modal=render(views['a1d07ac1-9c28-4809-847c-9bc7749bd9c8'],{mobileMenu:true}).replace(/https:\/\/(?:www\.)?instagram\.com\/mayro_pilates\?[^"<>]+/g,instagramURL);
     const nav=menuItems.map(([en,ja,u])=>`<a href="${href(u)}"><span>${ja}</span><small>${en}</small></a>`).join('');
     const pageDir=path.join(out,dir);fs.mkdirSync(pageDir,{recursive:true});
     fs.writeFileSync(path.join(pageDir,'index.html'),`<!doctype html><html lang="ja"><head><!-- Google Tag Manager -->

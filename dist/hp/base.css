@@ -80,6 +80,10 @@ html{scroll-behavior:auto;scroll-padding-top:104px}
 }
 
 /* Navigation must fit its container at every width, including between breakpoints. */
+/* Keep the staff introduction aligned with its title at every viewport width. */
+body .s9a03eff3dd4a4aa0a671a439f258d09e{padding-inline:clamp(20px,3vw,40px)}
+body .s0c7ec8adc4434441b703726f0fc8f6e6{width:100%;max-width:1360px;padding-inline:0}
+body .s58c6cf0c1f1040e7ac018cd13ba7e3fb{width:100%;max-width:1360px}
 body .sbd57122b29f5447e902804646d0eaf9b,body :is(.sc0e0a14b5ba845fcbf62d374da5877d4,.sa08992a928444f44a92699de4c2b3b35){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;align-items:start}
 body .sbd57122b29f5447e902804646d0eaf9b>*,body :is(.sc0e0a14b5ba845fcbf62d374da5877d4,.sa08992a928444f44a92699de4c2b3b35)>*{width:100%;max-width:100%;margin-left:0;margin-right:0}
 body :is(.s3f1247fbce40476ba1624f255445698c,.s8d1aa2a325574548b22b83f1ca701601,.s90ba089f75a64d20a1877c493d01201f,.s583025adc0594e23baf15089e06b1b2d){width:100%}
