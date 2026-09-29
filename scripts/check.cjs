@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../dist'),errors=[];
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);}
-const files=walk(root).filter(f=>!f.includes("trial2-comparison")).filter(f=>/\.(html|css)$/.test(f));let refs=0;
+const files=walk(root).filter(f=>/\.(html|css)$/.test(f));let refs=0;
 for(const file of files){
   const text=fs.readFileSync(file,'utf8');
   if(file.endsWith('.html')&&!/name="robots" content="(?:noindex|index),(?:nofollow|follow)"/.test(text))errors.push(`${file}: robots directive missing`);
