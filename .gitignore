@@ -3,7 +3,6 @@ node_modules/
 Thumbs.db
 .env
 .env.*
-source/hp/page-inventory.json
 
 # Unrelated local projects in the original working directory.
 /drive-audit/

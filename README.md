@@ -10,29 +10,27 @@ HPと無料体験LPを管理するリポジトリです。過去の制作案・�
 
 | フォルダ | 用途 |
 | --- | --- |
-| `dist/hp/` | HPの15ページ・共通CSS/JS・画像・フォント |
+| `dist/hp/` | HPの10ページ・ページ別CSS・共通CSS/JS・画像・フォント。ここを直接編集 |
 | `dist/trial/` | LPのHTML・CSS・JS・使用画像。ここを直接編集 |
-| `source/hp/` | HPを生成するページ定義・画像対応表 |
-| `scripts/` | HP生成、プレビュー、参照チェック |
+| `scripts/` | プレビュー、参照チェック |
 
 LPは `dist/trial/index.html`・`style.css`・`site.js` を編集します。PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください。
 
-HPの文章・構成は `source/hp/views/` にあります。ページ名とUUIDの対応は `source/hp/site-data.json` の `pinia.productStore.product.pages` を参照します。共通スタイルと動作は `dist/hp/base.css`・`site.js`、ニュース本文は `scripts/build-hp.cjs` の `article` です。
+HPは `dist/hp/<ページ名>/index.html` を直接編集する普通の静的HTMLです。各ページ専用のCSSは `dist/hp/<ページ名>.css`（トップページのみ `dist/hp/home.css`）にあります。全ページ共通のスタイル・色/フォント変数・動作は `dist/hp/base.css`・`site.js` です。ルート直下の `dist/<ページ名>/index.html` は本番公開用のコピーで、`dist/hp/` と同じ内容を参照しています（`hp/base.css` のように `hp/` を経由）。HTML・CSSを更新したら、両方の場所（`dist/hp/...` と `dist/...`）を同じ内容に更新し、`?v=` のハッシュも変更してください。
 
 ## 確認・更新
 
 Node.jsを使用します。追加ライブラリのインストールは不要です。
 
 ```sh
-npm run build:hp
 npm run check
 npm run preview
 ```
 
-HP生成は構成変更時のみ必要です。プレビューは http://127.0.0.1:4186/ 。`PORT` 環境変数で変更できます。HP生成ではHTMLを上書きします。既存画像はローカルを使用し、新しい画像URLを追加した場合は取得します。
+プレビューは http://127.0.0.1:4186/ 。`PORT` 環境変数で変更できます。
 
 ```sh
-git add dist source scripts README.md package.json .gitignore
+git add dist scripts README.md package.json .gitignore
 git commit -m "Update Mayro website"
 git push origin master
 git subtree push --prefix dist origin gh-pages
