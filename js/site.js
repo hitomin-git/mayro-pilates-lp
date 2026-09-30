@@ -2,7 +2,7 @@ document.querySelectorAll('details summary').forEach(summary=>summary.setAttribu
 const dialog=document.querySelector('#mobile-nav');
 let menuTimer,menuClosing;
 function closeMenu(){if(!dialog.open)return Promise.resolve();if(menuClosing)return menuClosing;dialog.classList.add('is-closing');menuClosing=new Promise(resolve=>{menuTimer=setTimeout(()=>{dialog.close();dialog.classList.remove('is-closing');menuClosing=null;resolve()},matchMedia('(prefers-reduced-motion:reduce)').matches?0:220)});return menuClosing;}
-document.querySelectorAll('[data-menu="open"],button[aria-label="menu"]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();clearTimeout(menuTimer);dialog.classList.remove('is-closing');dialog.showModal();dialog.querySelector('.sac6c83141aa245929403adcfac0b7d1b').scrollTop=0}));
+document.querySelectorAll('[data-menu="open"],button[aria-label="menu"]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();clearTimeout(menuTimer);dialog.classList.remove('is-closing');dialog.showModal();dialog.querySelector('.mobile-nav-panel').scrollTop=0}));
 document.querySelector('[data-menu="close"]').addEventListener('click',closeMenu);
 dialog.addEventListener('cancel',e=>{e.preventDefault();closeMenu()});
 dialog.addEventListener('click',e=>{if(e.target===dialog)closeMenu()});
@@ -41,9 +41,11 @@ document.addEventListener('click',async event=>{
 
 // Only hide offscreen content after the observer is available; no-JS stays readable.
 if(!reduceMotion.matches&&'IntersectionObserver' in window){
-  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08});
-  document.querySelectorAll('h1,h2,#flow li,[data-image]').forEach(el=>{
-    if(el.closest('[data-carousel],header,footer,dialog')||el.getBoundingClientRect().top<innerHeight)return;
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.2});
+  document.querySelectorAll('h1,h2,#flow li,[data-image],.reveal-block,.staff-hero-subtitle,.menu-hero-subtitle,.policy-hero-subtitle').forEach(el=>{
+    if(el.closest('[data-carousel],header,footer,dialog'))return;
+    const rect=el.getBoundingClientRect();
+    if(innerHeight-rect.top>rect.height*.5)return;
     el.classList.add('scroll-reveal');observer.observe(el);
   });
 }
