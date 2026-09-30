@@ -13,7 +13,9 @@ function updateBooking() {
   const heroRect = heroBooking.getBoundingClientRect();
   const endRect = closing.getBoundingClientRect();
   const visible = rect => rect.top >= 66 && rect.bottom <= viewportHeight - reserved;
-  booking.hidden = !(mobile.matches && !visible(heroRect) && !visible(endRect));
+  // Hide once the closing CTA enters the viewport, and keep it hidden below it.
+  const reachedEnd = endRect.top < viewportHeight;
+  booking.hidden = !(mobile.matches && !visible(heroRect) && !reachedEnd);
 }
 function scheduleBooking() {
   if (!scheduled) { scheduled = true; requestAnimationFrame(updateBooking); }
