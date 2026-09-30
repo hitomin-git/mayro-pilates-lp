@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- trial4：trial2との比較用。ファーストビューの3つの丸の中のアイコン（SVG画像）を削除（CSS・JS・画像はtrial2のものを使用） -->
+<!-- trial4：trial2との比較用。ファーストビューの3つの丸（アイコン・文字ごと）を非表示（CSS・JS・画像はtrial2のものを使用） -->
 <html lang="ja">
   <head>
     <!-- Google Tag Manager -->
@@ -32,6 +32,12 @@
     <link rel="stylesheet" href="../trial2/css/hero.css?v=ebdb3c75bb12" />
     <link rel="stylesheet" href="../trial2/css/sections.css?v=fdc6c921d984" />
     <link rel="stylesheet" href="../trial2/css/booking.css?v=0683eb7d3f8b" />
+    <!-- 場所はそのまま残して見えなくするので、ほかの要素はtrial2と同じ位置になる -->
+    <style>
+      .fv-shell .benefits {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <noscript
@@ -69,13 +75,24 @@
           </div>
           <ul class="benefits">
             <li>
-              <b>姿勢改善</b><small>猫背・巻き肩<br />反り腰に</small>
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                  d="M18 2c-8 5 5 7-3 13s5 9-3 15M12 4h9M11 10h10M9 17h10M10 23h10M8 29h10"
+                /></svg
+              ><b>姿勢改善</b><small>猫背・巻き肩<br />反り腰に</small>
             </li>
             <li>
-              <b>ボディライン<br />づくり</b><small>くびれ・ヒップ<br />引き締め</small>
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                  d="M9 2c3 8 3 10 0 15S7 25 8 30M23 2c-3 8-3 10 0 15s2 8 1 13M10 14q6 4 12 0M9 22q7-3 14 0"
+                /></svg
+              ><b>ボディライン<br />づくり</b><small>くびれ・ヒップ<br />引き締め</small>
             </li>
             <li>
-              <b>肩・腰まわり<br />のケア</b><small>慢性的なコリ<br />不調に</small>
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="6" r="4" />
+                <path d="m12 10-6 5 1 13h4V17m9-7 6 5-1 13h-4V17M11 28h10M16 15v9" /></svg
+              ><b>肩・腰まわり<br />のケア</b><small>慢性的なコリ<br />不調に</small>
             </li>
           </ul>
           <div class="action-group">
