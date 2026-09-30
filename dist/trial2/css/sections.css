@@ -2033,7 +2033,9 @@
       font-size: 13px;
     }
     .faq-list summary {
-      padding: 17px 0;
+      /* セクションは1画面分の高さなので、縦長の機種では余った高さを質問の行に回す。
+         表示域548px（iPhone SE）で17px、縦に長くなるほど広げ、最大40px */
+      padding: clamp(17px, calc(17px + (100svh - 548px) * 0.1), 40px) 0;
       font-size: 14px;
       gap: 12px;
     }
