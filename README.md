@@ -3,8 +3,9 @@
 HPと無料体験LPを管理するリポジトリです。過去の制作案・比較ページ・試作スクリプト・未使用画像は削除済みです。以前の内容はGit履歴から確認できます。
 
 - HP: https://hitomin-git.github.io/mayro-pilates-lp/
-- LP: https://hitomin-git.github.io/mayro-pilates-lp/trial/
-- ルートURLはHPへ、従来の `final.html` はLPへ転送します。
+- LP: https://mayro-pilates.com/trial2/
+- LP比較案: https://mayro-pilates.com/trial3/ ・ https://mayro-pilates.com/trial4/
+- ルートURLはHPへ、旧LPの `trial/` と従来の `final.html` はLP（`trial2/`）へ転送します。
 
 ## ファイル構成
 
@@ -14,10 +15,24 @@ HPと無料体験LPを管理するリポジトリです。過去の制作案・�
 | `dist/css/` | 全ページ共通の`base.css`・`fonts.css`と、ページ別CSS（`home.css`・`menu.css`など） |
 | `dist/js/` | 全ページ共通の`site.js` |
 | `dist/assets/` | HPで使う画像・フォント |
-| `dist/trial/` | LP。`index.html`を直接編集。`css/style.css`・`js/site.js`・`assets/`を使用。HP側とは完全に独立 |
+| `dist/trial2/` | LP。HP側とは独立（フォントの`../css/fonts.css`のみ共用） |
+| `dist/trial3/`, `dist/trial4/` | LPの比較案。`index.html`だけを持ち、CSS・JS・画像は`trial2/`のものを使用 |
+| `dist/trial/` | 旧LPのURL。`trial2/`へ転送するだけのページ |
 | `scripts/` | プレビュー、参照チェック |
 
-LPは `dist/trial/index.html`・`css/style.css`・`js/site.js` を編集します。PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください。`style.css`内の画像参照（`url('../assets/...')`）は、`css/`から見た相対パスなので`../`が必要です。
+LP（`dist/trial2/`）の構成:
+
+| ファイル | 内容 |
+| --- | --- |
+| `index.html` | ページ本体。セクションごとにコメントあり |
+| `css/hero.css` | ファーストビュー（写真・キャッチコピー・予約ボタン） |
+| `css/sections.css` | ファーストビューより下のセクション〜フッター |
+| `css/booking.css` | 予約ボタン（スマホの画面下固定バーと、ボタンの共通デザイン） |
+| `js/hero-fit.js` | ファーストビューを画面の高さに収める |
+| `js/booking-bar.js` | 画面下固定バーの表示/非表示（ページ一番下の予約ボタンが画面に入ったら隠す） |
+| `assets/` | LPで使う画像 |
+
+PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください（`trial3`・`trial4`のHTMLも同じファイルを読み込んでいるので、そちらも更新）。CSS内の画像参照（`url('../assets/...')`）は、`css/`から見た相対パスなので`../`が必要です。
 
 HPは各ページのHTMLを直接編集する普通の静的サイトです。共通スタイル・色/フォント変数・動作は `dist/css/base.css`・`dist/js/site.js` です。CSSやJSを更新したら、それを読み込んでいる各HTMLの `?v=` のハッシュも変更してください。背景画像は各要素の`style="--node-image:url(...)"`で指定していますが、この`url()`は**そのプロパティを実際に使っているCSSファイル（`dist/css/`）を基準に解決される**ため、パスは常に`../assets/...`になります（ページ自身の階層とは無関係です）。`npm run check`はこの点も含めてパスの整合性を検証します。
 
@@ -36,7 +51,9 @@ npm run preview
 git add dist scripts README.md package.json .gitignore
 git commit -m "Update Mayro website"
 git push origin master
-git subtree push --prefix dist origin gh-pages
+# gh-pagesの履歴はmasterと別なので、distの中身をgh-pagesの上に1コミット追加して公開する
+git fetch origin gh-pages
+git push origin "$(git commit-tree HEAD:dist -p origin/gh-pages -m "Publish Mayro website")":refs/heads/gh-pages
 ```
 
 GitHub Pagesは `gh-pages` のルートを公開します。公開処理の成功後に実際のHPとLPを確認してください。

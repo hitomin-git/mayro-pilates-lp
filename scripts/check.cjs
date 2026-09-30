@@ -19,6 +19,6 @@ for(const file of files){
     if(hash&&target.endsWith('.html')&&!fs.readFileSync(target,'utf8').includes(`id="${decodeURIComponent(hash)}"`))errors.push(`${file}: missing anchor ${url}`);
   }
 }
-const lp=fs.readFileSync(path.join(root,'trial/index.html'),'utf8');
+const lp=fs.readFileSync(path.join(root,'trial2/index.html'),'utf8');
 if(/<source\b[^>]*media=/.test(lp)||!lp.includes('assets/hero-13.jpg'))errors.push('LP hero must use the same photograph at all widths');
 console.log(JSON.stringify({pages:files.filter(f=>f.endsWith('.html')).length,references:refs,errors},null,2));process.exitCode=errors.length?1:0;
