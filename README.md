@@ -4,7 +4,7 @@ HPと無料体験LPを管理するリポジトリです。過去の制作案・�
 
 - HP: https://hitomin-git.github.io/mayro-pilates-lp/
 - LP: https://mayro-pilates.com/trial2/
-- LP比較案: https://mayro-pilates.com/trial3/ ・ https://mayro-pilates.com/trial4/
+- 端末別プレビュー: https://mayro-pilates.com/devices/ （主なスマホの画面サイズでLP・HPを並べて比較）
 - ルートURLはHPへ、旧LPの `trial/` と従来の `final.html` はLP（`trial2/`）へ転送します。
 
 ## ファイル構成
@@ -16,7 +16,7 @@ HPと無料体験LPを管理するリポジトリです。過去の制作案・�
 | `dist/js/` | 全ページ共通の`site.js` |
 | `dist/assets/` | HPで使う画像・フォント |
 | `dist/trial2/` | LP。HP側とは独立（フォントの`../css/fonts.css`のみ共用） |
-| `dist/trial3/`, `dist/trial4/` | LPの比較案。`index.html`だけを持ち、CSS・JS・画像は`trial2/`のものを使用 |
+| `dist/devices/` | 端末別プレビュー。機種の一覧は`index.html`内の`devices`で編集 |
 | `dist/trial/` | 旧LPのURL。`trial2/`へ転送するだけのページ |
 | `scripts/` | プレビュー、参照チェック |
 
@@ -32,7 +32,7 @@ LP（`dist/trial2/`）の構成:
 | `js/booking-bar.js` | 画面下固定バーの表示/非表示（ページ一番下の予約ボタンが画面に入ったら隠す） |
 | `assets/` | LPで使う画像 |
 
-PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください（`trial3`・`trial4`のHTMLも同じファイルを読み込んでいるので、そちらも更新）。CSS内の画像参照（`url('../assets/...')`）は、`css/`から見た相対パスなので`../`が必要です。
+PC・スマホとも `assets/hero-13.jpg` を使用します。CSS・JS更新時はHTMLの `?v=` も更新してください。CSS内の画像参照（`url('../assets/...')`）は、`css/`から見た相対パスなので`../`が必要です。
 
 HPは各ページのHTMLを直接編集する普通の静的サイトです。共通スタイル・色/フォント変数・動作は `dist/css/base.css`・`dist/js/site.js` です。CSSやJSを更新したら、それを読み込んでいる各HTMLの `?v=` のハッシュも変更してください。背景画像は各要素の`style="--node-image:url(...)"`で指定していますが、この`url()`は**そのプロパティを実際に使っているCSSファイル（`dist/css/`）を基準に解決される**ため、パスは常に`../assets/...`になります（ページ自身の階層とは無関係です）。`npm run check`はこの点も含めてパスの整合性を検証します。
 

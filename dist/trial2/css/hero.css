@@ -106,13 +106,6 @@
     color: #164b32;
     font-weight: 500;
   }
-  .description {
-    font-family: "Noto Serif JP", "Yu Mincho", serif;
-    font-size: 12px;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-    margin: 16px 0 0;
-  }
   .benefits {
     list-style: none;
     padding: 0;
@@ -131,7 +124,8 @@
     justify-content: center;
     text-align: center;
     gap: 5px;
-    background: #18211b12;
+    /* 上のラベル・予約ボタンと同じ深緑を薄く重ねて、写真の上でも文字を読みやすくする */
+    background: rgba(33, 83, 62, 0.35);
   }
   .benefits svg {
     height: 29px;
@@ -213,9 +207,6 @@
       margin-right: 0;
       gap: 8px;
     }
-    .description {
-      font-size: 11px;
-    }
     .access {
       font-size: 10px;
       gap: 5px;
@@ -288,9 +279,6 @@
     .lead {
       font-size: 34px;
     }
-    .description {
-      font-size: 15px;
-    }
     .eyebrows span {
       font-size: 12px;
     }
@@ -330,9 +318,6 @@
     }
     .access span + span {
       padding-left: 18px;
-    }
-    .description {
-      font-size: 13px;
     }
     .benefits {
       margin-bottom: 10px;
@@ -438,9 +423,6 @@
     .eyebrows {
       margin-bottom: 12px;
     }
-    .description {
-      margin-top: 10px;
-    }
     .hero-content .intro {
       margin-bottom: 10px;
     }
@@ -457,7 +439,6 @@
   }
   .hero-content .eyebrows,
   .hero-content .lead,
-  .hero-content .description,
   .hero-content .benefits {
     margin-top: 0;
     margin-bottom: 0;
@@ -465,10 +446,6 @@
   .hero-content .lead {
     font-size: clamp(24px, 3.85svh, 32px);
     line-height: 1.45;
-  }
-  .hero-content .description {
-    font-size: clamp(11px, 1.9svh, 14px);
-    line-height: 1.8;
   }
   .hero-content .cta {
     margin-top: 0;
@@ -483,9 +460,6 @@
     .hero-content .lead {
       font-size: clamp(26px, 4.3svh, 38px);
     }
-    .hero-content .description {
-      font-size: 15px;
-    }
   }
   /* ---- 文字とボタンを画面下側にまとめ、写真の見え方を調整する ---- */
   .hero-content {
@@ -496,10 +470,6 @@
   .hero-content .lead {
     font-size: clamp(23px, 3.5svh, 28px);
     line-height: 1.4;
-  }
-  .hero-content .description {
-    font-size: clamp(11px, 1.7svh, 13px);
-    line-height: 1.7;
   }
   .hero-content .eyebrows {
     gap: 4px;
@@ -545,9 +515,6 @@
     }
     .hero-content .lead {
       font-size: 32px;
-    }
-    .hero-content .description {
-      font-size: 14px;
     }
     .photo img {
       width: auto;
