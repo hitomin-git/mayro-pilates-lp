@@ -1,0 +1,193 @@
+<!doctype html>
+<!-- 端末別プレビュー：主なスマホの画面サイズでページを並べて表示し、余白の出方を比べるためのページ -->
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>端末別プレビュー｜Mayro</title>
+    <style>
+      :root {
+        --bg: #efeee8;
+        --card: #fffef6;
+        --ink: #3e3b35;
+        --muted: #706c63;
+        --green: #21533e;
+        --line: #d9d6c8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 14px/1.6 "Yu Gothic", "Hiragino Sans", Meiryo, sans-serif;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 24px;
+        padding: 12px 16px;
+        background: var(--card);
+        border-bottom: 1px solid var(--line);
+      }
+      h1 {
+        margin: 0;
+        font-size: 16px;
+        color: var(--green);
+      }
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      select,
+      button {
+        font: inherit;
+        padding: 4px 8px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--ink);
+      }
+      button {
+        cursor: pointer;
+      }
+      .note {
+        margin: 12px 16px 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .devices {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 16px;
+      }
+      .device {
+        margin: 0;
+      }
+      .device figcaption {
+        margin-bottom: 6px;
+        font-size: 13px;
+      }
+      .device figcaption small {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      /* 実寸のiframeを縮小して表示する。枠の大きさは縮小後のサイズに合わせる */
+      .screen {
+        overflow: hidden;
+        border: 1px solid #1f1f1f;
+        border-radius: 14px;
+        background: #000;
+      }
+      .screen iframe {
+        display: block;
+        border: 0;
+        transform-origin: top left;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>端末別プレビュー</h1>
+      <label
+        >ページ
+        <select id="page">
+          <option value="../trial2/">LP（trial2）</option>
+          <option value="../">HPトップ</option>
+        </select>
+      </label>
+      <label
+        >高さ
+        <select id="mode">
+          <option value="browser">ブラウザのバーを除いた表示域（目安）</option>
+          <option value="screen">画面全体</option>
+        </select>
+      </label>
+      <label
+        >表示倍率
+        <select id="zoom">
+          <option value="0.5">50%</option>
+          <option value="0.6" selected>60%</option>
+          <option value="0.75">75%</option>
+          <option value="1">100%</option>
+        </select>
+      </label>
+      <button id="reload" type="button">再読み込み</button>
+    </header>
+    <p class="note">
+      サイズはCSSピクセル（ブラウザが扱う画面サイズ）です。「表示域（目安）」は、iPhoneのSafariやAndroidのChromeでアドレスバーなどが表示されている状態のおおよその高さです。実際はOSやブラウザの設定で数十px前後します。iPhoneのノッチ・ホームバー部分の余白は再現されません。
+    </p>
+    <div class="devices" id="devices"></div>
+
+    <script>
+      // 名前、画面の幅・高さ（CSSピクセル）、ブラウザのバーなどで隠れる高さの目安
+      const devices = [
+        { name: "iPhone SE（第2・第3世代）", width: 375, height: 667, bars: 119 },
+        { name: "iPhone 13 mini", width: 375, height: 812, bars: 180 },
+        { name: "iPhone 12・13・14", width: 390, height: 844, bars: 180 },
+        { name: "iPhone 15・16", width: 393, height: 852, bars: 180 },
+        { name: "iPhone 16 Pro・17・17 Pro", width: 402, height: 874, bars: 180 },
+        { name: "iPhone Air", width: 420, height: 912, bars: 180 },
+        { name: "iPhone 15 Plus・16 Plus", width: 430, height: 932, bars: 180 },
+        { name: "iPhone 16 Pro Max・17 Pro Max", width: 440, height: 956, bars: 180 },
+        { name: "Galaxy S24・S25", width: 360, height: 780, bars: 135 },
+        { name: "Pixel 8・9", width: 412, height: 915, bars: 135 },
+      ];
+
+      const container = document.getElementById("devices");
+      const pageSelect = document.getElementById("page");
+      const modeSelect = document.getElementById("mode");
+      const zoomSelect = document.getElementById("zoom");
+
+      function render() {
+        const zoom = Number(zoomSelect.value);
+        const useBrowserArea = modeSelect.value === "browser";
+        container.replaceChildren(
+          ...devices.map((device) => {
+            const height = useBrowserArea ? device.height - device.bars : device.height;
+            const figure = document.createElement("figure");
+            figure.className = "device";
+
+            const caption = document.createElement("figcaption");
+            const size = document.createElement("small");
+            size.textContent =
+              `${device.width} × ${height}` +
+              (useBrowserArea ? `（画面 ${device.width} × ${device.height}）` : "");
+            caption.append(device.name, size);
+
+            // 実寸のiframeを縮小表示する
+            const screen = document.createElement("div");
+            screen.className = "screen";
+            screen.style.width = device.width * zoom + "px";
+            screen.style.height = height * zoom + "px";
+            const frame = document.createElement("iframe");
+            frame.title = device.name;
+            frame.width = device.width;
+            frame.height = height;
+            frame.style.transform = `scale(${zoom})`;
+            frame.src = pageSelect.value;
+            screen.append(frame);
+
+            figure.append(caption, screen);
+            return figure;
+          }),
+        );
+      }
+
+      for (const control of [pageSelect, modeSelect, zoomSelect]) control.addEventListener("change", render);
+      document.getElementById("reload").addEventListener("click", render);
+      render();
+    </script>
+  </body>
+</html>
