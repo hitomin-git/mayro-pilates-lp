@@ -124,8 +124,7 @@
     justify-content: center;
     text-align: center;
     gap: 5px;
-    /* 上のラベル・予約ボタンと同じ深緑を薄く重ねて、写真の上でも文字を読みやすくする */
-    background: rgba(33, 83, 62, 0.35);
+    background: #18211b12;
   }
   .benefits svg {
     height: 29px;
