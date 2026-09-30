@@ -522,26 +522,6 @@
       top: -8%;
     }
   }
-  /* ---- スマホ：写真は画面の「幅」だけを基準に置き、どの機種でも同じ切り取り方にする ----
-     写真を画面幅ぴったりに表示し、上に伸ばした両手と顔が必ず入るようにする。
-     文字は写真のあごより下（画面幅の66%の位置）から始め、入りきらない分は js/hero-fit.js が縮小する。 */
-  @media (max-width: 599px) {
-    .photo {
-      background: #2c332d;
-    }
-    .photo img {
-      width: 100%;
-      height: auto;
-      min-height: 0;
-      left: 0;
-      top: 0;
-      /* 縦長の機種で写真の下端の境目が見えないよう、下の方をなだらかに消す */
-      mask-image: linear-gradient(180deg, #000 80%, transparent);
-    }
-    .hero-content {
-      top: 66vw;
-    }
-  }
 }
 
 /* ページ全体の背景と、ファーストビューの基本フォント */
