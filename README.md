@@ -3,9 +3,9 @@
 HPと無料体験LPを管理するリポジトリです。過去の制作案・比較ページ・試作スクリプト・未使用画像は削除済みです。以前の内容はGit履歴から確認できます。
 
 - HP: https://hitomin-git.github.io/mayro-pilates-lp/
-- LP: https://mayro-pilates.com/trial2/
+- LP: https://mayro-pilates.com/trial/
 - 端末別プレビュー: https://mayro-pilates.com/devices/ （主なスマホの画面サイズでLP・HPを並べて比較）
-- ルートURLはHPへ、旧LPの `trial/` と従来の `final.html` はLP（`trial2/`）へ転送します。
+- ルートURLはHPへ転送します。
 
 ## ファイル構成
 
@@ -15,12 +15,11 @@ HPと無料体験LPを管理するリポジトリです。過去の制作案・�
 | `dist/css/` | 全ページ共通の`base.css`・`fonts.css`と、ページ別CSS（`home.css`・`menu.css`など） |
 | `dist/js/` | 全ページ共通の`site.js` |
 | `dist/assets/` | HPで使う画像・フォント |
-| `dist/trial2/` | LP。HP側とは独立（フォントの`../css/fonts.css`のみ共用） |
+| `dist/trial/` | LP。HP側とは独立（フォントの`../css/fonts.css`のみ共用） |
 | `dist/devices/` | 端末別プレビュー。機種の一覧は`index.html`内の`devices`で編集 |
-| `dist/trial/` | 旧LPのURL。`trial2/`へ転送するだけのページ |
 | `scripts/` | プレビュー、参照チェック |
 
-LP（`dist/trial2/`）の構成:
+LP（`dist/trial/`）の構成:
 
 | ファイル | 内容 |
 | --- | --- |
