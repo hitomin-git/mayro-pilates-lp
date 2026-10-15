@@ -1,0 +1,9 @@
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "mayro-schedule",
+      "ignore": ["node_modules", ".git", "*.log"]
+    }
+  ]
+}

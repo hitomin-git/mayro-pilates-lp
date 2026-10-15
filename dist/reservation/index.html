@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>MAYRO | 体験日程のご相談</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a class="brand" href="./"
+          ><img
+            src="./logo.svg"
+            alt="Mayro Pilates Studio"
+            width="150"
+            height="30"
+        /></a>
+        <h1 class="page-title">無料体験のお申し込み</h1>
+      </header>
+      <nav class="steps">
+        <span class="active"><b>1</b>日程を選ぶ</span
+        ><span><b>2</b>お名前を入力</span><span><b>3</b>文章を確認</span>
+      </nav>
+      <section id="calendarStep" class="panel">
+        <div class="sectionhead">
+          <div>
+            <h2>希望の日程を選ぶ</h2>
+            <p>ご希望を３つまで選んでください。</p>
+          </div>
+        </div>
+        <div id="status" class="empty" role="status">
+          最新の日程を取得しています…
+        </div>
+        <div id="calendarArea" hidden>
+          <div class="calendarhead">
+            <button id="prev" aria-label="前の週">←</button>
+            <div class="week-heading"><h3 id="range"></h3></div>
+            <button id="next" aria-label="次の週">→</button>
+          </div>
+          <div
+            id="calendar"
+            class="calendar"
+            tabindex="0"
+            role="region"
+            aria-label="週間カレンダー。上下にスクロールできます"
+          ></div>
+        </div>
+        <div class="selection">
+          <h3>選択した希望日時 <span id="count">0/3</span></h3>
+          <div id="choices"></div>
+        </div>
+        <p id="notice" class="notice" role="status"></p>
+        <div class="actions">
+          <div class="confirmation-notice">
+            <b>まだ予約は確定していません</b
+            ><span>予約の確定はスタッフの返信後となります。</span>
+          </div>
+          <button id="toName" class="primary" disabled>
+            次へ・お名前を入力 →
+          </button>
+        </div>
+      </section>
+      <section id="nameStep" class="panel narrow" hidden>
+        <h2>お名前を教えてください</h2>
+        <p>スタッフが申込み内容を確認するために使用します。</p>
+        <form id="nameForm">
+          <label class="name"
+            >お名前 <span>必須</span
+            ><input
+              id="name"
+              required
+              maxlength="80"
+              autocomplete="name"
+              placeholder="例：山田 花子"
+          /></label>
+          <p class="fine">
+            このデモでは、お名前をサーバーに保存・送信しません。
+          </p>
+          <div class="actions">
+            <button type="button" id="backCalendar" class="sub">
+              ← 日程に戻る</button
+            ><button class="primary">LINE用の文章を作成 →</button>
+          </div>
+        </form>
+      </section>
+      <section id="messageStep" class="panel narrow" hidden>
+        <p class="eyebrow">READY TO SHARE</p>
+        <h2>申込み文ができました。</h2>
+        <p>内容を確認し、文章をコピーしてご利用ください。</p>
+        <textarea
+          id="message"
+          aria-label="LINE用の申込み文章"
+          readonly
+          rows="11"
+        ></textarea>
+        <div class="demo-note">
+          デモはここで完了です。<br />LINEへの送信・hacomonoでの予約は行われていません。
+        </div>
+        <div class="actions">
+          <button id="backName" class="sub">← 内容を修正</button
+          ><button id="copy" class="primary">文章をコピー</button>
+        </div>
+        <p id="copyStatus" role="status"></p>
+      </section>
+    </main>
+    <script src="./config.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

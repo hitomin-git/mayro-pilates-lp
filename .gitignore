@@ -10,3 +10,7 @@ Thumbs.db
 /nakamura-*.zip
 /nakamura-reference.html
 /*nakamura*.py
+
+functions/node_modules/
+.firebase/
+firebase-debug.log
