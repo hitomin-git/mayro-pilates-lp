@@ -175,6 +175,15 @@ $("nameForm").onsubmit = (e) => {
       )
       .join("\n") +
     "\n\nご確認をお願いいたします。";
+  const link = $("lineSend");
+  link.hidden = !window.MAYRO_LINE_ID;
+  if (window.MAYRO_LINE_ID)
+    link.href =
+      "https://line.me/R/oaMessage/" +
+      encodeURIComponent(window.MAYRO_LINE_ID) +
+      "/?" +
+      encodeURIComponent($("message").value);
+  $("copy").className = window.MAYRO_LINE_ID ? "sub" : "primary";
   $("copy").textContent = "文章をコピー";
   $("copyStatus").textContent = "";
   step(3);

@@ -76,7 +76,7 @@
               placeholder="例：山田 花子"
           /></label>
           <p class="fine">
-            このデモでは、お名前をサーバーに保存・送信しません。
+            お名前は、LINEに送る文章を作るためだけに使います。このページには保存されません。
           </p>
           <div class="actions">
             <button type="button" id="backCalendar" class="sub">
@@ -86,21 +86,22 @@
         </form>
       </section>
       <section id="messageStep" class="panel narrow" hidden>
-        <p class="eyebrow">READY TO SHARE</p>
         <h2>申込み文ができました。</h2>
-        <p>内容を確認し、文章をコピーしてご利用ください。</p>
+        <p>内容を確認し、「LINEで送る」を押してください。</p>
         <textarea
           id="message"
           aria-label="LINE用の申込み文章"
           readonly
-          rows="11"
+          rows="8"
         ></textarea>
-        <div class="demo-note">
-          デモはここで完了です。<br />LINEへの送信・hacomonoでの予約は行われていません。
-        </div>
+        <p class="fine">
+          LINEが開いたら、トークの入力欄の文章を確認して送信を押してください。送信するまで、お申し込みは完了しません。
+        </p>
         <div class="actions">
-          <button id="backName" class="sub">← 内容を修正</button
-          ><button id="copy" class="primary">文章をコピー</button>
+          <a id="lineSend" class="primary linkbtn" href="#" hidden
+            >LINEで送る →</a
+          ><button id="copy" class="sub">文章をコピー</button
+          ><button id="backName" class="sub">← 内容を修正</button>
         </div>
         <p id="copyStatus" role="status"></p>
       </section>
