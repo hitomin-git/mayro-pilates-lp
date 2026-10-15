@@ -183,20 +183,18 @@ $("nameForm").onsubmit = (e) => {
       encodeURIComponent(window.MAYRO_LINE_ID) +
       "/?" +
       encodeURIComponent($("message").value);
-  $("copy").className = window.MAYRO_LINE_ID ? "sub" : "primary";
-  $("copy").textContent = "文章をコピー";
   $("copyStatus").textContent = "";
+  copyMessage();
   step(3);
 };
 $("name").oninput = () => $("name").setCustomValidity("");
-$("copy").onclick = async () => {
+async function copyMessage() {
   try {
     await navigator.clipboard.writeText($("message").value);
-    $("copy").textContent = "✓ コピーしました";
+    $("copyStatus").textContent = "✓ 文章をコピーしました";
   } catch {
-    $("message").select();
     $("copyStatus").textContent =
-      "文章を選択しました。手動でコピーしてください。";
+      "自動でコピーできませんでした。「LINEで送る」を押すか、上の文章を選んでコピーしてください。";
   }
-};
+}
 refresh();

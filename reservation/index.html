@@ -23,6 +23,10 @@
         <span class="active"><b>1</b>日程を選ぶ</span
         ><span><b>2</b>お名前を入力</span><span><b>3</b>文章を確認</span>
       </nav>
+      <div class="confirmation-notice">
+            <b>まだ予約は確定していません</b
+            ><span>予約の確定はスタッフの返信後となります。</span>
+          </div>
       <section id="calendarStep" class="panel">
         <div class="sectionhead">
           <div>
@@ -53,10 +57,7 @@
         </div>
         <p id="notice" class="notice" role="status"></p>
         <div class="actions">
-          <div class="confirmation-notice">
-            <b>まだ予約は確定していません</b
-            ><span>予約の確定はスタッフの返信後となります。</span>
-          </div>
+          
           <button id="toName" class="primary" disabled>
             次へ・お名前を入力 →
           </button>
@@ -94,16 +95,15 @@
           readonly
           rows="8"
         ></textarea>
+        <p id="copyStatus" class="copystatus" role="status"></p>
         <p class="fine">
           LINEが開いたら、トークの入力欄の文章を確認して送信を押してください。送信するまで、お申し込みは完了しません。
         </p>
         <div class="actions">
           <a id="lineSend" class="primary linkbtn" href="#" hidden
             >LINEで送る →</a
-          ><button id="copy" class="sub">文章をコピー</button
           ><button id="backName" class="sub">← 内容を修正</button>
         </div>
-        <p id="copyStatus" role="status"></p>
       </section>
     </main>
     <script src="./config.js"></script>

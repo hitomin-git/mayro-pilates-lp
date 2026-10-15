@@ -393,8 +393,13 @@ header {
 .notice:empty {
   display: none;
 }
+.copystatus {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--green);
+}
 .confirmation-notice {
-  flex: 1;
+  margin: 0 0 12px;
   padding: 10px 12px;
   background: #fff5df;
   border: 1px solid #e6cca0;
