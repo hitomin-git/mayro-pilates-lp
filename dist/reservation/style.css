@@ -377,6 +377,14 @@ header {
   background: transparent;
   font-size: 12px;
 }
+.linkbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--green);
+  text-decoration: none;
+}
 .notice {
   margin: 8px 0 0;
   font-size: 12px;
@@ -447,15 +455,6 @@ textarea {
 .fine {
   font-size: 10px;
   color: #829080;
-}
-.demo-note {
-  margin-top: 15px;
-  padding: 15px;
-  font-size: 12px;
-  line-height: 1.8;
-  color: #85694a;
-  background: #f5efe4;
-  border-radius: 8px;
 }
 
 /* 広い画面 */
@@ -548,6 +547,9 @@ textarea {
   .primary {
     flex: none;
     padding: 15px 25px;
+  }
+  .narrow .actions {
+    justify-content: flex-start;
   }
   .confirmation-notice b {
     font-size: 13px;
