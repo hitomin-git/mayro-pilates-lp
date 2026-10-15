@@ -10,6 +10,11 @@ const label = (d) =>
     weekday: "short",
     timeZone: "Asia/Tokyo",
   });
+const weekday = (d) =>
+  new Date(d + "T00:00:00+09:00").toLocaleDateString("ja-JP", {
+    weekday: "short",
+    timeZone: "Asia/Tokyo",
+  });
 const add = (d, n) =>
   new Date(Date.parse(d + "T00:00:00Z") + n * 86400000)
     .toISOString()
@@ -72,13 +77,16 @@ function render() {
   $("calendar").replaceChildren(grid);
   days.forEach((day) => {
     const col = el("div", undefined, "day");
-    col.append(el("h4", label(day)));
+    const head = el("h4"),
+      m = day.split("-");
+    head.append(el("b", +m[1] + "/" + +m[2]), weekday(day));
+    col.append(head);
     const list = el("div", undefined, "slot-list");
     list.setAttribute("aria-label", label(day) + "の時間枠");
     col.append(list);
     if (day < data.from || day > data.to) {
       col.classList.add("outside");
-      const outside = el("p", "対象期間外", "none outside-label");
+      const outside = el("p", "期間外", "none outside-label");
       col.insertBefore(outside, list);
       list.remove();
       grid.append(col);
@@ -91,7 +99,7 @@ function render() {
           .map((s) => [s.start + "_" + s.end, s]),
       ).values(),
     ];
-    if (!slots.length) list.append(el("p", "受付可能な体験枠なし", "none"));
+    if (!slots.length) list.append(el("p", "枠なし", "none"));
     slots.forEach((s) => {
       const i = selected.findIndex((x) => x.id === s.id),
         b = el("button", undefined, "slot" + (i >= 0 ? " selected" : ""));
