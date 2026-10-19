@@ -360,20 +360,25 @@
 
 /* ---- セクションごとの背景色（白とベージュの交互） ----
    最下部（YOUR FIRST STEP）のベージュから逆算：
-   お悩み＝白 → 理由＝ベージュ → 流れ＝白 → 料金＝ベージュ → 講師＝白 → ピラティス＝ベージュ → FAQ＝白 → 最下部＝ベージュ */
+   お悩み＝白 → 理由＝ベージュ → 料金＝白 → 流れ＝ベージュ → 講師＝白 → ピラティス＝ベージュ → FAQ＝白 → 最下部＝ベージュ */
 .lp-rest .worries,
-.lp-rest .trial,
+.lp-rest .pricing,
 .lp-rest .restored-staff,
 .lp-rest .faq-section {
   background: #fffef6;
 }
 .lp-rest .reasons,
-.lp-rest .pricing,
+.lp-rest .trial,
 .lp-rest .about {
   background: #eae8e1;
 }
 .lp-rest .trial .flow-meta {
-  background: #eae8e1;
+  background: #fffef6;
+}
+/* 見出しの句の途中で折り返さない（収まらないときだけ句ごとに折り返す） */
+.nowrap {
+  display: inline-block;
+  font-weight: inherit;
 }
 .lp-rest .worry-list li {
   border-color: #d2cbc0;

@@ -127,7 +127,7 @@
       <button id="reload" type="button">再読み込み</button>
     </header>
     <p class="note">
-      サイズはCSSピクセル（ブラウザが扱う画面サイズ）です。「表示域（目安）」は、iPhoneのSafariやAndroidのChromeでアドレスバーなどが表示されている状態のおおよその高さです。実際はOSやブラウザの設定で数十px前後します。iPhoneのノッチ・ホームバー部分の余白は再現されません。
+      サイズはCSSピクセル（ブラウザが扱う画面サイズ）です。「表示域（目安）」は、iPhoneのSafariやAndroidのChromeでアドレスバーなどが表示されている状態のおおよその高さです。実際はOSやブラウザの設定で数十px前後します。iPhoneのノッチ・ホームバー部分の余白は再現されません。PCのスクロールバーは隠して、実機と同じ幅で表示しています。
     </p>
     <div class="devices" id="devices"></div>
 
@@ -177,6 +177,15 @@
             frame.width = device.width;
             frame.height = height;
             frame.style.transform = `scale(${zoom})`;
+            // PCのブラウザはiframeに太いスクロールバー（約15px）が付き、表示幅がその分狭くなる。
+            // 実機のスマホは幅を減らさないので、読み込み後にバーを隠して実機の幅に合わせる
+            frame.addEventListener("load", () => {
+              try {
+                const style = frame.contentDocument.createElement("style");
+                style.textContent = "html{scrollbar-width:none}html::-webkit-scrollbar{display:none}";
+                frame.contentDocument.head.append(style);
+              } catch (e) {}
+            });
             frame.src = pageSelect.value;
             screen.append(frame);
 
