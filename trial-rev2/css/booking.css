@@ -1,0 +1,103 @@
+/* 予約ボタン
+   ・.trial2-booking … スマホで画面下に固定表示する予約バー（表示/非表示は js/booking-bar.js）
+   ・.booking-unified … ページ内の予約ボタンをスマホで同じデザインにそろえる */
+/* ---- 画面下の固定予約バー ---- */
+.trial2-booking {
+  display: none;
+}
+.trial2-booking[hidden] {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .trial2-booking {
+    box-sizing: border-box;
+    display: block;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 7px 16px calc(8px + env(safe-area-inset-bottom));
+    background: #fffef7f5;
+    border-top: 1px solid #d9dfd4;
+    box-shadow: 0 -3px 20px #1a352112;
+    backdrop-filter: blur(8px);
+    font-family: "Yu Gothic", sans-serif;
+  }
+  .trial2-booking p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #514c42;
+  }
+  .trial2-booking a {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 54px;
+    border-radius: 30px;
+    background: #285640;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .trial2-booking a:focus-visible {
+    outline: 3px solid #b39754;
+    outline-offset: 2px;
+  }
+  .trial2-booking span {
+    font-size: 24px;
+  }
+  @scope (.lp-rest) {
+    footer {
+      padding-bottom: calc(124px + env(safe-area-inset-bottom)) !important;
+    }
+    .closing-booking .cta {
+      display: flex;
+    }
+  }
+}
+/* ---- 予約ボタンの共通デザイン（スマホ） ---- */
+@media (max-width: 640px) {
+  .booking-unified {
+    box-sizing: border-box;
+    display: flex !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: 24px !important;
+    min-height: 54px !important;
+    padding: 11px 16px !important;
+    border: 1px solid #e4e8d7 !important;
+    border-radius: 999px !important;
+    background: #21533edb !important;
+    box-shadow: 0 2px 8px #0002 !important;
+    color: #fff !important;
+    font-family: "Noto Serif JP", "Yu Mincho", serif !important;
+    font-size: 19px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.02em !important;
+    text-decoration: none;
+  }
+  .booking-unified > span:not(.arrow) {
+    font: inherit !important;
+  }
+  .booking-unified .arrow {
+    font:
+      26px/1 Arial,
+      sans-serif !important;
+    margin: 0 !important;
+  }
+  .booking-unified:hover {
+    background: #183f2e !important;
+  }
+}
+@media (max-width: 380px) {
+  .booking-unified {
+    font-size: 17px !important;
+    gap: 18px !important;
+  }
+}
