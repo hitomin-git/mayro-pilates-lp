@@ -1,0 +1,134 @@
+/* PC表示：スマホ版の幅（430px）のまま中央に置き、両脇を背景とご案内で埋める。
+   外側のページ（html.pc-outer）だけに効く。中身は js/pc-shell.js が入れる iframe（= スマホ版そのもの） */
+html.pc-outer,
+html.pc-outer body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #1f2420;
+}
+html.pc-outer body > *:not(.pc-shell) {
+  display: none !important;
+}
+.pc-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 430px 1fr;
+  align-items: center;
+  color: #fff;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  overflow: hidden;
+}
+/* 背景：ヒーロー写真をぼかして暗くする */
+.pc-shell::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: url("../assets/hero-13.webp") center 30% / cover;
+  filter: blur(28px) saturate(0.9);
+  transform: scale(1.1);
+}
+.pc-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #1b2a22d9, #1b2a2299 50%, #1b2a22d9);
+}
+.pc-side,
+.pc-phone {
+  position: relative;
+  z-index: 1;
+}
+.pc-phone {
+  grid-column: 2;
+  width: 430px;
+  height: min(calc(100vh - 40px), 960px);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fffef6;
+  box-shadow: 0 20px 60px #0008;
+}
+.pc-phone iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.pc-side {
+  display: none;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.pc-side--left {
+  justify-self: end;
+  max-width: 400px;
+}
+.pc-side--right {
+  justify-self: start;
+  width: 340px;
+  max-width: 100%;
+}
+.pc-side img.pc-logo {
+  display: block;
+  width: 170px;
+  height: auto;
+  margin-bottom: 28px;
+  filter: brightness(0) invert(1);
+}
+.pc-side h2 {
+  margin: 0 0 16px;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.pc-side p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #ffffffd9;
+}
+.pc-side .pc-badge {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border: 1px solid #ffffff80;
+  border-radius: 99px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.pc-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  min-height: 56px;
+  border-radius: 999px;
+  background: #06c755;
+  box-shadow: 0 3px 0 #04a147;
+  color: #fff;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pc-line img {
+  width: 28px;
+  height: 28px;
+}
+/* 両脇の案内は、横幅に余裕があるときだけ */
+@media (min-width: 1180px) {
+  .pc-side {
+    display: block;
+  }
+}
+@media (max-height: 640px) {
+  .pc-phone {
+    height: calc(100vh - 16px);
+  }
+}
