@@ -5,31 +5,23 @@ html.pc-outer body {
   margin: 0;
   background: #1f2420;
 }
-/* スクロールバーは隠す（ホイール・トラックパッド・キーボードでのスクロールは使える） */
+/* 外側のページはスクロールしない。スクロールは枠の中のページ（iframe）が担当する */
 html.pc-outer {
-  scrollbar-width: none;
+  overflow: hidden;
 }
-html.pc-outer::-webkit-scrollbar {
-  display: none;
-}
-html.pc-outer body > *:not(.pc-shell):not(.pc-spacer) {
+html.pc-outer body > *:not(.pc-shell) {
   display: none !important;
-}
-/* ブラウザ本来のスクロールを使うための空の領域。高さは中身（iframe内）と同じにする（js/pc-shell.js） */
-.pc-spacer {
-  width: 1px;
-  pointer-events: none;
 }
 .pc-shell {
   position: fixed;
   inset: 0;
   display: grid;
   grid-template-columns: 1fr 430px 1fr;
+  grid-template-rows: 100%;
   align-items: center;
   color: #fff;
   font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
-  /* hidden だとスクロール用の箱になり、Safari でスワイプがページへ伝わらないことがあるため clip */
-  overflow: clip;
+  overflow: hidden;
 }
 /* 背景：ヒーロー写真をぼかして暗くする */
 .pc-shell::before {
@@ -54,15 +46,12 @@ html.pc-outer body > *:not(.pc-shell):not(.pc-spacer) {
 .pc-phone {
   grid-column: 2;
   width: 430px;
-  height: 100vh;
-  height: 100dvh;
-  overflow: clip;
+  height: 100%;
+  overflow: hidden;
   background: #fffef6;
   box-shadow: 0 0 40px #0006;
 }
 .pc-phone iframe {
-  /* スワイプ・ホイールは外側のページが受ける（js/pc-shell.js が内側へ反映） */
-  pointer-events: none;
   display: block;
   width: 100%;
   height: 100%;

@@ -20,53 +20,20 @@
       "<p>友だち追加して、希望日時を送るだけ</p>" +
       '<a class="pc-line" href="https://lin.ee/o3mdHEh"><img src="assets/line-icon.svg" alt="" width="28" height="28" /><span>LINEで簡単申し込み｜60分無料体験</span></a>' +
       "</aside>";
-    const spacer = document.createElement("div");
-    spacer.className = "pc-spacer";
-    document.body.append(shell, spacer);
-    // スクロールは外側（ブラウザ全体）だけが担当する。iframe はジェスチャーを受けず、外側のスクロール量に追従するだけ。
-    // こうすると、Safari のスワイプの慣性やトラックパッドの動きが、通常のページと同じ感触になる。
+    document.body.append(shell);
+    // スクロールは枠の中のページ自身が担当する（同期や高さの書き換えをしないので、Safari の慣性が途切れない）。
+    // 両脇の上でのホイール操作だけ、枠の中へ渡す。
     const frame = shell.querySelector("iframe");
-    const phone = shell.querySelector(".pc-phone");
-    const inner = () => frame.contentWindow;
-    let lastOuterScroll = 0;
-    const size = () => {
-      const doc = frame.contentDocument && frame.contentDocument.documentElement;
-      if (doc) spacer.style.height = doc.scrollHeight + "px";
-    };
-    const toInner = () => {
-      lastOuterScroll = Date.now();
-      const w = inner();
-      if (w && Math.abs(w.scrollY - scrollY) > 0.5) w.scrollTo({ top: scrollY, behavior: "instant" });
-    };
-    // 内側だけが動いたとき（ページ内リンクなど）は外側を合わせる。外側が動いている最中は何もしない
-    const toOuter = () => {
-      const w = inner();
-      if (w && Date.now() - lastOuterScroll > 200 && Math.abs(w.scrollY - scrollY) > 1) {
-        scrollTo({ top: w.scrollY, behavior: "instant" });
-      }
-    };
-    frame.addEventListener("load", () => {
-      const w = inner();
-      size();
-      new w.ResizeObserver(size).observe(w.document.documentElement);
-      w.addEventListener("scroll", toOuter, { passive: true });
-      toInner();
-    });
-    addEventListener("scroll", toInner, { passive: true });
-    addEventListener("resize", size);
-    // タップ・クリックは、その位置にある内側の要素へ渡す
-    const target = (e) => {
-      const r = frame.getBoundingClientRect();
-      const el = frame.contentDocument.elementFromPoint(e.clientX - r.left, e.clientY - r.top);
-      return el && el.closest("a,summary,button,label,input,select,textarea,[role=button]");
-    };
-    phone.addEventListener("click", (e) => {
-      const el = target(e);
-      if (el) el.click();
-    });
-    phone.addEventListener("pointermove", (e) => {
-      phone.style.cursor = target(e) ? "pointer" : "";
-    });
+    shell.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.target === frame || !frame.contentWindow) return;
+        frame.contentWindow.scrollBy({ top: e.deltaY, behavior: "instant" });
+      },
+      { passive: true },
+    );
+    // 矢印キー・スペースキーでスクロールできるよう、読み込み後に枠へフォーカスを移す
+    frame.addEventListener("load", () => frame.focus({ preventScroll: true }));
   } else if (top === self) {
     // スマホ幅から900px以上に広げたら、再読み込みしてPC用の枠にする
     matchMedia("(min-width:900px)").addEventListener("change", (e) => {
