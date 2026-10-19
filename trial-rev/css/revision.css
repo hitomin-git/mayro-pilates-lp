@@ -357,3 +357,120 @@
   font-size: 12px;
   line-height: 1.6;
 }
+
+/* ---- セクションごとの背景色（白とベージュの交互） ----
+   最下部（YOUR FIRST STEP）のベージュから逆算：
+   お悩み＝白 → 理由＝ベージュ → 流れ＝白 → 料金＝ベージュ → 講師＝白 → ピラティス＝ベージュ → FAQ＝白 → 最下部＝ベージュ */
+.lp-rest .worries,
+.lp-rest .trial,
+.lp-rest .restored-staff,
+.lp-rest .faq-section {
+  background: #fffef6;
+}
+.lp-rest .reasons,
+.lp-rest .pricing,
+.lp-rest .about {
+  background: #eae8e1;
+}
+.lp-rest .trial .flow-meta {
+  background: #eae8e1;
+}
+.lp-rest .worry-list li {
+  border-color: #d2cbc0;
+}
+
+/* ---- セクション内のボタン：内容のすぐ下に置く ----
+   セクションは画面1枚分の高さ（インストラクター紹介と同じ）。
+   ボタンはセクションの中にあるので、内容と一緒に縦中央にそろう */
+.lp-rest .cta-block.in-flow {
+  padding: 22px 0 6px;
+}
+@media (min-width: 641px) {
+  .lp-rest .cta-block.in-flow {
+    padding: 26px 0 6px;
+  }
+}
+@media (max-width: 640px) {
+  .lp-rest .reasons,
+  .lp-rest .pricing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* ---- 料金プラン：金額の右に「税込」を置いて縦幅を縮める ---- */
+@media (max-width: 640px) {
+  .lp-rest .pricing .plan-grid article {
+    grid-template-columns: 1fr auto auto;
+    padding: 14px 4px;
+    gap: 2px 6px;
+  }
+  .lp-rest .pricing .plan-grid h3 {
+    grid-row: 1;
+  }
+  .lp-rest .pricing .plan-amount {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .lp-rest .pricing .plan-tax {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: end;
+    padding-bottom: 6px;
+  }
+  .lp-rest .pricing .plan-per {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+    text-align: right;
+  }
+}
+@media (min-width: 641px) {
+  .lp-rest .plan-amount {
+    display: inline-flex;
+  }
+  .lp-rest .plan-tax {
+    display: inline-block;
+    margin: 0 0 0 6px;
+  }
+}
+
+/* ---- よくあるご質問 ----
+   ・質問の上下余白を固定（縦長の画面で間延びしない）
+   ・質問と回答の境目：開いた質問をベージュの帯にし、回答の左に線を入れる
+   ・上から並べて、開いても下へ伸びるだけにする（中央寄せだと開くたびに動く） */
+.lp-rest .faq-section {
+  justify-content: flex-start;
+}
+.lp-rest .faq-list summary {
+  padding: 14px 0;
+  font-weight: 700;
+}
+.lp-rest .faq-list details[open] summary {
+  padding-bottom: 10px;
+}
+.lp-rest .faq-list details p {
+  margin: 0 0 14px;
+  padding: 2px 4px 2px 12px;
+  border-left: 3px solid #b39754;
+  color: #4a4a42;
+}
+@media (min-width: 641px) {
+  .lp-rest .faq-list summary {
+    padding: 18px 8px;
+  }
+  .lp-rest .faq-list details p {
+    margin-bottom: 18px;
+    padding: 2px 35px 2px 14px;
+  }
+}
+
+/* ---- フッター：下の余白をなくす ----
+   （固定バーは最下部ボタンが見えた時点で消えるので、避ける余白は不要） */
+.lp-rest footer {
+  padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+}
+.lp-rest {
+  padding-bottom: 0 !important;
+}
