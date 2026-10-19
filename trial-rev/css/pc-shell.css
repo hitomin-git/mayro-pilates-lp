@@ -28,7 +28,8 @@ html.pc-outer body > *:not(.pc-shell):not(.pc-spacer) {
   align-items: center;
   color: #fff;
   font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
-  overflow: hidden;
+  /* hidden だとスクロール用の箱になり、Safari でスワイプがページへ伝わらないことがあるため clip */
+  overflow: clip;
 }
 /* 背景：ヒーロー写真をぼかして暗くする */
 .pc-shell::before {
@@ -55,11 +56,13 @@ html.pc-outer body > *:not(.pc-shell):not(.pc-spacer) {
   width: 430px;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden;
+  overflow: clip;
   background: #fffef6;
   box-shadow: 0 0 40px #0006;
 }
 .pc-phone iframe {
+  /* スワイプ・ホイールは外側のページが受ける（js/pc-shell.js が内側へ反映） */
+  pointer-events: none;
   display: block;
   width: 100%;
   height: 100%;
