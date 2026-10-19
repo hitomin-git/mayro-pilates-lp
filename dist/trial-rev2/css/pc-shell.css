@@ -1,0 +1,139 @@
+/* PC表示：スマホ版の幅（430px）のまま中央に置き、両脇を単色の背景とご案内で埋める。
+   外側のページ（html.pc-outer）だけに効く。中身は js/pc-shell.js が入れる iframe（= スマホ版そのもの） */
+html.pc-outer,
+html.pc-outer body {
+  margin: 0;
+  background: #1f2420;
+}
+/* 外側のページはスクロールしない。スクロールは枠の中のページ（iframe）が担当する */
+html.pc-outer {
+  overflow: hidden;
+}
+html.pc-outer body > *:not(.pc-shell) {
+  display: none !important;
+}
+.pc-shell {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 430px 1fr;
+  grid-template-rows: 100%;
+  align-items: center;
+  color: #fff;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  overflow: hidden;
+  background: #1f2420;
+}
+.pc-side,
+.pc-phone {
+  position: relative;
+  z-index: 1;
+}
+.pc-phone {
+  grid-column: 2;
+  width: 430px;
+  height: 100%;
+  overflow: hidden;
+  background: #fffef6;
+  box-shadow: 0 0 40px #0006;
+}
+.pc-phone iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.pc-side {
+  display: none;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.pc-side--left {
+  justify-self: end;
+  max-width: 400px;
+}
+.pc-side--right {
+  justify-self: stretch;
+  max-width: 388px;
+  min-width: 0;
+}
+.pc-side img.pc-logo {
+  display: block;
+  width: 170px;
+  height: auto;
+  margin-bottom: 28px;
+  filter: brightness(0) invert(1);
+}
+.pc-side h2 {
+  margin: 0 0 16px;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.pc-side p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #ffffffd9;
+}
+.pc-side .pc-badge {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border: 1px solid #ffffff80;
+  border-radius: 99px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.pc-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  min-height: 56px;
+  border-radius: 999px;
+  background: #06c755;
+  box-shadow: 0 3px 0 #04a147;
+  color: #fff;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.35;
+}
+.pc-line img {
+  flex: none;
+  width: 28px;
+  height: 28px;
+}
+/* 両脇の案内は、横幅に余裕があるときだけ */
+@media (min-width: 1180px) {
+  .pc-side {
+    display: block;
+    padding: 0 24px;
+  }
+}
+@media (min-width: 1400px) {
+  .pc-side {
+    padding: 0 40px;
+  }
+}
+
+/* ブラウザの幅を狭くしたとき（スマホ幅）は枠をやめ、スマホ版を画面いっぱいに表示する */
+@media (max-width: 899px) {
+  .pc-shell {
+    display: block;
+  }
+  .pc-side {
+    display: none !important;
+  }
+  .pc-phone {
+    width: 100%;
+    box-shadow: none;
+  }
+}
