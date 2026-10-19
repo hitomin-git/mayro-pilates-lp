@@ -65,9 +65,9 @@ html.pc-outer body > *:not(.pc-shell) {
   max-width: 400px;
 }
 .pc-side--right {
-  justify-self: start;
-  width: 340px;
-  max-width: 100%;
+  justify-self: stretch;
+  max-width: 388px;
+  min-width: 0;
 }
 .pc-side img.pc-logo {
   display: block;
@@ -115,9 +115,11 @@ html.pc-outer body > *:not(.pc-shell) {
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  white-space: nowrap;
+  text-align: center;
+  line-height: 1.35;
 }
 .pc-line img {
+  flex: none;
   width: 28px;
   height: 28px;
 }
@@ -125,10 +127,35 @@ html.pc-outer body > *:not(.pc-shell) {
 @media (min-width: 1180px) {
   .pc-side {
     display: block;
+    padding: 0 24px;
+  }
+}
+@media (min-width: 1400px) {
+  .pc-side {
+    padding: 0 40px;
   }
 }
 @media (max-height: 640px) {
   .pc-phone {
     height: calc(100vh - 16px);
+  }
+}
+
+/* ブラウザの幅を狭くしたとき（スマホ幅）は枠をやめ、スマホ版を画面いっぱいに表示する */
+@media (max-width: 899px) {
+  .pc-shell {
+    display: block;
+  }
+  .pc-shell::before,
+  .pc-shell::after,
+  .pc-side {
+    display: none !important;
+  }
+  .pc-phone {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
   }
 }

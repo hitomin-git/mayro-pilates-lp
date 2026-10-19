@@ -21,7 +21,13 @@
       '<a class="pc-line" href="https://lin.ee/o3mdHEh"><img src="assets/line-icon.svg" alt="" width="28" height="28" /><span>LINEで簡単申し込み｜60分無料体験</span></a>' +
       "</aside>";
     document.body.appendChild(shell);
-  } else if (top !== self) {
+    // 幅を狭めてスマホ幅にしても、枠は CSS（pc-shell.css）で全画面表示に切り替わる
+  } else if (top === self) {
+    // スマホ幅から900px以上に広げたら、再読み込みしてPC用の枠にする
+    matchMedia("(min-width:900px)").addEventListener("change", (e) => {
+      if (e.matches && !/[?&]plain/.test(location.search)) location.reload();
+    });
+  } else {
     document.querySelectorAll('a[href^="http"]').forEach((a) => (a.target = "_top"));
   }
 })();
