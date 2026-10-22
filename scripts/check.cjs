@@ -20,5 +20,5 @@ for(const file of files){
   }
 }
 const lp=fs.readFileSync(path.join(root,'trial/index.html'),'utf8');
-if(/<source\b[^>]*media=/.test(lp)||!lp.includes('assets/hero-13.jpg'))errors.push('LP hero must use the same photograph at all widths');
+if(/<source\b[^>]*media=/.test(lp)||!lp.includes('assets/hero-13.webp'))errors.push('LP hero must use the same photograph at all widths');
 console.log(JSON.stringify({pages:files.filter(f=>f.endsWith('.html')).length,references:refs,errors},null,2));process.exitCode=errors.length?1:0;

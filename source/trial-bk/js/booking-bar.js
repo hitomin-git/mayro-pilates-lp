@@ -2,11 +2,11 @@
 // 表示するのは、次の条件をすべて満たすときだけ：
 //   ・スマホ幅（640px以下）
 //   ・ファーストビューの予約ボタンを通り過ぎている
-//   ・ページ一番下の申し込みボタン（#cta-bottom）がまだ画面に入っていない
+//   ・ページ一番下の「無料体験を予約する」がまだ画面に入っていない
 (() => {
   const bar = document.querySelector(".trial2-booking");
-  const heroButton = document.querySelector("#cta-fv");
-  const closingButton = document.querySelector("#cta-bottom");
+  const heroButton = document.querySelector(".fv-shell .cta");
+  const closingButton = document.querySelector(".closing-booking .cta");
   const mobile = matchMedia("(max-width:640px)");
   let pending = false;
   function update() {
