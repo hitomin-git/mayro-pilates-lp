@@ -18,7 +18,7 @@
       '"></iframe></div>' +
       '<aside class="pc-side pc-side--right">' +
       "<p>友だち追加して、希望日時を送るだけ</p>" +
-      '<a class="pc-line" id="cta-side" href="https://lin.ee/o3mdHEh"><img src="assets/line-icon.svg" alt="" width="28" height="28" /><span>LINEで簡単申し込み｜60分無料体験</span></a>' +
+      '<a class="pc-line" href="https://lin.ee/o3mdHEh"><img src="assets/line-icon.svg" alt="" width="28" height="28" /><span>LINEで簡単申し込み｜60分無料体験</span></a>' +
       "</aside>";
     document.body.append(shell);
     // スクロールは枠の中のページ自身が担当する（同期や高さの書き換えをしないので、Safari の慣性が途切れない）。
@@ -54,13 +54,5 @@
       inShell = top.document.documentElement.classList.contains("pc-outer");
     } catch (e) {}
     document.querySelectorAll('a[href^="http"]').forEach((a) => (a.target = inShell ? "_top" : "_blank"));
-    // 枠の中ではGTMを動かさないので、申し込みボタンのクリックは外側の dataLayer に伝える
-    if (inShell) {
-      document.querySelectorAll('[id^="cta-"]').forEach((a) => {
-        a.addEventListener("click", () => {
-          if (top.dataLayer) top.dataLayer.push({ event: "cta_click", button_id: a.id });
-        });
-      });
-    }
   }
 })();
