@@ -9,7 +9,7 @@
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
-        if (d.documentElement.classList.contains("pc-outer")) return;
+        if (w.top !== w) return; // PC表示の枠の中（?embed）では読み込まない。外側のページで計測する
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
         var f = d.getElementsByTagName(s)[0],
@@ -389,7 +389,7 @@
         </footer>
       </div>
     </div>
-    <script src="js/pc-shell.js?v=8"></script>
+    <script src="js/pc-shell.js?v=9"></script>
     <script src="js/hero-fit.js?v=3dbc5fe24ca9"></script>
     <!-- スマホで画面下に固定表示する予約バー（css/booking.css・js/booking-bar.js） -->
     <div class="trial2-booking" hidden aria-label="無料体験の申し込み">

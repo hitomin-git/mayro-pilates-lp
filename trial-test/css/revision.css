@@ -1,0 +1,481 @@
+/* 修正依頼（ミエルカ分析・2026/10/16）対応分のスタイル。他のCSSより後に読み込む。
+   ・.line-cta / .cta-block … 全ボタン共通のLINE申し込みボタン
+   ・.free-badge … ファーストビューの「60分無料体験」バッジ
+   ・.worries … 「こんなお悩みありませんか？」
+   ・.flow-list / .flow-meta … LINEでの無料体験の流れ
+   ・.plan-per / .free-note … 料金プランの追記
+   ・.about-short … 「ピラティスって何？」の短縮版
+   ・.draft-note … 運営への確認待ちの仮表示（確定後に削除） */
+
+/* ---- LINE申し込みボタン（全6か所共通） ---- */
+.cta-block {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+.cta-lead {
+  margin: 0 0 6px;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #34462f;
+}
+.line-cta {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #06c755;
+  box-shadow: 0 3px 0 #04a147;
+  color: #fff;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+.line-cta img {
+  flex: none;
+  width: 28px;
+  height: 28px;
+}
+.line-cta span {
+  font: inherit;
+}
+.line-cta:hover {
+  background: #05b34c;
+}
+.line-cta:focus-visible {
+  outline: 3px solid #b39754;
+  outline-offset: 3px;
+}
+@media (max-width: 380px) {
+  .line-cta {
+    font-size: 15px;
+    gap: 8px;
+  }
+}
+/* 本文中のボタン：左右16pxの余白で画面幅いっぱい */
+.lp-rest .cta-block.in-flow {
+  padding: 8px 16px 30px;
+}
+@media (min-width: 641px) {
+  .cta-block {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .lp-rest .cta-block.in-flow {
+    padding: 12px 0 40px;
+  }
+}
+/* ファーストビュー：写真の上に載るので文字を白にする */
+.hero-content .cta-lead {
+  color: #fff;
+  text-shadow: 0 1px 4px #0007;
+}
+.hero-content .line-cta {
+  width: 100%;
+  flex-shrink: 0;
+}
+/* 追従バー：既存の .trial2-booking a / span の指定を打ち消す */
+.trial2-booking .cta-lead {
+  margin: 0 0 5px;
+  font-size: 11px;
+  color: #514c42;
+}
+.trial2-booking .line-cta {
+  gap: 10px;
+  min-height: 56px;
+  border-radius: 999px;
+  background: #06c755;
+  font-size: 16px;
+}
+.trial2-booking .line-cta span {
+  font-size: inherit;
+}
+@media (max-width: 380px) {
+  .trial2-booking .line-cta {
+    font-size: 15px;
+  }
+}
+/* 最下部：クロージングの中でも同じ見た目 */
+.closing-booking .cta-lead {
+  margin-top: 14px;
+  color: inherit;
+}
+
+/* ---- ファーストビューの「60分無料体験」バッジ ---- */
+.free-badge {
+  display: inline-flex;
+  align-items: baseline;
+  align-self: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 7px 16px 8px;
+  border-radius: 999px;
+  background: #fffef7;
+  box-shadow: 0 2px 10px #0003;
+  color: #21533e;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  line-height: 1;
+}
+.free-badge b {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+.free-badge span {
+  font-size: 16px;
+  font-weight: 700;
+}
+.free-badge em {
+  margin-left: 4px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: #b39754;
+  color: #fff;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  align-self: center;
+}
+
+/* ---- こんなお悩みありませんか？ ---- */
+.lp-rest .worries {
+  padding-top: 34px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.lp-rest .worries .section-title {
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.lp-rest .worries .section-title h2 {
+  white-space: normal;
+  font-size: 24px;
+}
+.worry-list {
+  display: grid;
+  gap: 10px;
+  max-width: 460px;
+  margin: 0 auto 20px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.worry-list li {
+  position: relative;
+  padding: 14px 14px 14px 52px;
+  border: 1px solid #d9dfd4;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+.worry-list li::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  border-radius: 50%;
+  background: #21533e;
+}
+.worry-list li::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  width: 6px;
+  height: 11px;
+  margin-top: -8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.worry-lead {
+  margin: 0;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.worry-lead strong {
+  color: #21533e;
+  background: linear-gradient(transparent 62%, #e9dfb9 62%);
+}
+
+/* ---- Mayroが選ばれる理由：3項目 ---- */
+.reasons-three .reasons-list h3 {
+  line-height: 1.5;
+}
+
+/* ---- 無料体験の流れ（LINE） ---- */
+.lp-rest .flow .section-title {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.lp-rest .flow .section-title > p {
+  margin-left: 0;
+}
+.flow-list {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.flow-list li {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding-bottom: 18px;
+}
+.flow-list li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 2px;
+  width: 2px;
+  background: #cfd8c8;
+}
+.flow-no {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #21533e;
+  color: #fff;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: 15px;
+}
+.flow-list h3 {
+  margin: 0 0 2px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.flow-list p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--muted, #5f6b5a);
+}
+.flow-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 6px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #eef2e8;
+  font-size: 13.5px;
+}
+.flow-meta div {
+  display: flex;
+  gap: 8px;
+}
+.flow-meta dt {
+  font-weight: 700;
+  color: #21533e;
+}
+.flow-meta dd {
+  margin: 0;
+}
+@media (min-width: 641px) {
+  .flow-list,
+  .flow-meta {
+    max-width: 640px;
+  }
+}
+
+/* ---- 料金プラン ---- */
+.free-note {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fff6d9;
+  border: 1px solid #e6d28f;
+  text-align: center;
+  font-size: 14px;
+}
+.free-note b {
+  color: #8a6a12;
+  font-size: 16px;
+}
+.plan-per {
+  margin: 2px 0 8px 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #21533e;
+}
+
+/* ---- ピラティスって何？（短縮） ---- */
+.lp-rest .about-short .step-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 10px;
+}
+.lp-rest .about-short .step-grid li {
+  margin: 0;
+}
+.lp-rest .about-short .lesson-real-photo {
+  aspect-ratio: 16/10;
+  width: 100%;
+  object-fit: cover;
+}
+.lp-rest .about-short .step-grid p {
+  display: none;
+}
+.lp-rest .about-short .step-grid h3 {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* ---- 運営への確認待ち（確定後に削除） ---- */
+.draft-note {
+  margin: 8px 0 0;
+  padding: 6px 10px;
+  border: 1px dashed #c0392b;
+  border-radius: 6px;
+  background: #fff4f2;
+  color: #a5301f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ---- セクションごとの背景色（白とベージュの交互） ----
+   最下部（YOUR FIRST STEP）のベージュから逆算：
+   お悩み＝白 → 理由＝ベージュ → 料金＝白 → 流れ＝ベージュ → 講師＝白 → ピラティス＝ベージュ → FAQ＝白 → 最下部＝ベージュ */
+.lp-rest .worries,
+.lp-rest .pricing,
+.lp-rest .restored-staff,
+.lp-rest .faq-section {
+  background: #fffef6;
+}
+.lp-rest .reasons,
+.lp-rest .trial,
+.lp-rest .about {
+  background: #eae8e1;
+}
+.lp-rest .trial .flow-meta {
+  background: #fffef6;
+}
+/* 見出しの句の途中で折り返さない（収まらないときだけ句ごとに折り返す） */
+.nowrap {
+  display: inline-block;
+  font-weight: inherit;
+}
+.lp-rest .worry-list li {
+  border-color: #d2cbc0;
+}
+
+/* ---- セクション内のボタン：内容のすぐ下に置く ----
+   セクションは画面1枚分の高さ（インストラクター紹介と同じ）。
+   ボタンはセクションの中にあるので、内容と一緒に縦中央にそろう */
+.lp-rest .cta-block.in-flow {
+  padding: 22px 0 6px;
+}
+@media (min-width: 641px) {
+  .lp-rest .cta-block.in-flow {
+    padding: 26px 0 6px;
+  }
+}
+@media (max-width: 640px) {
+  .lp-rest .reasons,
+  .lp-rest .pricing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* ---- 料金プラン：金額の右に「税込」を置いて縦幅を縮める ---- */
+@media (max-width: 640px) {
+  .lp-rest .pricing .plan-grid article {
+    grid-template-columns: 1fr auto auto;
+    padding: 14px 4px;
+    gap: 2px 6px;
+  }
+  .lp-rest .pricing .plan-grid h3 {
+    grid-row: 1;
+  }
+  .lp-rest .pricing .plan-amount {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .lp-rest .pricing .plan-tax {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: end;
+    padding-bottom: 6px;
+  }
+  .lp-rest .pricing .plan-per {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0;
+    text-align: right;
+  }
+}
+@media (min-width: 641px) {
+  .lp-rest .plan-amount {
+    display: inline-flex;
+  }
+  .lp-rest .plan-tax {
+    display: inline-block;
+    margin: 0 0 0 6px;
+  }
+}
+
+/* ---- よくあるご質問 ----
+   ・質問の上下余白を固定（縦長の画面で間延びしない）
+   ・質問と回答の境目：開いた質問をベージュの帯にし、回答の左に線を入れる
+   ・上から並べて、開いても下へ伸びるだけにする（中央寄せだと開くたびに動く） */
+.lp-rest .faq-section {
+  justify-content: flex-start;
+}
+.lp-rest .faq-list summary {
+  padding: 14px 0;
+  font-weight: 700;
+}
+.lp-rest .faq-list details[open] summary {
+  padding-bottom: 10px;
+}
+.lp-rest .faq-list details p {
+  margin: 0 0 14px;
+  padding: 2px 4px 2px 12px;
+  border-left: 3px solid #b39754;
+  color: #4a4a42;
+}
+@media (min-width: 641px) {
+  .lp-rest .faq-list summary {
+    padding: 18px 8px;
+  }
+  .lp-rest .faq-list details p {
+    margin-bottom: 18px;
+    padding: 2px 35px 2px 14px;
+  }
+}
+
+/* ---- フッター：下の余白をなくす ----
+   （固定バーは最下部ボタンが見えた時点で消えるので、避ける余白は不要） */
+.lp-rest footer {
+  padding-bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+}
+.lp-rest {
+  padding-bottom: 0 !important;
+}
