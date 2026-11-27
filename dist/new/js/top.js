@@ -67,19 +67,15 @@ function updateConceptStrokes() {
   markerFrame = 0;
   const bounds = conceptStage.getBoundingClientRect();
   if (!bounds.height) return;
-  // 文章ブロック（最初の行〜「ピラティスを選ぶ」リンクまで）が、すべて画面内に入った瞬間に止める。
-  // 画面より高いブロックの場合だけ、最初の行が画面上部に来た時点で止める。
-  const firstTop = conceptMarks[0].getBoundingClientRect().top;
-  const blockBottom = concept.querySelector('.concept-services').getBoundingClientRect().bottom;
-  const fits = blockBottom - firstTop <= innerHeight - pinTop - 32;
-  const reached = fits ? blockBottom <= innerHeight - 16 : firstTop <= pinTop + 8;
-  const farBefore = fits ? blockBottom > innerHeight + 80 : firstTop > pinTop + 80;
-  if (farBefore) conceptStage.classList.remove('is-marked');
-  if (conceptStage.classList.contains('is-marked') || !lineCount || !reached) return;
+  // 「彩（いろ）のある〜」の項目が画面いっぱい（ヘッダー下〜画面下）になった時点で止める
+  if (bounds.top > pinTop + 64) conceptStage.classList.remove('is-marked');
+  if (conceptStage.classList.contains('is-marked') || !lineCount || bounds.top > pinTop + 2) return;
 
   const homeEntry = ['', '#home', '#about'].includes(location.hash);
   if (homeEntry && bounds.bottom > pinTop && !reduceMotion.matches) {
+    const lockAt = Math.round(window.scrollY + bounds.top - pinTop);
     root.classList.add('concept-scroll-lock');
+    window.scrollTo({top:lockAt,behavior:'instant'});
     unlockTimer = setTimeout(releaseConceptScroll, (lineCount - 1) * 265 + 300);
   }
   conceptStage.classList.add('is-marked');
