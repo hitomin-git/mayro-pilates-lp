@@ -180,3 +180,15 @@ if ('ResizeObserver' in window) {
 addEventListener('resize', measureServicePhotos);
 addEventListener('hashchange', measureServicePhotos);
 measureServicePhotos();
+
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.getElementById('site-nav');
+if (navToggle && siteNav) {
+  const setNav = open => {
+    siteNav.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  };
+  navToggle.addEventListener('click', () => setNav(!siteNav.classList.contains('is-open')));
+  siteNav.addEventListener('click', event => { if (event.target.closest('a')) setNav(false); });
+}
