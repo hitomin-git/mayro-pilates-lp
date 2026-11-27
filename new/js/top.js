@@ -67,13 +67,10 @@ function updateConceptStrokes() {
   markerFrame = 0;
   const bounds = conceptStage.getBoundingClientRect();
   if (!bounds.height) return;
-  // 文章ブロック（最初の行〜最後の行）の中心が、画面の中央よりやや下に来た時点で止める
-  const first = conceptMarks[0].getBoundingClientRect();
-  const last = conceptMarks[conceptMarks.length - 1].getBoundingClientRect();
-  const blockCenter = (first.top + last.bottom) / 2;
-  const stopAt = pinTop + (innerHeight - pinTop) * .62;
-  if (blockCenter > stopAt + innerHeight * .12) conceptStage.classList.remove('is-marked');
-  if (conceptStage.classList.contains('is-marked') || !lineCount || blockCenter > stopAt) return;
+  // ヒーローが画面（固定ヘッダーの下）から完全に見えなくなった時点で止める
+  const heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
+  if (heroBottom > pinTop + 64) conceptStage.classList.remove('is-marked');
+  if (conceptStage.classList.contains('is-marked') || !lineCount || heroBottom > pinTop + 2) return;
 
   const homeEntry = ['', '#home', '#about'].includes(location.hash);
   if (homeEntry && bounds.bottom > pinTop && !reduceMotion.matches) {
