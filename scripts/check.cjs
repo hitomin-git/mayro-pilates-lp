@@ -11,7 +11,8 @@ for(const file of files){
     refs++;const [pathname,hash]=url.split('#');
     // background-image:var(--node-image) is always declared in a stylesheet under dist/css/,
     // so the browser resolves this url() relative to dist/css/, not the HTML file's own location.
-    const base=nodeImage&&file.endsWith('.html')?path.join(root,'css'):path.dirname(file);
+    let siteRoot=path.dirname(file);while(siteRoot!==root&&!fs.existsSync(path.join(siteRoot,'css')))siteRoot=path.dirname(siteRoot);
+    const base=nodeImage&&file.endsWith('.html')?path.join(siteRoot,'css'):path.dirname(file);
     let target=path.resolve(base,pathname.split('?')[0]||path.basename(file));
     if(!target.startsWith(root+path.sep)&&target!==root){errors.push(`${file}: outside dist ${url}`);continue;}
     if(fs.existsSync(target)&&fs.statSync(target).isDirectory())target=path.join(target,'index.html');

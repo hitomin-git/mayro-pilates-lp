@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayro | Pilates Studio</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}body{margin:0;color:#251f1d;background:#faf8f4;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.95}a{color:inherit;text-decoration:none}a:focus-visible,summary:focus-visible{outline:2px solid #a06465;outline-offset:5px}img{display:block;width:100%;object-fit:cover}h1,h2,h3,p{margin:0}h1,h2,h3,.logo,.eng{font-family:Georgia,"Yu Mincho","Hiragino Mincho ProN",serif;font-weight:400}header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#faf8f4;position:sticky;top:0;z-index:2;border-bottom:1px solid #251f1d12}.logo{font-size:38px;line-height:1;letter-spacing:-.075em}.logo i{font-style:normal;color:#965e60}nav{display:flex;gap:clamp(13px,3vw,45px);align-items:center}header nav a{font-size:13px}.hero{isolation:isolate;min-height:clamp(515px,72vh,790px);display:flex;align-items:center;position:relative;background:#2c241e;color:#fff;padding:50px 8%}.hero img,.hero:after{position:absolute;inset:0;width:100%;height:100%;z-index:-2}.hero img{object-position:60% 50%}.hero:after{content:"";background:linear-gradient(90deg,#201915ba,#20191530 72%);z-index:-1}.hero h1{font-size:clamp(30px,4.45vw,67px);letter-spacing:.08em;line-height:1.5;margin:20px 0 32px}.eng{letter-spacing:.18em;font-size:12px;text-transform:uppercase}.button{display:inline-block;border:1px solid currentColor;padding:11px 20px;font-size:13px}.about{text-align:center;padding:105px 24px}.about h2{font-size:clamp(25px,4vw,41px);margin:12px 0 20px}.about p+p{margin-top:18px}.service-grid{display:grid;grid-template-columns:1fr 1fr}.card{display:grid;min-width:0;min-height:430px;position:relative;isolation:isolate;align-items:end;overflow:hidden}.card img,.card:after{position:absolute;inset:0;height:100%;z-index:-2;transition:transform .5s}.card:hover img{transform:scale(1.045)}.card:after{content:"";z-index:-1}.card.lifestyle:after{background:linear-gradient(0deg,#201a1bea,#201a1b05 85%)}.card.medical:after{background:linear-gradient(0deg,#faf7f1 5%,#faf7f106 87%)}.card>div{padding:40px clamp(24px,5vw,76px)}.card h3{font-size:clamp(28px,4vw,55px);line-height:1.13;margin:6px 0 12px}.card p+p{margin-top:8px}.card b{display:inline-block;margin-top:19px;border-bottom:1px solid;font-weight:500}.lifestyle{background:#282322;color:#f8f1e9}.medical{background:#f4f1eb;color:#262420}.subhero{display:grid;grid-template-columns:1fr 1fr;min-height:440px}.subhero>div{align-self:center;padding:48px 12%}.subhero img{height:100%;max-height:555px}.subhero h1{font-size:clamp(37px,6vw,90px);line-height:1.02;margin:24px 0}.subhero .button{margin-top:22px}.back,.note{font-size:12px}.subnav{padding:17px 5%;justify-content:center;gap:12px 29px;flex-wrap:wrap;border-block:1px solid #8885;font-size:12px}.subnav a:hover,header nav a:hover{text-decoration:underline}.sectionwrap,.home-access{max-width:1100px;margin:auto;padding:0 6%}.section{padding:62px 0;display:grid;grid-template-columns:minmax(175px,28%) 1fr;gap:30px;border-bottom:1px solid #8885}.section:last-child{border-bottom:0}.section h2{font-size:clamp(22px,3vw,34px);line-height:1.35}.section h3{font-size:25px;line-height:1.35;margin-bottom:7px}.section p+p{margin-top:12px}.prices{margin:0 0 12px}.prices div{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid #8885}.prices dd{margin:0;white-space:nowrap;font-family:Georgia,serif;font-size:19px}.credentials{padding-left:20px}.flow{margin:0;padding-left:22px}.flow li{padding:0 0 13px 7px}.flow strong{display:block}.profiles{display:grid;gap:22px}.profiles article+article{border-top:1px solid #8885;padding-top:18px}details{border-bottom:1px solid #8885;padding:10px 0}summary{cursor:pointer}details p{padding:6px 0 5px 17px}footer{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:35px 6%;border-top:1px solid #8885}.skip{position:fixed;left:10px;top:-100px;z-index:3;background:#fff;padding:8px}.skip:focus{top:10px}[hidden]{display:none!important}
+@media(max-width:700px){html{scroll-padding-top:60px}header{height:60px}.logo{font-size:31px}header nav a{font-size:11px}.hero{min-height:500px;padding-inline:7%}.hero img{object-position:65% 50%}.about{padding:70px 20px}.service-grid,.subhero,.section{grid-template-columns:1fr}.card{min-height:390px}.subhero>div{padding:38px 7%}.subhero img{height:330px}.section{padding:37px 0;gap:15px}.subnav{justify-content:flex-start}.about br{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card img{transition:none}}
+
+.hero .frames{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero .frame{z-index:auto;opacity:0;transition:opacity 1.15s ease}
+.hero .frame.active{opacity:1}
+.film-controls{position:absolute;right:8%;bottom:26px;display:flex;gap:10px;align-items:center}
+.film-controls button{color:white;background:#241d19b5;border:1px solid #ffffff65;padding:5px 8px;font:inherit;font-size:12px;cursor:pointer}
+.film-controls button[aria-current]{background:#f8f1e9;color:#251f1d}
+.scene{margin:0;display:grid;grid-template-columns:1.55fr 1fr;align-items:center;gap:clamp(25px,5vw,72px);padding:35px 0;border-bottom:1px solid #8885}
+.scene.reverse{grid-template-columns:1fr 1.55fr}
+.scene.reverse img{order:2}
+.scene img{height:auto;aspect-ratio:4/3}
+.scene h3{font-size:clamp(22px,3vw,34px);line-height:1.4;margin:0 0 13px}
+.medical .scene{gap:clamp(22px,4vw,56px)}
+.medical .scene figcaption{border-inline-start:1px solid #aaa295;padding-inline-start:20px}
+.lifestyle .scene{padding-block:clamp(35px,7vw,88px)}
+.js-motion .reveal.pending{opacity:0;transform:translateY(20px)}
+.js-motion .reveal{transition:opacity .68s ease,transform .68s ease}
+@media(max-width:700px){.scene,.scene.reverse{grid-template-columns:1fr}.scene.reverse img{order:0}.film-controls{right:7%;bottom:17px}}
+@media(prefers-reduced-motion:reduce){.hero .frame,.js-motion .reveal{transition:none}.js-motion .reveal.pending{opacity:1;transform:none}}
+
+body{background:#f9f7f2}header{background:#f9f7f2;box-shadow:none}header nav a{letter-spacing:.075em}
+.hero{min-height:clamp(540px,80svh,900px)}
+.hero .button,.subhero .button{border:0;border-bottom:1px solid currentColor;padding:6px 0}
+.about{max-width:1200px;margin:auto;text-align:left;padding:clamp(82px,13vw,175px) 9%;display:grid;grid-template-columns:1fr 1fr;gap:12px 8%;align-items:start}
+.about .eng{grid-column:1/-1;color:#805e55}.about h2{grid-column:1;grid-row:2/4;line-height:1.65;margin:0}.about p:not(.eng){grid-column:2;margin:0}.about p+p{margin-top:0}
+.service-grid{background:#f9f7f2;max-width:1420px;margin:auto;padding:0 6% 45px;gap:clamp(24px,6vw,100px);align-items:start}
+.card{overflow:visible;display:flex;flex-direction:column;align-items:stretch;min-height:0;background:transparent;color:#26201d}
+.card:after{display:none}.card img{position:static;height:auto;aspect-ratio:5/5.4;z-index:auto}.card.medical{margin-top:clamp(36px,10vw,140px)}.card img{transition:filter .35s ease}.card:hover img{transform:none}.card>div{padding:20px 0 12px}.card h3{font-size:clamp(30px,4.5vw,64px)}.card p{max-width:34em}
+main[data-page="lifestyle"]{background:#2a2421;color:#fbf3e7}
+main[data-page="medical"]{background:#f8f7f2}
+.subhero{position:relative;max-width:1500px;margin:auto;padding:45px 6% 60px;grid-template-columns:43% 57%;min-height:unset}
+.subhero>div{padding:25px 8% 25px 0}.subhero img{height:auto;aspect-ratio:1.3;max-height:650px}
+.subhero h1{font-size:clamp(39px,6.5vw,96px);line-height:.98;position:relative;z-index:1}
+.subnav{border-top:0;border-bottom:1px solid #8884;max-width:1320px;margin:auto;justify-content:flex-start;padding-inline:6%}
+.sectionwrap{max-width:1240px;padding-inline:7%}.section{display:block;border:0;padding:clamp(42px,7vw,92px) 0}.section h2{font-size:clamp(28px,4.4vw,59px);margin-bottom:24px}.section h3{font-size:clamp(23px,3.2vw,46px)}
+[id$="-concept"]{max-width:660px;margin:0 0 0 8%;padding-top:clamp(70px,11vw,150px)}
+[id$="-concept"]>div{max-width:35em;font-size:clamp(15px,1.5vw,19px)}
+[id$="-price"],[id$="-faq"]{max-width:670px;margin-inline:auto}
+[id$="-flow"]{max-width:720px;margin-left:auto}
+[id$="-access"],.home-access{margin-top:30px}
+.scene,.scene.reverse{border:0;grid-template-columns:1.55fr .85fr;gap:clamp(24px,6vw,88px);padding:24px 0 65px;align-items:end}
+.scene.reverse{grid-template-columns:.85fr 1.55fr;margin-left:8%}
+.lifestyle .scene:first-of-type{margin-right:5%}.lifestyle .scene img{aspect-ratio:1.5}.lifestyle .scene figcaption{padding-bottom:6%}.medical .scene figcaption{border-color:#998e826a}
+.staff-med{display:grid;grid-template-columns:minmax(180px,37%) minmax(0,1fr);gap:clamp(28px,8vw,105px);align-items:center}
+.portrait{margin:0;min-width:0}.portrait img{height:auto;aspect-ratio:4/5;object-position:50% 34%}.portrait figcaption{font-size:11px;opacity:.75;margin-top:5px}
+#lifestyle-instructors .profiles{grid-template-columns:1fr 1fr;gap:clamp(28px,9vw,130px)}
+#lifestyle-instructors .profiles article+article{border:0;padding:clamp(22px,7vw,95px) 0 0}
+.staff-bio{margin-top:22px;max-width:34em}
+#lifestyle-reviews .profiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:5%}#lifestyle-reviews .profiles article{border:0;padding-top:10px}#lifestyle-reviews h3{font-size:20px}
+@media(max-width:700px){.hero{min-height:590px}.about,.service-grid,.staff-med,#lifestyle-instructors .profiles,#lifestyle-reviews .profiles{grid-template-columns:1fr}.about h2,.about p:not(.eng){grid-column:1;grid-row:auto}.about{gap:17px}.service-grid{gap:32px}.card.medical{margin-top:0}.card img{aspect-ratio:1.18}.subhero{grid-template-columns:1fr;padding:14px 6% 36px}.subhero img{aspect-ratio:1.2}.scene,.scene.reverse{grid-template-columns:1fr;margin-inline:0!important;padding-bottom:38px}.scene.reverse img{order:0}.lifestyle .scene figcaption{padding:0}.portrait{max-width:400px}#lifestyle-instructors .profiles article+article{padding-top:14px}#lifestyle-reviews .profiles{gap:20px}[id$="-concept"]{margin-left:0}}
+@font-face{font-family:"Mayro Wordmark";src:url(fonts/p01.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Mayro Roman";src:url(fonts/p02.otf) format("opentype");font-display:swap}
+@font-face{font-family:"Mayro Mincho";src:url(fonts/p03.otf) format("opentype");font-display:swap}
+@font-face{font-family:"Mayro Text";src:url(fonts/p04.otf) format("opentype");font-display:swap}
+
+:root{--paper:#f9f6ef;--ink:#302822;--berry:#462f3d;--shell:#ede0d3;--tea:#dedbcf;--leaf:#e5e9df;--sand:#ede6da;--stone:#f7f5ee}
+body{font-family:"Mayro Text","Yu Gothic",sans-serif;color:var(--ink);background:var(--paper);font-size:14px;line-height:2.05}
+h1,h2,h3,.eng,.prices dd{font-family:"Mayro Roman","Mayro Mincho","Yu Mincho",serif}
+header,.service-grid{background:var(--paper)}
+.logo{display:flex;align-items:center;color:#49333d;font-size:52px;letter-spacing:normal}
+.wordmark{font-family:"Mayro Wordmark";font-weight:400;line-height:.78}
+.about h2{font-size:clamp(23px,3.25vw,49px);letter-spacing:.055em;line-height:1.65}
+.about .eng{font-size:16px;letter-spacing:.12em}
+.card h3,.subhero h1{letter-spacing:-.048em}
+.card h3{font-size:clamp(32px,4.65vw,69px)}
+.subhero h1{font-size:clamp(42px,6.8vw,100px)}
+.subhero p{font-family:"Mayro Mincho",serif;font-size:clamp(15px,1.7vw,23px);letter-spacing:.06em}
+.section h2{letter-spacing:-.022em;line-height:1.18}.medical .section h2{letter-spacing:.055em;font-size:clamp(24px,3.1vw,43px)}
+.section h3{letter-spacing:.015em}.scene h3{font-family:"Mayro Mincho",serif;letter-spacing:.04em}
+.home-access{background:var(--tea);max-width:none;margin:0;padding:0 max(7%,calc((100% - 1060px)/2))}
+.home-access .section{padding-block:62px}
+footer{background:#ede8df}
+main[data-page]:not([data-page=home]){overflow:clip}
+.sectionwrap{max-width:none;padding:0;--gutter:max(7%,calc((100% - 1070px)/2))}
+.sectionwrap>.section,.sectionwrap>.scene{max-width:none;margin:0;padding-inline:var(--gutter)}
+.sectionwrap>.section{padding-block:clamp(55px,8.5vw,114px)}
+.sectionwrap>.scene{padding-top:clamp(32px,5vw,70px);padding-bottom:clamp(52px,8vw,108px)}
+.sectionwrap>.section>div{max-width:710px}
+.sectionwrap>[id$="-concept"]{padding-top:clamp(70px,10vw,145px);padding-bottom:clamp(42px,6vw,90px)}
+.sectionwrap>[id$="-concept"]>div{max-width:37em}
+.sectionwrap>[id$="-price"]>div,.sectionwrap>[id$="-faq"]>div{max-width:660px}
+.sectionwrap>[id$="-instructors"]>div,.sectionwrap>#lifestyle-reviews>div{max-width:none}
+.sectionwrap>[id$="-flow"]>div{margin-left:auto}
+main[data-page=lifestyle] .subnav{border:0}
+#lifestyle-concept,.lifestyle .scene:first-of-type{background:#352a2e}
+#lifestyle-price{background:var(--shell);color:#352830}
+#lifestyle-instructors,.lifestyle .scene.reverse{background:var(--berry);color:#fff5eb}
+#lifestyle-reviews{background:#f6eee1;color:#332822}
+#lifestyle-flow,#lifestyle-faq{background:#e8ddcc;color:#332822}
+#lifestyle-access{background:#322a2e;color:#fff5eb}
+#medical-concept,.medical .scene:first-of-type{background:var(--stone);color:#2f352f}
+#medical-instructors{background:var(--leaf);color:#2d372e}
+#medical-price,.medical .scene.reverse{background:var(--sand);color:#342f28}
+#medical-flow,#medical-reviews{background:#f8f7f1;color:#292f2b}
+#medical-reviews{padding-top:0}
+#medical-faq{background:#e9ebe1;color:#2d362c}
+#medical-access{background:#d9ded2;color:#2d362c}
+.js-motion .sectionwrap>.section.reveal.pending,.js-motion .sectionwrap>.scene.reveal.pending{opacity:1;transform:none}
+.js-motion .sectionwrap>.section.reveal>*,.js-motion .sectionwrap>.scene.reveal>*{transition:opacity .65s ease,transform .65s ease}
+.js-motion .sectionwrap>.section.reveal.pending>*,.js-motion .sectionwrap>.scene.reveal.pending>*{opacity:0;transform:translateY(20px)}
+.js-motion .sectionwrap>.section.reveal:focus-within>*{opacity:1;transform:none}
+@media(max-width:700px){.logo{font-size:39px}.sectionwrap>[id$="-flow"]>div{margin-left:0}.about h2{line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.js-motion .sectionwrap>.section.reveal>*,.js-motion .sectionwrap>.scene.reveal>*{transition:none;opacity:1!important;transform:none!important}}
+
+:root{--paper:#faf8f4;--ink:#302b29;--shell:#f4eee8;--tea:#eeece6;--leaf:#eef0e9;--sand:#f4f0e8;--stone:#fbfaf6}
+body{font-size:clamp(16px,1.35vw,19px);line-height:1.85}
+header nav a,.subnav{font-size:clamp(13px,1.2vw,16px)}
+.hero:after{background:linear-gradient(90deg,#1b1714bf,#1b17143b 80%)}
+.about h2{font-size:clamp(29px,4vw,57px);line-height:1.45}
+.about .eng,.card b,.hero .button,.subhero .button,.back{font-size:15px}
+.note,.portrait figcaption{font-size:14px}
+.card h3{margin-bottom:16px}.card p{max-width:31em}
+.card p:first-of-type{font-weight:600}
+main[data-page=lifestyle]{background:#f8f4ef;color:#352b30}
+#lifestyle-concept,.lifestyle .scene:first-of-type{background:#f2ebe8;color:#382d34}
+#lifestyle-price{background:#faf6ed;color:#352b30}
+#lifestyle-instructors,.lifestyle .scene.reverse{background:#ece4e6;color:#392e35}
+#lifestyle-reviews{background:#fbf8f3;color:#382d30}
+#lifestyle-flow,#lifestyle-faq{background:#f1ede5;color:#382d30}
+#lifestyle-access{background:#eae4e6;color:#382d34}
+#medical-instructors{background:#eef0ea}
+#medical-faq{background:#eef0e9}
+#medical-access{background:#e8ece5}
+.section h2{font-size:clamp(33px,4.75vw,64px)}
+.medical .section h2{font-size:clamp(29px,3.9vw,52px)}
+.sectionwrap>[id$="-concept"]>div{font-size:clamp(18px,1.65vw,23px)}
+#lifestyle-reviews h3{font-family:"Mayro Mincho","Yu Mincho",serif;font-size:clamp(20px,2vw,27px);line-height:1.55;min-height:2.9em}
+#lifestyle-reviews .profiles{align-items:start}
+.full-copy{margin-top:14px;border-color:currentColor}
+.full-copy summary{font-size:16px;text-underline-offset:4px;text-decoration:underline}
+.full-copy p{padding:0;margin-top:12px}
+.full-copy h4,.staff-med h4{font-size:16px;margin:1.2em 0 .4em}
+.staff-med .credentials{margin-top:4px}
+@media(max-width:700px){
+ header nav a{font-size:12px}
+ header nav{gap:clamp(7px,2vw,12px)}
+ header .logo{font-size:clamp(29px,9vw,39px)}
+ #lifestyle-reviews h3{min-height:0}
+}
+
+#lifestyle-concept .concept-lead,#medical-concept .concept-lead{
+  font-family:"Mayro Mincho","Yu Mincho",serif;font-size:clamp(23px,2.9vw,39px);
+  line-height:1.5;margin-bottom:.75em;letter-spacing:.025em;text-wrap:balance
+}
+
+.access-details{margin:0;max-width:760px}
+.access-details > div{display:grid;grid-template-columns:7em minmax(0,1fr);gap:12px;padding-block:14px;border-top:1px solid currentColor}
+.access-details dt{font-weight:700}
+.access-details dd{margin:0}
+.access-details address{font-style:normal}
+.access-map{display:inline-flex;margin-top:20px;padding:10px 20px;border:1px solid currentColor;border-radius:999px}
+.access-map:hover{text-decoration:underline}
+@media(max-width:560px){
+  .access-details > div{grid-template-columns:1fr;gap:2px}
+}
+
+.about{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;text-align:center;padding-inline:clamp(20px,4vw,56px)}
+.about .brand-origin,.about p:not(.eng),.about h2{grid-column:auto;grid-row:auto;margin:0 auto}
+.about .brand-origin{font-family:"Mayro Mincho","Yu Mincho",serif;color:#805e55;text-transform:none;letter-spacing:.04em;font-size:clamp(17px,2vw,24px)}
+.about p:not(.eng){font-size:clamp(16px,1.35vw,18px)}
+.about h2{font-size:clamp(22px,3.1vw,46px);letter-spacing:.015em;line-height:1.55;margin-block:10px}
+.service-topics{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:20px 0;padding:0}
+.service-topics li{border:1px solid currentColor;border-radius:999px;padding:3px 10px;font-size:clamp(12px,1.3vw,15px);line-height:1.5}
+
+.hero .hero-brand{margin-inline:auto;text-align:center;color:#fff}
+.hero .hero-brand img{position:static;display:block;width:min(66vw,460px);height:auto;filter:drop-shadow(0 2px 12px #20191473)}
+.hero:after{background:radial-gradient(ellipse at center,#1b171463,#1b171426)}
+.film-controls button{display:grid;place-items:center;width:34px;height:34px;padding:0}
+.film-controls button[data-frame]{font-size:9px}
+.film-controls button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.about h1{font-size:clamp(25px,4vw,52px);line-height:1.4;letter-spacing:.02em;margin:0 auto 10px}
+@media(min-width:1024px){
+  .about > :is(h1,h2,p){white-space:nowrap}
+}
+.about .concept-services{justify-self:center;margin-top:10px;border-bottom:1px solid currentColor}
+
+
+
+#service-cards{position:relative;isolation:isolate}
+#service-cards .card{position:static;isolation:auto;min-width:0}
+#service-cards .card.lifestyle{--photo-panel:#e9dbe2;--photo-ink:#392e35}
+#service-cards .card.medical{--photo-panel:#e3e9df;--photo-ink:#28352d}
+#service-cards .service-link{font-weight:600;text-decoration:underline;text-underline-offset:.25em}
+#service-cards .card > .service-expanded{
+  --service-ease:cubic-bezier(.22,.8,.28,1);
+  position:absolute;inset:0 6% 45px;z-index:2;display:grid;padding:0;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  background:transparent;color:var(--photo-ink);overflow:hidden;
+  visibility:hidden;pointer-events:none;
+  transition:visibility 0s 620ms;
+}
+#service-cards .card:is(:hover,:focus-visible) > .service-expanded{
+  z-index:3;visibility:visible;pointer-events:auto;
+  transition:visibility 0s;
+}
+#service-cards .card:focus-visible > .service-expanded{
+  z-index:4;outline:2px solid var(--photo-ink);outline-offset:-2px;
+}
+#service-cards .service-expanded-photo{position:relative;grid-area:1/1;min-height:0;overflow:hidden}
+#service-cards .service-expanded-body{grid-area:1/2;align-self:center;padding:clamp(18px,3.5vw,52px);max-height:100%;overflow:auto}
+#service-cards .medical .service-expanded-body{grid-column:1}
+#service-cards .service-expanded-photo img{
+  position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;filter:none;
+  transform:none;
+  transition:transform 510ms ease-in-out;
+}
+#service-cards .card:is(:hover,:focus-visible) .service-expanded-photo img{
+  transform:none;
+}
+#service-cards .service-expanded-body > *{
+  opacity:0;transform:translateY(6px);transition:opacity 360ms ease-in-out,transform 450ms ease-in-out;
+}
+#service-cards .card:is(:hover,:focus-visible) .service-expanded-body > *{
+  opacity:1;transform:translateY(0);transition:opacity 480ms ease-out,transform 620ms var(--service-ease);
+  transition-delay:var(--reveal-delay);
+}
+#service-cards .service-expanded-body > :first-child{--reveal-delay:145ms}
+#service-cards .service-photo-copy{--reveal-delay:220ms}
+#service-cards .service-expanded-body > .service-topics{--reveal-delay:285ms;margin:16px 0 20px}
+#service-cards .service-expanded .service-topics li{background:#ffffff52;border-color:#0003}
+#service-cards .service-expanded-body > .service-link{--reveal-delay:340ms}
+#service-cards .service-expanded .wordmark{font-size:34px;line-height:.85}
+#service-cards .service-expanded h3{font-size:clamp(25px,3.8vw,54px);line-height:1.08;margin:12px 0 18px}
+#service-cards .service-photo-copy p{font-size:clamp(14px,1.25vw,17px);line-height:1.75;margin:0 0 .75em;font-weight:400}
+@media(max-width:560px){
+  #service-cards .card > .service-expanded{grid-template-columns:1fr;grid-template-rows:40% minmax(0,1fr)}
+  #service-cards .card .service-expanded-body{grid-area:2/1;align-self:start}
+}
+@media(prefers-reduced-motion:reduce){
+  #service-cards .card > .service-expanded,
+  #service-cards .service-expanded-photo img,
+  #service-cards .service-expanded-body > *{transition:none!important}
+}
+
+.concept-stage{--concept-pin-top:72px;background:#faf8f4}
+.service-selection{background:#eeebe4;padding-top:clamp(56px,8vw,110px)}
+.service-selection > h2{margin:0 auto clamp(28px,5vw,58px);padding-inline:6%;text-align:center;font-size:clamp(27px,4vw,49px);line-height:1.3}
+#service-cards{background:transparent}
+.concept-stage .about{position:relative;isolation:isolate;min-height:calc(100svh - var(--concept-pin-top));align-content:center;padding-block:clamp(48px,9svh,96px)}
+.concept-strokes{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.concept-stroke{
+  position:absolute;border-radius:3px 5px 4px 2px;
+  transform-origin:left center;transform:scaleX(0);
+  background:var(--marker-color,#ebd6a8b3);
+}
+.concept-stroke--medical{--marker-color:#bad4b5c9}
+.concept-stroke--lifestyle{--marker-color:#dfb6cbbd}
+.concept-stage.is-marked .concept-stroke{
+  transform:scaleX(1);
+  transition:transform 245ms cubic-bezier(.45,.05,.25,1) var(--line-delay);
+}
+@media(prefers-reduced-motion:reduce){
+  .concept-stage.is-marked .concept-stroke{transition:none}
+}
+
+header .logo img{width:clamp(104px,16vw,218px);height:auto}
+.home-access{background:#e1e7df;border-top:1px solid #bfc9bd;padding-block:clamp(15px,3vw,45px)}
+#service-cards .service-expanded::before{
+  content:"";position:absolute;inset:0;background:var(--photo-panel);opacity:0;transition:opacity 470ms ease;
+}
+#service-cards .card:is(:hover,:focus-visible) .service-expanded::before{opacity:1}
+#service-cards .card .service-expanded-photo{
+  --photo-end-x:0%;
+  --photo-end-w:50%;
+  --photo-end-h:100%;
+  position:absolute;grid-area:auto;
+  left:var(--photo-start-x,var(--photo-end-x));top:var(--photo-start-y,0px);
+  width:var(--photo-start-w,var(--photo-end-w));height:var(--photo-start-h,var(--photo-end-h));
+  transition:left 620ms var(--service-ease),top 620ms var(--service-ease),width 620ms var(--service-ease),height 620ms var(--service-ease);
+}
+#service-cards .medical .service-expanded-photo{--photo-end-x:50%}
+#service-cards .card:is(:hover,:focus-visible) .service-expanded-photo{
+  left:var(--photo-end-x);top:0;width:var(--photo-end-w);height:var(--photo-end-h);transition-duration:720ms;
+}
+@media(max-width:560px){
+  #service-cards .card .service-expanded-photo{--photo-end-x:0%;--photo-end-w:100%;--photo-end-h:40%}
+}
+#service-cards .card[data-photo-ready] .service-card-photo > img{transition:opacity 0s 620ms}
+#service-cards .card[data-photo-ready]:is(:hover,:focus-visible) .service-card-photo > img{opacity:0;transition-delay:0s}
+@media(prefers-reduced-motion:reduce){
+  #service-cards .card[data-photo-ready] .service-card-photo > img{transition:none}
+}
+#service-cards .service-expanded-body{position:relative}
+html.concept-scroll-lock{overflow:hidden;overscroll-behavior:none;scroll-behavior:auto}
+html{scrollbar-gutter:stable}
+@media(prefers-reduced-motion:reduce){
+  #service-cards .service-expanded::before,#service-cards .card .service-expanded-photo{transition:none}
+}
+
+.service-selection{
+  --services-header:72px;
+  --services-foot:clamp(12px,3svh,34px);
+  --service-step:clamp(24px,7svh,68px);
+  display:grid;grid-template-rows:auto minmax(0,1fr);
+  height:calc(100svh - var(--services-header));
+  padding-top:clamp(14px,5svh,58px);
+}
+.service-selection > h2{
+  font-size:clamp(22px,min(4vw,6svh),49px);
+  margin-bottom:clamp(10px,3svh,32px);
+}
+#service-cards{
+  width:100%;height:100%;min-height:0;margin:0 auto;padding-bottom:var(--services-foot);
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;gap:clamp(12px,5vw,76px);
+}
+#service-cards .card{display:grid;grid-template-rows:minmax(0,1fr) auto;align-items:stretch;min-height:0}
+#service-cards .card.medical{margin-top:var(--service-step)}
+#service-cards .card.lifestyle{margin-bottom:var(--service-step)}
+#service-cards .card[data-photo-ready]{grid-template-rows:var(--service-photo-height) auto;align-content:start}
+#service-cards .card > .service-card-photo{position:relative;min-height:0;padding:0;overflow:hidden}
+#service-cards .service-card-photo > img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+#service-cards .service-card-body{padding:clamp(6px,1.4svh,17px) 0 0;font-size:clamp(12px,2.2svh,17px);line-height:1.45}
+#service-cards .service-card-body h3{font-size:clamp(20px,min(4.65vw,5.7svh),58px);line-height:1.1;margin:3px 0 7px}
+#service-cards .service-card-body .service-topics{margin:clamp(4px,1.3svh,14px) 0;gap:4px}
+#service-cards .service-card-body .service-topics li{font-size:clamp(10px,1.75svh,14px);padding:2px 7px}
+#service-cards .card > .service-expanded{bottom:var(--services-foot);grid-template-rows:minmax(0,1fr)}
+@media(max-width:700px){
+  .service-selection{--services-header:60px}
+  .service-selection{--service-step:clamp(16px,5svh,44px)}
+  #service-cards .service-card-body h3{font-size:clamp(18px,5vw,32px)}
+}
+@media(max-width:560px){
+  #service-cards .card > .service-expanded{grid-template-rows:40% minmax(0,1fr)}
+}
+@media(max-height:470px){
+  #service-cards .service-card-body .service-topics{display:none}
+  #service-cards .service-card-body{font-size:12px}
+}
+
+[data-page="lifestyle"] .subhero{
+  grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);
+  align-items:center;gap:clamp(22px,4vw,68px);
+  padding-block:clamp(34px,6vw,90px);
+}
+[data-page="lifestyle"] .subhero > img{
+  aspect-ratio:auto;height:auto;max-height:none;object-fit:contain;
+  border-radius:clamp(28px,5vw,80px) 14px clamp(35px,8vw,120px) 14px;
+}
+[data-page="lifestyle"] .subhero > div{padding:0}
+[data-page="lifestyle"] .subhero h1{font-size:clamp(40px,6.2vw,92px);line-height:1.02}
+[data-page="lifestyle"] .subnav{
+  width:fit-content;max-width:90%;margin:0 auto clamp(28px,5vw,74px);
+  padding:12px clamp(16px,3vw,36px);border:0;border-radius:24px;background:#f0e8e5;
+}
+[data-page="lifestyle"] .sectionwrap > .section,
+[data-page="lifestyle"] .sectionwrap > .scene{
+  margin-inline:clamp(12px,3vw,52px);
+  padding-inline:max(5%,calc((100% - 1070px)/2));
+}
+[data-page="lifestyle"] .sectionwrap > .section{
+  margin-block:clamp(14px,3vw,42px);
+  border-radius:clamp(22px,5vw,72px) clamp(22px,3vw,40px);
+}
+[data-page="lifestyle"] #lifestyle-concept{margin-inline:0;border-radius:0;text-align:center}
+[data-page="lifestyle"] #lifestyle-concept > div{margin-inline:auto}
+[data-page="lifestyle"] .sectionwrap > .scene{background:transparent}
+[data-page="lifestyle"] .scene img{
+  border-radius:clamp(20px,4vw,62px) 12px clamp(24px,6vw,90px) 12px;
+}
+[data-page="lifestyle"] .scene.reverse img{
+  border-radius:12px clamp(20px,4vw,62px) 12px clamp(24px,6vw,90px);
+}
+[data-page="lifestyle"] .portrait img{border-radius:46% 46% 20px 20px}
+[data-page="lifestyle"] #lifestyle-access{margin-bottom:0;border-radius:42px 42px 0 0}
+@media(max-width:700px){
+  [data-page="lifestyle"] .subhero{grid-template-columns:1fr}
+  [data-page="lifestyle"] .subhero h1{font-size:clamp(35px,10vw,62px)}
+  [data-page="lifestyle"] .subnav{width:auto;justify-content:center}
+}
+
+[data-page="lifestyle"] #lifestyle-concept{text-align:left;background:#f2ebe8}
+#lifestyle-concept > h2{text-align:center;margin-bottom:clamp(24px,5vw,60px)}
+#lifestyle-concept > .lifestyle-story{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  grid-template-areas:"photo opening" "photo copy";
+  gap:clamp(22px,3vw,42px) clamp(24px,6vw,90px);
+  align-items:center;max-width:1070px;margin-inline:auto;
+}
+.lifestyle-story-opening{grid-area:opening;align-self:end}
+.lifestyle-story-photo{grid-area:photo;margin:0}
+.lifestyle-story-photo img{
+  height:auto;aspect-ratio:auto;border-radius:clamp(32px,6vw,92px) 12px clamp(50px,9vw,140px) 12px;
+}
+.lifestyle-story-copy{grid-area:copy;align-self:start;border-top:1px solid #96748055;padding-top:clamp(18px,3vw,34px)}
+#lifestyle-concept .lifestyle-story-opening .concept-lead{font-size:clamp(25px,3.1vw,46px);text-wrap:balance}
+#lifestyle-concept .lifestyle-story p:not(.concept-lead){font-size:clamp(16px,1.4vw,20px);line-height:2}
+#lifestyle-concept .lifestyle-story p br{display:none}
+#lifestyle-concept .lifestyle-story-copy p+p{margin-top:1.4em}
+@media(max-width:760px){
+  #lifestyle-concept > .lifestyle-story{
+    grid-template-columns:minmax(0,1fr);grid-template-areas:"opening" "photo" "copy";
+    max-width:560px;
+  }
+}
+
+[data-page="lifestyle"] .subhero > img{
+  border-radius:0;
+  width:min(100%,510px);justify-self:center;
+  box-shadow:clamp(8px,2vw,28px) clamp(8px,2vw,28px) 0 #e9dcd8;
+}
+#lifestyle-concept > .lifestyle-story{
+  grid-template-areas:"opening photo" "copy photo";
+  grid-template-columns:minmax(0,1fr) minmax(0,1.28fr);
+}
+.lifestyle-story-photo img{border-radius:0 0 0 clamp(25px,7vw,110px)}
+#lifestyle-instructors .portrait img{aspect-ratio:4/5;border-radius:48% 48% 0 0;object-position:center 24%}
+
+#lifestyle-faq > .lifestyle-faq-layout{max-width:1070px;margin-inline:auto}
+#lifestyle-flow h2,#lifestyle-faq h2{text-align:center}
+.lifestyle-faq-layout figure{margin:0}
+#lifestyle-faq > .lifestyle-faq-layout{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:clamp(24px,6vw,82px);align-items:start;
+}
+.lifestyle-faq-layout figure{position:relative;padding:0 14px 14px 0;isolation:isolate}
+.lifestyle-faq-layout figure::before{
+  content:"";position:absolute;inset:14px 0 0 14px;z-index:-1;
+  border:1px solid #a98a95;border-radius:40% 40% 4px 4px;
+}
+.lifestyle-faq-layout img{
+  height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center;
+  border-radius:40% 40% 4px 4px;
+}
+@media(max-width:700px){
+  #lifestyle-faq > .lifestyle-faq-layout{grid-template-columns:1fr}
+  .lifestyle-faq-layout figure{width:min(100%,480px);margin-inline:auto}
+  .lifestyle-faq-layout img{aspect-ratio:16/10;border-radius:24% 24% 4px 4px}
+  .lifestyle-faq-layout figure::before{border-radius:24% 24% 4px 4px}
+  [data-page="lifestyle"] .subhero > img{width:calc(100% - 10px);justify-self:start}
+}
+
+#lifestyle-flow > .lifestyle-visit,#medical-flow > .medical-visit{max-width:1070px;margin-inline:auto}
+.lifestyle-visit{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,6vw,84px);align-items:center}
+.lifestyle-visit .flow{border-left:1px solid #967182;padding-left:28px}
+.lifestyle-visit .flow li+li{margin-top:14px}
+.lifestyle-visit .flow li::marker{color:#795464;font-family:Georgia,serif}
+.lifestyle-visit figure,.medical-visit figure{margin:0}
+.lifestyle-visit img{aspect-ratio:4/5;object-fit:cover;object-position:center 55%;border-radius:4px 54px 4px 4px}
+.medical-visit-prep{padding-block:18px;border-top:1px solid #9eac9a}
+.medical-visit h3{font-size:clamp(20px,2.4vw,34px);margin:0 0 18px}
+.medical-visit-prep .flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,42px)}
+.medical-visit-session{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);align-items:center;padding:clamp(20px,4vw,50px);background:#dfe7dc}
+.medical-visit-session img{aspect-ratio:4/3;object-fit:cover}
+.medical-visit-session li+li{margin-top:12px}
+.medical-visit > .note{margin-top:14px}
+@media(max-width:700px){
+  .lifestyle-visit,.medical-visit-session,.medical-visit-prep .flow{grid-template-columns:1fr}
+  .lifestyle-visit img{aspect-ratio:16/10}
+}
+
+#medical-concept > .medical-concept-layout{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:center;gap:clamp(24px,6vw,88px);max-width:1070px;margin-inline:auto;
+}
+.medical-concept-copy{min-width:0}
+#medical-concept .medical-concept-copy > p:not(.concept-lead){font-size:clamp(16px,1.4vw,20px);line-height:1.9}
+#medical-concept .medical-concept-copy > p+p{margin-top:1em}
+#medical-concept .medical-concept-copy br{display:none}
+.medical-concept-layout figure{margin:0;border-bottom:3px solid #9eac9a}
+.medical-concept-layout img{height:auto}
+@media(max-width:760px){#medical-concept > .medical-concept-layout{grid-template-columns:minmax(0,1fr)}}
+
+main[data-page="medical"] .subhero{gap:clamp(22px,4vw,68px);grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);align-items:center}
+.medical-hero-photo{margin:0;position:relative;isolation:isolate;width:min(100%,510px);justify-self:center}
+.medical-hero-photo::before{content:"";position:absolute;z-index:-1;inset:17% -18px -18px 13%;background:#cbd7c8;border-radius:0 0 24px 0}
+.medical-hero-photo img{aspect-ratio:auto;height:auto;max-height:none;border-radius:0 0 24px 0}
+#medical-concept > h2,#medical-concept > .concept-lead{text-align:center}
+#medical-concept > .concept-lead{margin:0 auto clamp(28px,5vw,60px)}
+#medical-concept > .medical-concept-layout{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(22px,5vw,68px)}
+.medical-concept-layout figure{border-bottom:0}
+.medical-concept-layout img{border-radius:0 0 0 32px}
+#medical-flow > .medical-visit,#medical-faq > .medical-faq-layout{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  align-items:start;gap:clamp(24px,6vw,72px);max-width:1070px;margin-inline:auto;
+}
+.medical-visit-prep .flow{display:block}
+.medical-visit-session{display:block;background:none;padding:24px 0 0;border-top:1px solid #9eac9a}
+.medical-visit > figure img{height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:0 36px 0 0}
+.medical-visit > .note{grid-column:1/-1;margin:0}
+.medical-faq-layout figure{margin:0}
+.medical-faq-layout img{height:auto;aspect-ratio:4/3;border-radius:0 0 34px 0}
+.medical-faq-layout figcaption{font-size:13px;margin-top:8px}
+@media(max-width:760px){
+ #medical-concept > .medical-concept-layout,
+ #medical-flow > .medical-visit,#medical-faq > .medical-faq-layout{grid-template-columns:minmax(0,1fr)}
+ .medical-visit > figure img{aspect-ratio:16/10}
+ .medical-faq-layout figure{max-width:490px}
+}
+@media(max-width:700px){
+  main[data-page="medical"] .subhero{grid-template-columns:1fr}
+  .medical-hero-photo{width:calc(100% - 10px);justify-self:start}
+  .medical-hero-photo::before{right:-10px;bottom:-10px}
+}
+
+[data-page="medical"] .subhero{padding-block:clamp(34px,6vw,90px)}
+[data-page="medical"] .subnav{
+  width:fit-content;max-width:90%;margin:0 auto clamp(30px,6vw,84px);
+  padding:12px clamp(14px,3vw,36px);border:0;border-radius:24px;background:#e9ede6;
+}
+[data-page="medical"] .sectionwrap > .section{
+  margin:clamp(16px,3vw,44px) clamp(12px,3vw,52px);
+  padding:clamp(44px,8vw,118px) max(5%,calc((100% - 1070px)/2));
+  border-radius:clamp(18px,3vw,42px);
+}
+[data-page="medical"] .section > h2{margin-bottom:clamp(22px,4vw,48px)}
+[data-page="medical"] #medical-concept{margin-inline:0;border-radius:0}
+#medical-concept .medical-concept-layout{gap:clamp(24px,6vw,88px)}
+#medical-concept .medical-concept-copy > p+p{margin-top:1.45em}
+#medical-flow .medical-visit-session{margin-top:clamp(16px,3vw,34px)}
+#medical-faq .medical-faq-layout details{padding-block:clamp(7px,1.1vw,14px)}
+[data-page="medical"] #medical-access{margin-bottom:0;border-radius:clamp(18px,3vw,42px) clamp(18px,3vw,42px) 0 0}
+@media(max-width:700px){
+  [data-page="medical"] .subnav{width:auto;justify-content:center}
+}
+</style></head><body><a class="skip" href="#content">本文へ移動</a><header><a class="logo" href="#home" aria-label="Mayro ホーム"><img src="assets/p05.svg" width="345" height="67" alt=""></a><nav aria-label="メインメニュー"><a href="#about">About</a><a href="#lifestyle">Lifestyle</a><a href="#medical">Medical</a><a href="#access">Access</a></nav></header><div id="content">
+<main data-page="home"><section class="hero"><div class="frames" aria-hidden="true"><img class="frame active" src="assets/p06.webp" alt=""><img class="frame" alt="" src="assets/p07.webp"><img class="frame" alt="" src="assets/p08.webp"></div><div class="hero-brand"><img src="assets/p09.svg" alt="Mayro Pilates Studio" width="345" height="67"></div><div class="film-controls" role="group" aria-label="トップの写真"><button type="button" data-frame="0" aria-label="写真1" aria-current="true"><span aria-hidden="true">●</span></button><button type="button" data-frame="1" aria-label="写真2"><span aria-hidden="true">●</span></button><button type="button" data-frame="2" aria-label="写真3"><span aria-hidden="true">●</span></button><button type="button" id="film-toggle" aria-label="一時停止"><span aria-hidden="true">Ⅱ</span></button></div></section>
+<div class="concept-stage" id="about">
+<section class="about">
+  <p class="brand-origin"><span class="concept-mark">「May」＋「iro（彩）」＝ Mayro</span></p>
+  <h1><span class="concept-mark">彩（いろ）のある、豊かな人生をあなたに</span></h1>
+  <p>Mayroは、ピラティスを通じて心と身体に向き合い、<span class="concept-mark">一人ひとりの美しさと可能性</span>を育むスタジオです。</p>
+  <h2>「<span class="concept-mark">身体を整えることも、美しさを育むことも。</span>」</h2>
+  <p><span class="concept-mark concept-mark--medical">理学療法士の専門知識を活かした Medical Pilates</span> と、<span class="concept-mark concept-mark--lifestyle">美しさやしなやかさを育む Lifestyle Pilates</span>。</p>
+  <p>2つのアプローチから、一人ひとりに寄り添い、<span class="concept-mark">自分らしい未来を彩ります。</span></p>
+  <a class="concept-services" href="#services">ピラティスを選ぶ　↓</a>
+  <div class="concept-strokes" aria-hidden="true"></div>
+</section>
+</div>
+<section class="service-selection" id="services" aria-labelledby="service-heading">
+<h2 id="service-heading">身体に合わせて選ぶピラティス</h2>
+<div class="service-grid" id="service-cards"><a class="card lifestyle" href="#lifestyle">
+  <div class="service-card-photo"><img src="assets/p10.webp" alt="落ち着いたスタジオで背を伸ばしながら身体をひねる様子" loading="lazy"></div>
+  <div class="service-card-body"><span>Mayro</span><h3>Lifestyle Pilates</h3><p>美しく、しなやかに。理想の自分へ。</p><ul class="service-topics" aria-label="レッスンの特徴"><li>姿勢</li><li>ボディライン</li><li>運動習慣</li></ul><span class="service-link">詳しく見る　↗</span></div>
+  <div class="service-expanded">
+    <div class="service-expanded-photo"><img src="assets/p10.webp" alt="" loading="lazy"></div>
+    <div class="service-expanded-body">
+      <div aria-hidden="true"><span class="service-wordmark wordmark" aria-label="Mayro">&#xE000;</span><h3>Lifestyle Pilates</h3></div>
+      <div class="service-photo-copy"><p>姿勢やボディラインを整えたい方、しなやかで美しい身体を目指したい方、運動を習慣にしたい方へ。</p><p>一人ひとりの目指す姿やライフスタイルに合わせて、姿勢・呼吸・身体の使い方を丁寧にサポート。</p><p>心地よく身体を動かしながら、バランスの整った美しい身体と、健やかな毎日を目指します。</p></div>
+      <ul class="service-topics" aria-hidden="true"><li>姿勢</li><li>ボディライン</li><li>運動習慣</li></ul>
+      <span aria-hidden="true" class="service-link">詳しく見る　↗</span>
+    </div>
+  </div>
+</a><a class="card medical" href="#medical">
+  <div class="service-card-photo"><img src="assets/p11.webp" alt="白いスタジオでインストラクターが膝の位置を確認している様子" loading="lazy"></div>
+  <div class="service-card-body"><span>Mayro</span><h3>Medical Pilates</h3><p>理学療法士による、専門的な身体分析とピラティス。</p><ul class="service-topics" aria-label="レッスンの特徴"><li>身体の評価</li><li>痛み・不調</li><li>日常動作</li></ul><span class="service-link">詳しく見る　↗</span></div>
+  <div class="service-expanded">
+    <div class="service-expanded-photo"><img src="assets/p11.webp" alt="" loading="lazy"></div>
+    <div class="service-expanded-body">
+      <div aria-hidden="true"><span class="service-wordmark wordmark" aria-label="Mayro">&#xE000;</span><h3>Medical Pilates</h3></div>
+      <div class="service-photo-copy"><p>痛みや不調によって身体を動かすことに不安がある方、ケガや手術後に身体の動きを取り戻したい方、日常生活での動作に不自由を感じている方へ。</p><p>身体機能や動作を専門的な視点から評価し、それぞれの状態に応じたピラティスを提案。</p><p>無理のない運動を通して、身体の機能を整え、日常生活をより快適に過ごせる身体づくりをサポートします。</p></div>
+      <ul class="service-topics" aria-hidden="true"><li>身体の評価</li><li>痛み・不調</li><li>日常動作</li></ul>
+      <span aria-hidden="true" class="service-link">詳しく見る　↗</span>
+    </div>
+  </div>
+</a></div>
+</section><div class="home-access"><section class="section" id="access"><h2>Access</h2><div>
+<dl class="access-details">
+  <div><dt>住所</dt><dd><address>〒107-0052 東京都港区赤坂2-10-4 下村ビル2F</address></dd></div>
+  <div><dt>最寄り駅</dt><dd>東京メトロ銀座線・南北線「溜池山王駅」<br>11番出口・9番出口から徒歩1分</dd></div>
+  <div><dt>営業時間</dt><dd>8:30〜21:30</dd></div>
+  <div><dt>定休日</dt><dd>祝日</dd></div>
+</dl>
+<a class="access-map" href="https://maps.app.goo.gl/NGMNYnHkWSLzBo2YA">Google マップで開く ↗</a>
+</div></section></div></main><main data-page="medical" class="medical"><div class="subhero"><div><a class="back" href="#services">← サービス一覧</a><h1>Medical Pilates</h1><p>身体を知り、一歩ずつ、より良い動きへ。</p><a class="button" href="#medical-flow">体験の流れを見る　↗</a></div><figure class="medical-hero-photo"><img src="assets/p11.webp" alt="白いスタジオでインストラクターが膝の位置を確認している様子" loading="lazy"></figure></div><nav class="subnav" aria-label="ページ内メニュー"><a href="#medical-concept">コンセプト</a><a href="#medical-instructors">インストラクター</a><a href="#medical-price">プログラム・料金</a><a href="#medical-flow">プログラムの流れ</a><a href="#medical-reviews">お客様の声</a><a href="#medical-faq">よくあるご質問</a><a href="#medical-access">アクセス</a></nav><div class="sectionwrap"><section class="section" id="medical-concept"><h2>コンセプト</h2>
+<p class="concept-lead">身体を知り、一歩ずつ、より良い動きへ。</p><div class="medical-concept-layout"><figure><img src="assets/p12.webp" alt="インストラクターが立位で膝と足首の位置を確認する様子" loading="lazy" width="1200" height="900"></figure><div class="medical-concept-copy"><p>理学療法士が姿勢・関節の動き・筋力・動作などを専門的に評価。<br>一人ひとりの身体の状態や目標に合わせた個別プログラムを作成し、段階的なピラティスを提案。</p><p>評価から目標設定、プログラムの実践、定期的な振り返りまで。<br>その時々の身体に向き合いながら、より快適で、自分らしく動ける身体を目指します。</p></div></div>
+</section><section class="section" id="medical-instructors"><h2>インストラクター</h2><div class="staff-med"><figure class="portrait"><img loading="lazy" src="assets/p13.webp" alt="インストラクター紹介用の仮写真"><figcaption>撮影イメージ</figcaption></figure><div><h3>Suzuka</h3><p>理学療法士として約10年にわたり、神経疾患や整形外科疾患など、幅広い疾患のリハビリテーションに携わってきました。</p><details class="full-copy"><summary>プロフィール全文を読む</summary><p>身体機能の評価や動作分析を通じて、一人ひとりの身体の特徴や課題を捉え、運動療法を中心としたサポートを経験。</p><p>その中で、症状のある部分だけでなく、姿勢や全身の動き方に目を向けることの大切さを実感し、ピラティスを学び始めました。</p><p>PHI Pilates Reformer Instructor取得後は、ピラティススタジオにて、臼蓋形成不全、腰部脊柱管狭窄症、腰椎椎間板ヘルニア、前十字靱帯・半月板損傷、慢性腰痛、ギラン・バレー症候群の後遺症による下肢筋力や歩行機能に課題を抱える方への運動指導を経験。</p><p>理学療法士として培った解剖学・運動学の知識と動作分析の経験を活かし、一人ひとりの身体の状態や目標に合わせたパーソナルレッスンを担当しています。</p><p>身体を丁寧に知ることから、その人に合った動き方を見つけていく。専門的な視点と分かりやすい指導を大切に、安心して身体と向き合える時間を提供します。</p></details><h4>Qualifications</h4><ul class="credentials"><li>理学療法士（2016年取得）</li><li>運動器認定理学療法士（2022年取得）</li><li>PHI Pilates Reformer Instructor（2024年取得）</li></ul></div></div></section><section class="section" id="medical-price"><h2>プログラム・料金</h2><div><dl class="prices"><div><dt>初回体験（80分）</dt><dd>¥5,000</dd></div><div><dt>回数券 1回（60分）</dt><dd>¥13,000</dd></div><div><dt>回数券 8回（1回あたり ¥12,000）</dt><dd>¥96,000</dd></div><div><dt>回数券 16回（1回あたり ¥10,000）</dt><dd>¥160,000</dd></div></dl><p class="note">回数券の有効期限は1年間です。初回体験の価格は料金表の記載を仮採用しています。</p></div></section><section class="section" id="medical-flow">
+<h2>プログラムの流れ</h2>
+<div class="medical-visit"><div class="medical-visit-text"><div class="medical-visit-prep"><h3>ご来店まで</h3><ol class="flow"><li><strong>ご予約</strong>まずはサイトより初回体験レッスンをご予約ください。</li><li><strong>持ち物を準備</strong>タオル、動きやすい服装、お飲み物をお持ちください。</li><li><strong>ご来店</strong>レッスン開始の10分前までにスタジオにお越しください。</li></ol></div><div class="medical-visit-session"><div><h3>初回体験（80分）</h3><ol class="flow" start="4"><li><strong>体験レッスン当日</strong>80分かけて身体の状態やお悩み、目標などを確認します。</li><li><strong>あなたに合わせたプランのご提案＆共有</strong>カウンセリングや身体の状態を踏まえ、一人ひとりの目的に合わせたレッスンプランをご提案します。</li></ol></div></div></div><figure><img src="assets/p14.webp" alt="インストラクターがリフォーマー運動中の膝の向きを確認する様子" loading="lazy" width="1200" height="900"></figure>
+  <p class="note">予約先は確認後に掲載します。</p>
+</div>
+</section><section class="section" id="medical-reviews"><h2>お客様の声</h2><div><p>掲載準備中です。</p></div></section><section class="section" id="medical-faq"><h2>よくあるご質問</h2><div class="medical-faq-layout"><div><details><summary>痛みや不調があってもレッスンを受けられますか？</summary><p>身体の状態やお悩みを事前に確認したうえで、無理のない運動をご提案します。痛みの程度や状態によっては、医療機関への相談をお願いする場合もございます。</p></details><details><summary>手術後でもレッスンを受けられますか？</summary><p>手術後の身体の状態や回復状況によって異なります。主治医の運動許可や制限事項を確認したうえで、身体の状態に合わせた運動をご提案いたします。</p></details><details><summary>理学療法士が担当してくれるのですか？</summary><p>はい。Medical Pilatesは、理学療法士の資格を持つインストラクターが担当します。専門知識を活かし、姿勢や動作、身体機能などを確認しながら、一人ひとりに合わせたレッスンを行います。</p></details><details><summary>レッスン前に身体の状態を確認してもらえますか？</summary><p>はい。カウンセリングを通じて、お身体のお悩みやこれまでの経過、日常生活での動きにくさなどをお伺いします。姿勢や動作なども確認し、レッスン内容を検討します。</p></details><details><summary>自分専用の運動プログラムを作成してもらえますか？</summary><p>はい。身体の状態や目標に合わせて、個別の運動プログラムをご提案します。定期的に身体の状態や取り組みを振り返りながら、必要に応じて内容を見直していきます。</p></details><details><summary>医療機関でのリハビリテーションとの違いは何ですか？</summary><p>Mayro Medical Pilatesは、理学療法士の専門知識を活かしたピラティス・運動指導を提供するサービスです。医療機関で行う診断や治療、医師の指示に基づくリハビリテーションとは異なります。</p></details><details><summary>どのような服装・持ち物が必要ですか？</summary><p>動きやすいウェア上下とお飲み物をお持ちください。足元は靴下または裸足で大丈夫です。</p></details><details><summary>スタジオに更衣室はありますか？</summary><p>はい、スタジオ内に更衣室をご用意しております。</p></details><details><summary>スタジオの入口に階段はありますか？</summary><p>はい、スタジオの入口には階段がございます。階段の昇降に不安がある方は、ご予約前に一度ご相談ください。</p></details></div><figure><img src="assets/p15.webp" alt="初回のヒアリング" loading="lazy" width="557" height="276"><figcaption>撮影イメージ</figcaption></figure></div></section><section class="section" id="medical-access"><h2>アクセス</h2><div>
+<dl class="access-details">
+  <div><dt>住所</dt><dd><address>〒107-0052 東京都港区赤坂2-10-4 下村ビル2F</address></dd></div>
+  <div><dt>最寄り駅</dt><dd>東京メトロ銀座線・南北線「溜池山王駅」<br>11番出口・9番出口から徒歩1分</dd></div>
+  <div><dt>営業時間</dt><dd>8:30〜21:30</dd></div>
+  <div><dt>定休日</dt><dd>祝日</dd></div>
+</dl>
+<a class="access-map" href="https://maps.app.goo.gl/NGMNYnHkWSLzBo2YA">Google マップで開く ↗</a>
+</div></section></div></main><main data-page="lifestyle" class="lifestyle"><div class="subhero"><div><a class="back" href="#services">← サービス一覧</a><h1>Lifestyle Pilates</h1><p>自分らしい美しさとリズムを取り戻す。</p><a class="button" href="#lifestyle-flow">体験の流れを見る　↗</a></div><img src="assets/p10.webp" alt="落ち着いたスタジオで背を伸ばしながら身体をひねる様子" loading="lazy"></div><nav class="subnav" aria-label="ページ内メニュー"><a href="#lifestyle-concept">Concept</a><a href="#lifestyle-price">Menu / Price</a><a href="#lifestyle-instructors">Our Instructors</a><a href="#lifestyle-reviews">Reviews</a><a href="#lifestyle-flow">Flow</a><a href="#lifestyle-faq">FAQ</a><a href="#lifestyle-access">Access</a></nav><div class="sectionwrap"><section class="section reveal" id="lifestyle-concept"><h2>Concept</h2>
+  <div class="lifestyle-story">
+    <div class="lifestyle-story-opening"><p class="concept-lead">自分らしい美しさとリズムを取り戻す。</p><p>身体と心の声に耳をすませ、<br>自分らしい美しさとリズムを取り戻していく場所。</p></div>
+    <figure class="lifestyle-story-photo"><img src="assets/p16.webp" alt="木製のリフォーマーに座り、腕を伸ばす女性" loading="lazy" width="1200" height="900"></figure>
+    <div class="lifestyle-story-copy"><p>動くこと、整えること、深く呼吸すること。<br>そのひとつひとつが、あなた本来の輝きを呼び覚ましてくれるはず。</p><p>あなたの“iro”が芽吹く、その瞬間を<br>私たちはそっと見守り、そばにいます。</p></div>
+  </div>
+</section><section class="section reveal" id="lifestyle-price"><h2>Menu / Price</h2><div><dl class="prices"><div><dt>月1回コース</dt><dd>月額 ¥10,000</dd></div><div><dt>月2回コース</dt><dd>月額 ¥18,000</dd></div><div><dt>月4回コース</dt><dd>月額 ¥32,000</dd></div><div><dt>都度払い 1回</dt><dd>¥11,000</dd></div></dl></div></section><section class="section reveal" id="lifestyle-instructors"><h2>Our Instructors</h2><div><div class="profiles"><article><figure class="portrait"><img loading="lazy" src="assets/p17.webp" alt="インストラクター紹介用の仮写真"><figcaption>撮影イメージ</figcaption></figure><div class="staff-bio"><h3>Ayaka</h3><p class="note">東京都出身 · 社長秘書 · Pilates Instructor</p><p>3歳からクラシックバレエを始め、大学卒業後は客室乗務員として勤務。現在は社長秘書を務めながら、ピラティスインストラクターとして活動。</p><details class="full-copy"><summary>インタビューを読む</summary><h4>ピラティスインストラクターになったきっかけは？</h4><p>CA時代の不規則な生活で心身のバランスを崩した際、私を救ってくれたのがピラティスでした。身体が整うと同時に、心までふっと軽くなる感覚。これを「一時的なリフレッシュ」ではなく、同じ悩みを持つ方へ「持続可能な習慣」として伝えたいと思い、2021年より指導者の道を選びました。</p><h4>レッスンで大切（得意）にしていることは？</h4><p>「限られた時間での心身のリセット」です。私自身、現役の秘書として多忙な日々を送っているからこそ、短時間で集中して心身を整える重要性を実感しています。バレエで培ったしなやかな動きと、解剖学的なアプローチを組み合わせ、股関節の違和感やデスクワークによるガチガチな身体を根本から解きほぐします。</p><h4>これから始める方へのメッセージ</h4><p>仕事や家事、誰かのために頑張る毎日の中で、つい自分のことは後回しになっていませんか？ ピラティスは、忙しい日常のスイッチを一度オフにして、自分自身を丁寧にメンテナンスするための時間です。運動に自信がない方も、まずは深呼吸をしに来るような感覚で、気軽にお越しくださいね。</p></details></div></article><article><figure class="portrait"><img loading="lazy" src="assets/p18.webp" alt="インストラクター紹介用の仮写真"><figcaption>撮影イメージ</figcaption></figure><div class="staff-bio"><h3>Shoko</h3><p class="note">鹿児島県出身 · 看護師 · Pilates Instructor</p><p>看護師として長年、総合病院やクリニック、保育園に勤務。さまざまなライフステージの方の心身と向き合ってきた経験を持つ。</p><details class="full-copy"><summary>インタビューを読む</summary><h4>ピラティスインストラクターになったきっかけは？</h4><p>看護師として多忙な日々を送る中で、不規則な生活や体調の波を経験しました。年齢を重ねるにつれ、がむしゃらに「がんばる」のではなく、自分を整える時間を持つことの大切さを実感。この心地よさを多くの方に伝えたいと思い、2022年より指導を開始し、現在も日々学びを深めています。</p><h4>レッスンで大切（得意）にしていることは？</h4><p>「身体の土台を整え、日々感じる不調を改善へと導くこと」です。一見地味に思える動きも、一つひとつ丁寧に。一人ひとりの身体のクセや不調のサインに寄り添い、さまざまなアプローチでサポートします。こうした小さな積み重ねが、正しく機能する身体の土台を作ってくれます。</p><h4>これから始める方へのメッセージ</h4><p>運動経験がない方や、身体に不安がある方もご安心ください。ピラティスは、誰かと比べるものではありません。ご自身のペースで、身体の感覚が少しずつ育ち、深まっていく過程を一緒に大切にしていきましょう。</p></details></div></article></div></div></section><section class="section reveal" id="lifestyle-reviews"><h2>Reviews</h2><div><div class="profiles"><article><h3>“これがピラティスか！”と感動</h3><p class="note">月4回コース｜30代・女性・会社員</p><p>レッスンを受け始めて1年以上になります。</p><details class="full-copy"><summary>続きを読む</summary><p>デスクワークで巻き肩や反り腰に悩み、姿勢改善のためにピラティスを始めました。最初はチェーン系のパーソナルレッスンを受けていましたが、初心者の私には正しく動けているか不安で…。思い切ってこちらに変えた初日、「これがピラティスか！」と感動し、すぐに通い続けることを決めました。</p><p>毎回、体の状態に合わせて丁寧に指導してくださり、姿勢や体の歪みがてきめんに改善している実感があります。インストラクターの方の明るく優しいお人柄もあり、レッスン後は体が軽くなって心もリフレッシュできます。</p><p>運動が得意でない私でも楽しく続けられていて、次のレッスンがいつも待ち遠しいです。姿勢改善や体の不調に悩む方、運動に自信がない方にも自信を持っておすすめできます！</p></details></article><article><h3>趣味で続けてきたバレエをより美しく</h3><p class="note">月2回コース｜60代・女性・主婦</p><p>60代が近づいてきた頃、やはり身体の痛みや不調を感じることも増えてきました。ピラティスとの出会いはその頃でした。</p><details class="full-copy"><summary>続きを読む</summary><p>大人になってから始めたバレエ。細々と続けてきた大好きなレッスンで少しでも身体を引き上げたい、腹筋背筋を上手く使いたい。綺麗な動きができるようになりたい。そんな素人の望みを恥ずかしながらインストラクターに伝えました。</p><p>柔軟性よりも、身体を意識すること。意識して動かすことで、頭の中で何かが繋がるタイミングがありました。</p><p>ピラティスは決して激しい動きではありません。ですが続けていくうちに、1番難しい力を抜くことや、無理をしなくてもしなやかに動かすことができる。を実感しています。</p><p>歳を重ねても地道に続けていけたらと思っています。</p></details></article><article><h3>カチコチに固まった身体をほぐして、「新しい私」に出会えました。</h3><p class="note">月1回コース｜20代・女性・編集者</p><p>子供の頃からの悩みであった猫背と、長時間のデスクワークによって歪み、固まってしまった身体を改善したいと思い、通い始めました。</p><details class="full-copy"><summary>続きを読む</summary><p>1時間の中で、私に合ったタイムスケジュールを組んでいただけるのがマンツーマンレッスンのよいところです。</p><p>私の場合はとくに、先生が身体を「ほぐす」ことに重点を置いてくださるので、レッスンが終わると身体全体が軽くなっていることがわかります。</p><p>月に一回、日常を忘れて自分の身体と向き合い、気持ちをリセットする時間を作るサイクルが出来上がってから、メンタルも安定しています。</p><p>レッスンの中で、自宅でもできる「ほぐし」の方法や簡単なトレーニングも教えていただけるので、レッスンの間が1ヶ月空いても、身体がととのった状態を維持できています。</p></details></article></div></div></section><section class="section reveal" id="lifestyle-flow">
+<h2>Flow</h2>
+<div class="lifestyle-visit">
+  <div class="lifestyle-visit-path"><ol class="flow"><li><strong>ご予約</strong>まずはサイトより無料体験レッスンをご予約ください。</li><li><strong>持ち物を準備</strong>タオル、動きやすい服装、お飲み物をお持ちください。</li><li><strong>体験レッスン当日</strong>レッスン開始の10分前までにスタジオにお越しください。レッスン後は10分程お時間をいただき、入会等のご説明をさせていただきます。</li><li><strong>ご入会</strong>入会金は0円。プラン契約はクレジットカード払いとなりますのでご準備ください。</li></ol><a class="access-map" href="https://lin.ee/s3FrAv2">LINEで無料体験を予約する ↗</a></div>
+  <figure><img src="assets/p19.webp" alt="リフォーマーのフットバーに足を置くクローズアップ" loading="lazy" width="1200" height="900"></figure>
+</div>
+</section><section class="section reveal" id="lifestyle-faq"><h2>FAQ</h2><div class="lifestyle-faq-layout"><div><details><summary>初心者ですが、大丈夫ですか？</summary><p>一人一人に合わせたオーダーメイドのレッスンですのでご安心ください。</p></details><details><summary>体験レッスンは何分前までに行けば良いですか？</summary><p>着替えなど準備がございますので、10分前までにお越しください。</p></details><details><summary>持ち物は何が必要ですか？</summary><p>動きやすいウェア上下とお飲み物をお持ちください。足元は、靴下または裸足で大丈夫です。</p></details><details><summary>入会金はいくらですか？</summary><p>入会金はございません。</p></details><details><summary>入会手続きはどのように行いますか？</summary><p>まずは無料の体験レッスンにお越しいただき、その後のカウンセリングにてお手続きをご案内させていただきます。</p></details><details><summary>男性でもレッスンを受けられますか？</summary><p>男性は紹介のみとなります。</p></details><details><summary>妊娠中でもレッスンを受けられますか？</summary><p>はい、ご予約いただけます。インストラクターAyakaはマタニティピラティスの資格を保有しております。妊娠中の身体の変化に合わせたレッスンをご提供いたしますので、安心してご相談ください。</p></details><details><summary>更衣室はありますか？</summary><p>スタジオには更衣室がございます。</p></details><details><summary>遅刻してもレッスンは受けられますか？</summary><p>15分以内でしたら、レッスン時間は短くなりますが受けられます。それ以降はキャンセルとなりますのでお気をつけください。</p></details></div><figure><img src="assets/p20.webp" alt="窓辺のベンチに座って会話するインストラクターと利用者" loading="lazy" width="1400" height="788"></figure></div></section><section class="section reveal" id="lifestyle-access"><h2>Access</h2><div>
+<dl class="access-details">
+  <div><dt>住所</dt><dd><address>〒107-0052 東京都港区赤坂2-10-4 下村ビル2F</address></dd></div>
+  <div><dt>最寄り駅</dt><dd>東京メトロ銀座線・南北線「溜池山王駅」<br>11番出口・9番出口から徒歩1分</dd></div>
+  <div><dt>営業時間</dt><dd>8:30〜21:30</dd></div>
+  <div><dt>定休日</dt><dd>祝日</dd></div>
+</dl>
+<a class="access-map" href="https://maps.app.goo.gl/NGMNYnHkWSLzBo2YA">Google マップで開く ↗</a>
+</div></section></div></main>
+</div><footer><a class="logo" href="#home" aria-label="Mayro ホーム"><span class="wordmark" aria-hidden="true"></span></a><small>© Mayro Pilates Studio</small></footer><script>
+const pages = Array.from(document.querySelectorAll('[data-page]'));
+let current;
+function route(){
+  const hash = location.hash.slice(1);
+  const key = hash.split('-')[0];
+  const active = pages.find(page => page.dataset.page === key) || pages[0];
+  const changed = current !== active;
+  pages.forEach(page => {page.hidden = page !== active;});
+  current = active;
+  const target = document.getElementById(hash);
+  if (target) target.scrollIntoView({behavior:changed?'instant':'auto'});
+  else if (changed || hash === active.dataset.page) window.scrollTo({top:0,behavior:'instant'});
+  document.title = active.dataset.page === 'home' ? 'Mayro | Pilates Studio' : active.querySelector('h1').textContent + ' | Mayro';
+}
+addEventListener('hashchange', route);
+route();
+
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const frames = Array.from(document.querySelectorAll('.frame'));
+const frameButtons = Array.from(document.querySelectorAll('[data-frame]'));
+const toggle = document.querySelector('#film-toggle');
+let frame = 0;
+let playing = !reduceMotion.matches;
+let timer;
+function showFrame(index){
+  frame = index;
+  frames.forEach((item, i) => item.classList.toggle('active', i === frame));
+  frameButtons.forEach((button, i) => {
+    if (i === frame) button.setAttribute('aria-current','true');
+    else button.removeAttribute('aria-current');
+  });
+}
+function schedule(){
+  clearInterval(timer);
+  toggle.setAttribute('aria-label', playing ? '一時停止' : '再生');
+  toggle.firstElementChild.textContent = playing ? 'Ⅱ' : '▶';
+  if (playing && !document.hidden && location.hash.split('-')[0] !== '#medical' && location.hash.split('-')[0] !== '#lifestyle') {
+    timer = setInterval(() => showFrame((frame + 1) % frames.length), 4500);
+  }
+}
+toggle.addEventListener('click', () => { playing = !playing; schedule(); });
+frameButtons.forEach((button,i) => button.addEventListener('click', () => { showFrame(i); schedule(); }));
+document.addEventListener('visibilitychange', schedule);
+addEventListener('hashchange', schedule);
+reduceMotion.addEventListener('change', () => {playing = !reduceMotion.matches; schedule();});
+schedule();
+if ('IntersectionObserver' in window && !reduceMotion.matches){
+  document.documentElement.classList.add('js-motion');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.remove('pending');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(element => {
+    element.classList.add('pending');
+    observer.observe(element);
+  });
+}
+
+
+
+const conceptStage = document.getElementById('about');
+const concept = conceptStage.querySelector('.about');
+const conceptStrokes = concept.querySelector('.concept-strokes');
+const conceptMarks = concept.querySelectorAll('.concept-mark');
+const conceptHeader = document.querySelector('header');
+let markerFrame = 0;
+let pinTop = 72;
+let lineCount = 0;
+let unlockTimer;
+const root = document.documentElement;
+
+function releaseConceptScroll() {
+  clearTimeout(unlockTimer);
+  if (root.classList.contains('concept-scroll-lock')) {
+    root.classList.remove('concept-scroll-lock');
+    measureConceptStrokes();
+  }
+}
+
+function updateConceptStrokes() {
+  markerFrame = 0;
+  const bounds = conceptStage.getBoundingClientRect();
+  if (!bounds.height) return;
+  if (bounds.top > pinTop + 64) conceptStage.classList.remove('is-marked');
+  if (conceptStage.classList.contains('is-marked') || !lineCount || bounds.top > pinTop + 2) return;
+
+  const homeEntry = ['', '#home', '#about'].includes(location.hash);
+  if (homeEntry && bounds.bottom > pinTop && !reduceMotion.matches) {
+    const lockAt = Math.round(window.scrollY + bounds.top - pinTop);
+    root.classList.add('concept-scroll-lock');
+    window.scrollTo({top:lockAt,behavior:'instant'});
+    unlockTimer = setTimeout(releaseConceptScroll, (lineCount - 1) * 265 + 300);
+  }
+  conceptStage.classList.add('is-marked');
+
+}
+
+function queueConceptStrokes() {
+  if (!markerFrame) markerFrame = requestAnimationFrame(updateConceptStrokes);
+}
+
+function measureConceptStrokes() {
+  if (root.classList.contains('concept-scroll-lock')) return;
+  pinTop = conceptHeader.getBoundingClientRect().height;
+  conceptStage.style.setProperty('--concept-pin-top', pinTop + 'px');
+
+  const fragments = document.createDocumentFragment();
+  let index = 0;
+  const origin = concept.getBoundingClientRect();
+  conceptMarks.forEach(mark => {
+    Array.from(mark.getClientRects()).forEach(rect => {
+      if (!rect.width || !rect.height) return;
+      const height = Math.max(4, Math.min(11, rect.height * .22));
+      const element = document.createElement('span');
+      element.className = 'concept-stroke';
+      if (mark.classList.contains('concept-mark--medical')) element.classList.add('concept-stroke--medical');
+      if (mark.classList.contains('concept-mark--lifestyle')) element.classList.add('concept-stroke--lifestyle');
+      Object.assign(element.style, {
+        left: (rect.left - origin.left - 1) + 'px',
+        top: (rect.bottom - origin.top - height - 1) + 'px',
+        width: (rect.width + 2) + 'px',
+        height: height + 'px'
+      });
+      element.style.setProperty('--line-delay', index * 265 + 'ms');
+      index += 1;
+      fragments.append(element);
+    });
+  });
+  lineCount = index;
+  conceptStrokes.replaceChildren(fragments);
+  queueConceptStrokes();
+}
+
+function preventLockedScroll(event) {
+  if (root.classList.contains('concept-scroll-lock')) event.preventDefault();
+}
+
+addEventListener('wheel', preventLockedScroll, {passive:false});
+addEventListener('touchmove', preventLockedScroll, {passive:false});
+addEventListener('scroll', queueConceptStrokes, {passive:true});
+addEventListener('resize', measureConceptStrokes);
+addEventListener('hashchange', () => {
+  releaseConceptScroll();
+  measureConceptStrokes();
+});
+addEventListener('keydown', event => {
+  if (event.key === 'Escape') releaseConceptScroll();
+});
+addEventListener('pagehide', releaseConceptScroll);
+reduceMotion.addEventListener('change', () => {
+  if (reduceMotion.matches) releaseConceptScroll();
+  measureConceptStrokes();
+});
+if (document.fonts) document.fonts.ready.then(measureConceptStrokes);
+measureConceptStrokes();
+
+const serviceCards = document.querySelectorAll('#service-cards .card');
+function measureServicePhotos() {
+  if (!cardsGrid.clientHeight) return;
+  const gridStyle = getComputedStyle(cardsGrid);
+  const stagger = parseFloat(getComputedStyle(serviceCards[1]).marginTop);
+  const textHeight = Math.max(...Array.from(serviceCards, card =>
+    card.querySelector('.service-card-body').getBoundingClientRect().height
+  ));
+  const photoHeight = Math.max(0, cardsGrid.clientHeight - parseFloat(gridStyle.paddingBottom) - stagger - textHeight);
+  cardsGrid.style.setProperty('--service-photo-height', photoHeight + 'px');
+  serviceCards.forEach(card => {
+    const source = card.querySelector('.service-card-photo').getBoundingClientRect();
+    const destination = card.querySelector('.service-expanded-photo');
+    const panel = destination.parentElement.getBoundingClientRect();
+    if (!source.width || !source.height || !panel.width || !panel.height) return;
+    destination.style.setProperty('--photo-start-x', (source.left - panel.left) + 'px');
+    destination.style.setProperty('--photo-start-y', (source.top - panel.top) + 'px');
+    destination.style.setProperty('--photo-start-w', source.width + 'px');
+    destination.style.setProperty('--photo-start-h', source.height + 'px');
+    const image = destination.querySelector('img');
+    if (image.complete && image.naturalWidth) card.setAttribute('data-photo-ready', '');
+
+  });
+}
+serviceCards.forEach(card => {
+  const image = card.querySelector('.service-expanded-photo img');
+  image.loading = 'eager';
+  image.addEventListener('load', measureServicePhotos, {once:true});
+});
+const cardsGrid = document.getElementById('service-cards');
+if ('ResizeObserver' in window) {
+  const photoObserver = new ResizeObserver(measureServicePhotos);
+  photoObserver.observe(cardsGrid);
+  serviceCards.forEach(card => photoObserver.observe(card.querySelector('.service-card-body')));
+}
+addEventListener('resize', measureServicePhotos);
+addEventListener('hashchange', measureServicePhotos);
+measureServicePhotos();
+</script></body></html>

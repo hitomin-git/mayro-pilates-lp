@@ -1,0 +1,35 @@
+/* Medical Pilates テーマ：Lifestyleと同じ構成のまま、落ち着いた青灰色と生成りの背景で「専門的・清潔感」を出す */
+.theme-medical {
+  --med-accent: #2f4b5c;
+  --med-accent-soft: #e6ecef;
+  --med-paper: #f8f7f2;
+  --med-line: #998e826a;
+}
+.theme-medical { background: var(--med-paper); }
+.theme-medical .booking-button {
+  background: var(--med-accent);
+  border-color: #d5dee3;
+}
+.theme-medical .flow,
+.theme-medical .home-pricing { background: var(--med-paper); }
+.theme-medical .home-plan-grid article { border-color: var(--med-line); }
+.theme-medical .flow-step-badge { background: var(--med-accent); color: #fff; }
+
+/* 初回体験〜プラン提案の5ステップ */
+.flow-steps.flow-steps-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) {
+  .flow-steps.flow-steps-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .flow-steps.flow-steps-5 { grid-template-columns: 1fr; }
+}
+
+/* お客様の声：準備中 */
+.review-empty { display: flex; justify-content: center; padding: 48px 16px 24px; }
+.review-empty-text { font-size: 16px; line-height: 2; letter-spacing: .1em; color: #777; }
+
+/* スタッフ：資格 */
+.staff-qualifications { margin: 0 0 24px; padding: 20px 24px; background: var(--med-accent-soft); }
+.staff-qualifications-title { font-size: 13px; letter-spacing: .14em; color: var(--med-accent); margin-bottom: 10px; }
+.staff-qualifications-list { list-style: none; margin: 0; padding: 0; font-size: 15px; line-height: 2; color: #333; }
+.staff-qualifications-list li::before { content: "・"; color: var(--med-accent); }
