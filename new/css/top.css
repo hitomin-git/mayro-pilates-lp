@@ -584,3 +584,12 @@ header nav a.nav-sub{border:0;border-radius:0;padding:0}
   header nav#site-nav a{font-size:16px;padding:14px 0;border-bottom:1px solid #251f1d14}
   header nav#site-nav a:last-child{border-bottom:0}
 }
+
+/* ---- スマホ：ヒーローは画面いっぱい（縦長）。写真ごとに人物が入る位置へ ---- */
+@media(max-width:700px){
+  .hero{height:calc(100svh - 60px);min-height:480px}
+  .hero .frame:nth-child(1){object-position:84% 50%}
+  .hero .frame:nth-child(2){object-position:78% 50%}
+  .hero .frame:nth-child(3){object-position:96% 50%}
+  .hero .hero-brand img{width:min(72vw,300px)}
+}
