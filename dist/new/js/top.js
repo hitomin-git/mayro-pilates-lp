@@ -67,12 +67,15 @@ function updateConceptStrokes() {
   markerFrame = 0;
   const bounds = conceptStage.getBoundingClientRect();
   if (!bounds.height) return;
-  // ヒーローがほぼ画面から外れ、かつ文章がすべて画面内に収まった時点で、早めに止める
-  const heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
-  const textBottom = conceptMarks[conceptMarks.length - 1].getBoundingClientRect().bottom;
-  const earlyLine = pinTop + innerHeight * .3;
-  if (heroBottom > earlyLine + 64) conceptStage.classList.remove('is-marked');
-  if (conceptStage.classList.contains('is-marked') || !lineCount || heroBottom > earlyLine || textBottom > innerHeight - 24) return;
+  // 文章ブロック（最初の行〜「ピラティスを選ぶ」リンクまで）が、すべて画面内に入った瞬間に止める。
+  // 画面より高いブロックの場合だけ、最初の行が画面上部に来た時点で止める。
+  const firstTop = conceptMarks[0].getBoundingClientRect().top;
+  const blockBottom = concept.querySelector('.concept-services').getBoundingClientRect().bottom;
+  const fits = blockBottom - firstTop <= innerHeight - pinTop - 32;
+  const reached = fits ? blockBottom <= innerHeight - 16 : firstTop <= pinTop + 8;
+  const farBefore = fits ? blockBottom > innerHeight + 80 : firstTop > pinTop + 80;
+  if (farBefore) conceptStage.classList.remove('is-marked');
+  if (conceptStage.classList.contains('is-marked') || !lineCount || !reached) return;
 
   const homeEntry = ['', '#home', '#about'].includes(location.hash);
   if (homeEntry && bounds.bottom > pinTop && !reduceMotion.matches) {
