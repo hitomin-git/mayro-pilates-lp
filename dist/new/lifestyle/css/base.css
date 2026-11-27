@@ -1277,3 +1277,8 @@ body .menu-tabs.node>a:hover {
     margin-top: 12px;
   }
 }
+
+/* ヘッダー左端：Mayroトップへ戻るロゴ＋各サイトのロゴ */
+.brand-top { flex: none; display: flex; align-items: center; padding-right: 20px; margin-right: -8px; border-right: 1px solid #3333331f; }
+.brand-top img { width: 72px; height: auto; }
+@media (max-width: 767px) { .brand-top { padding-right: 12px; margin-right: -10px; } .brand-top img { width: 52px; } .site-header .brand img { width: 120px; } }
