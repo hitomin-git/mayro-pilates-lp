@@ -525,3 +525,24 @@ main[data-page="medical"] .subhero{gap:clamp(22px,4vw,68px);grid-template-column
 /* ヘッダーのロゴ：Lifestyle/Medicalの各ページと同じ高さに揃える */
 header .logo img{width:auto;height:30px}
 @media(max-width:767px){header .logo img{height:22px}}
+
+/* ---- スマホ：ヒーローの被写体が切れないよう写真ごとに表示位置を調整 ---- */
+@media(max-width:700px){
+  .hero{min-height:clamp(520px,78svh,760px)}
+  .hero .frame:nth-child(1){object-position:84% 50%}
+  .hero .frame:nth-child(2){object-position:72% 50%}
+  .hero .frame:nth-child(3){object-position:90% 50%}
+}
+/* ---- 右上メニュー：分かりやすく。Lifestyle/Medicalはボタン状に ---- */
+header nav a{font-size:clamp(13px,1.3vw,16px);font-weight:600;color:#251f1d;letter-spacing:.06em}
+header nav a[href="lifestyle/"],header nav a[href="medical/"]{border:1px solid #251f1d;border-radius:999px;padding:7px 18px;line-height:1.3;transition:background .2s,color .2s}
+header nav a[href="lifestyle/"]:hover,header nav a[href="medical/"]:hover{background:#251f1d;color:#faf8f4;text-decoration:none}
+@media(max-width:700px){
+  header nav{gap:6px}
+  header nav a{font-size:12px;letter-spacing:.02em}
+  header nav a[href="lifestyle/"],header nav a[href="medical/"]{padding:5px 10px}
+}
+/* ---- サービスカード：ページへ進むボタンを明示 ---- */
+#service-cards .service-link{display:inline-block;margin-top:10px;padding:10px 22px;border-radius:999px;background:#2b2420;color:#faf8f4;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.04em}
+#service-cards .card:hover .service-card-body .service-link{background:#000}
+#service-cards .service-expanded .service-link{background:#2b2420;color:#faf8f4}
