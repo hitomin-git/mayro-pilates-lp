@@ -1283,3 +1283,8 @@ body .menu-tabs.node>a:hover {
 .site-header .brand-top img { height: 30px; width: auto; }
 @media (max-width: 767px) { .site-header .brand-top img { height: 22px; } }
 @media (min-width: 768px) { .site-header { height: 72px; padding-left: 5%; padding-right: 5%; } }
+/* ハンバーガーメニュー内のロゴ：ヘッダーと同じ高さに揃える */
+#mobile-nav .mobile-nav-close-logo-wrap { height: auto; }
+#mobile-nav .mobile-nav-close-logo { height: 22px; width: auto; max-width: none; }
+#mobile-nav .mobile-nav-footer-logo-wrap { height: auto; }
+#mobile-nav .mobile-nav-footer-logo { height: 24px; width: auto; max-width: none; }
