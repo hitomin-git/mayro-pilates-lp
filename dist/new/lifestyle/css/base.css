@@ -1278,7 +1278,7 @@ body .menu-tabs.node>a:hover {
   }
 }
 
-/* ヘッダー左端：Mayroトップへ戻るロゴ＋各サイトのロゴ */
+/* ヘッダー左端：Mayroトップへ戻るロゴ＋各サイトのロゴ（2つとも同じ高さに揃える） */
 .brand-top { flex: none; display: flex; align-items: center; padding-right: 20px; margin-right: -8px; border-right: 1px solid #3333331f; }
-.brand-top img { width: 80px; height: auto; }
-@media (max-width: 767px) { .brand-top { padding-right: 12px; margin-right: -10px; } .brand-top img { width: 64px; } .site-header .brand img { width: 120px; } }
+.site-header .brand-top img, .site-header .brand img { height: 30px; width: auto; }
+@media (max-width: 767px) { .brand-top { padding-right: 12px; margin-right: -10px; } .site-header .brand-top img, .site-header .brand img { height: 22px; } }
