@@ -6,10 +6,6 @@
   --med-line: #998e826a;
 }
 .theme-medical { background: var(--med-paper); }
-.theme-medical .booking-button {
-  background: var(--med-accent);
-  border-color: #d5dee3;
-}
 .theme-medical .flow,
 .theme-medical .home-pricing { background: var(--med-paper); }
 .theme-medical .home-plan-grid article { border-color: var(--med-line); }
