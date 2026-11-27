@@ -560,3 +560,11 @@ header nav a.nav-sub:hover{background:#251f1d;color:#faf8f4;text-decoration:none
   #service-cards .service-card-body .service-topics li{font-size:12px}
   #service-cards .card > .service-expanded{display:none}
 }
+
+/* ---- スマホ：ヒーローを正方形に近づけ、写真の被写体が収まる位置に調整 ---- */
+@media(max-width:700px){
+  .hero{min-height:0;height:max(100vw,360px)}
+  .hero .frame:nth-child(1){object-position:88% 50%}
+  .hero .frame:nth-child(2){object-position:96% 50%}
+  .hero .frame:nth-child(3){object-position:100% 50%}
+}
