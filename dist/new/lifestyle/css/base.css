@@ -1288,3 +1288,33 @@ body .menu-tabs.node>a:hover {
 #mobile-nav .mobile-nav-close-logo { height: 22px; width: auto; max-width: none; }
 #mobile-nav .mobile-nav-footer-logo-wrap { height: auto; }
 #mobile-nav .mobile-nav-footer-logo { height: 24px; width: auto; max-width: none; }
+/* 予約ボタン：LP（/trial/）と同じLINEグリーンのボタンに統一 */
+.booking-button,
+.header-actions .booking-button {
+  background: #06c755;
+  border: 0;
+  box-shadow: 0 3px 0 #04a147;
+  color: #fff;
+  font-family: 'Noto Sans JP','Yu Gothic',sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  gap: 10px;
+  min-height: 56px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.header-actions .booking-button { min-height: 44px; font-size: 14px; padding: 8px 18px; box-shadow: 0 2px 0 #04a147; }
+.booking-button::before {
+  content: "";
+  flex: none;
+  width: 26px;
+  height: 26px;
+  background: url(../assets/line-icon.svg) center / contain no-repeat;
+}
+.header-actions .booking-button::before { width: 22px; height: 22px; }
+.booking-button span { display: none; }
+.booking-button:hover { background: #05b34c; }
+.booking-button:focus-visible { outline: 3px solid #b39754; outline-offset: 3px; }
+@media (max-width: 380px) { .booking-button { font-size: 15px; gap: 8px; } }
