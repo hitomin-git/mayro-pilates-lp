@@ -522,3 +522,6 @@ main[data-page="medical"] .subhero{gap:clamp(22px,4vw,68px);grid-template-column
 #service-cards .service-card-photo{position:relative}
 #service-cards .service-card-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#1a141066 0,#1a141026 55%,#1a141000 100%);pointer-events:none}
 #service-cards .service-card-photo img.service-photo-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(64%,360px);height:auto;aspect-ratio:auto;object-fit:contain;z-index:1;filter:drop-shadow(0 1px 8px #0006);pointer-events:none;transition:none}
+/* ヘッダーのロゴ：Lifestyle/Medicalの各ページと同じ高さに揃える */
+header .logo img{width:auto;height:30px}
+@media(max-width:767px){header .logo img{height:22px}}
