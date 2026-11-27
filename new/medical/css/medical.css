@@ -33,3 +33,49 @@
 .staff-qualifications-title { font-size: 13px; letter-spacing: .14em; color: var(--med-accent); margin-bottom: 10px; }
 .staff-qualifications-list { list-style: none; margin: 0; padding: 0; font-size: 15px; line-height: 2; color: #333; }
 .staff-qualifications-list li::before { content: "・"; color: var(--med-accent); }
+
+/* ---- 見出しはすべて日本語（明朝・ゆったり）。プロトタイプのMedicalの落ち着いた雰囲気に合わせる ---- */
+.theme-medical {
+  --med-serif: 'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',YuMincho,serif;
+}
+.theme-medical .section-eyebrow,
+.theme-medical .menu-hero-title,
+.theme-medical .staff-hero-title,
+.theme-medical .policy-hero-title,
+.theme-medical .menu-faq-title,
+.theme-medical .home-price-title h2 {
+  font-family: var(--med-serif);
+  font-size: clamp(30px, 4.4vw, 56px);
+  font-weight: 400;
+  letter-spacing: .1em;
+  line-height: 1.35;
+  color: #2c2a27;
+}
+.theme-medical .concept-lead,
+.theme-medical .flow-step-title,
+.theme-medical .menu-course-title,
+.theme-medical .menu-course-title-alt,
+.theme-medical .staff-card-name,
+.theme-medical .staff-trial-title {
+  font-family: var(--med-serif);
+  letter-spacing: .08em;
+}
+.theme-medical .concept-body,
+.theme-medical .flow-step-body,
+.theme-medical .menu-course-desc-1,
+.theme-medical .menu-course-desc-2,
+.theme-medical .menu-course-desc-3,
+.theme-medical .menu-course-desc-4,
+.theme-medical .staff-card-bio {
+  line-height: 2.1;
+  letter-spacing: .04em;
+}
+.theme-medical .site-header { background: #f8f7f2f5; border-bottom-color: #998e8240; }
+.theme-medical .menu-tabs-section a,
+.theme-medical .menu-tabs a { font-family: var(--med-serif); }
+.theme-medical .flow-step-photo,
+.theme-medical .concept-photo,
+.theme-medical .course-photo img { border-radius: 0; }
+.theme-medical .faq-item, .theme-medical .staff-faq-item { border-color: var(--med-line); }
+.theme-medical .home-price-title { text-align: left; }
+.theme-medical .concept, .theme-medical .review, .theme-medical .access, .theme-medical .menu-main, .theme-medical .staff-main { background: var(--med-paper); }
