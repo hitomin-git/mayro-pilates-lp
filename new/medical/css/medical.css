@@ -75,3 +75,107 @@
 .theme-medical .faq-item, .theme-medical .staff-faq-item { border-color: var(--med-line); }
 .theme-medical .home-price-title { text-align: left; }
 .theme-medical .concept, .theme-medical .review, .theme-medical .access, .theme-medical .menu-main, .theme-medical .staff-main { background: var(--med-paper); }
+
+/* =====================================================================
+   Medical リニューアル：クリニカル・ミニマル
+   情報量は変えず、色・書体・罫線・余白だけで「評価と根拠」の印象に。
+   ===================================================================== */
+.theme-medical {
+  --med-accent: #1f3a4d;
+  --med-accent-soft: #e8eef2;
+  --med-paper: #f4f7f9;
+  --med-line: #c5d0d8;
+  --med-sans: 'Noto Sans JP','Yu Gothic',Meiryo,sans-serif;
+  background: #fff;
+  color: #243642;
+}
+.theme-medical .site-header { background: #fffffff2; border-bottom: 1px solid var(--med-line); }
+.theme-medical .desktop-nav { font-family: var(--med-sans); font-size: 14px; letter-spacing: .08em; }
+.theme-medical .desktop-nav a:hover { color: var(--med-accent); }
+
+/* 見出し：ゴシック＋左の青い縦線＋通し番号 */
+.theme-medical .home-main { counter-reset: medsec; }
+.theme-medical .concept-heading,
+.theme-medical .home-price-title,
+.theme-medical .review-heading,
+.theme-medical .flow-heading-text,
+.theme-medical .access-heading-text { counter-increment: medsec; }
+.theme-medical .concept-heading::before,
+.theme-medical .home-price-title::before,
+.theme-medical .review-heading::before,
+.theme-medical .flow-heading-text::before,
+.theme-medical .access-heading-text::before {
+  content: "0" counter(medsec);
+  display: block;
+  font: 600 13px/1 var(--med-sans);
+  letter-spacing: .3em;
+  color: #6b8596;
+  margin-bottom: 14px;
+}
+.theme-medical .section-eyebrow,
+.theme-medical .menu-hero-title,
+.theme-medical .staff-hero-title,
+.theme-medical .policy-hero-title,
+.theme-medical .menu-faq-title,
+.theme-medical .home-price-title h2 {
+  font-family: var(--med-sans);
+  font-weight: 500;
+  font-size: clamp(26px, 3.6vw, 42px);
+  letter-spacing: .08em;
+  color: var(--med-accent);
+  padding-left: 16px;
+  border-left: 4px solid var(--med-accent);
+}
+.theme-medical .concept-lead,
+.theme-medical .flow-step-title,
+.theme-medical .menu-course-title,
+.theme-medical .menu-course-title-alt,
+.theme-medical .staff-card-name,
+.theme-medical .staff-trial-title {
+  font-family: var(--med-sans);
+  font-weight: 500;
+  letter-spacing: .05em;
+  color: var(--med-accent);
+}
+
+/* セクションの背景は白と薄い青灰色を交互に */
+.theme-medical .concept, .theme-medical .review, .theme-medical .access { background: #fff; }
+.theme-medical .home-pricing, .theme-medical .flow { background: var(--med-paper); }
+.theme-medical .menu-main, .theme-medical .staff-main { background: #fff; }
+
+/* ヒーロー：寒色寄りに整え、下端に細い罫線 */
+.theme-medical .hero { border-bottom: 1px solid var(--med-line); }
+.theme-medical .hero-fade { background: linear-gradient(180deg,#1f3a4d12,#1f3a4d26 70%,#f4f7f9) !important; }
+
+/* 写真：角を立て、ずらした青灰色の面を添える */
+.theme-medical .concept-photo { box-shadow: 18px 18px 0 var(--med-accent-soft); border-radius: 0; }
+.theme-medical .access-photo { box-shadow: -18px 18px 0 var(--med-accent-soft); border-radius: 0; }
+.theme-medical .flow-step-photo, .theme-medical .gallery-image { border-radius: 0; filter: saturate(.88); }
+
+/* 料金：表のような四角いカード */
+.theme-medical .home-plan-grid article {
+  background: #fff;
+  border: 1px solid var(--med-line);
+  border-top: 3px solid var(--med-accent);
+  border-radius: 0;
+  box-shadow: none;
+}
+.theme-medical .home-plan-grid article h3 { font-family: var(--med-sans); font-weight: 600; color: var(--med-accent); letter-spacing: .06em; }
+.theme-medical .home-price-link { color: var(--med-accent); border-color: var(--med-accent); }
+
+/* 流れ：ステップを細い線でつなぎ、番号は四角いタグに */
+.theme-medical .flow-steps { position: relative; }
+.theme-medical .flow-step-badge { background: var(--med-accent); border-radius: 0; }
+.theme-medical .flow-step-title { padding-top: 14px; border-top: 2px solid var(--med-accent); margin-top: 14px; }
+
+/* メニュー・スタッフ・FAQ */
+.theme-medical .menu-tabs a, .theme-medical .menu-tabs-section a { font-family: var(--med-sans); border-radius: 0; }
+.theme-medical .faq-item, .theme-medical .staff-faq-item { border-color: var(--med-line); background: transparent; }
+.theme-medical .faq-mark-alt-1, .theme-medical .faq-mark-alt-2, .theme-medical .faq-mark-hover, .theme-medical .faq-mark { color: #fff; background: var(--med-accent); }
+.theme-medical .staff-faq-mark-1, .theme-medical .staff-faq-mark-2, .theme-medical .staff-faq-mark-3 { color: #fff; background: var(--med-accent); }
+.theme-medical .staff-qualifications { background: var(--med-accent-soft); border-left: 4px solid var(--med-accent); }
+.theme-medical .staff-card-photo-1 { border-radius: 0; box-shadow: 14px 14px 0 var(--med-accent-soft); }
+
+/* フッター：濃紺 */
+.theme-medical .site-footer { background: var(--med-accent); color: #e8eef2; }
+.theme-medical .menu-tabs a { background: var(--med-paper); border: 1px solid var(--med-line); color: var(--med-accent); }
